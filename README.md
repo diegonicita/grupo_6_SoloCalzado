@@ -1,10 +1,17 @@
-SOLO CALZADO
+#SOLO CALZADO
 
-La empresa ìSolo Calzadoî esta orientada a la venta de calzado para todo el p˙blico. Cuenta con variedad de calzados para todos los gÈneros (Hombres, mujeres y niÒos)
-Contaremos con una pagina la cual tenga im·genes de todos los productos.
+La empresa ‚ÄúSolo Calzado‚Äù esta orientada a la venta de calzado para todo el p√∫blico. Cuenta con variedad de calzados para todos los g√©neros (Hombres, mujeres y ni√±os)
+Contaremos con una pagina la cual tenga im√°genes de todos los productos.
 
+El grupo est√° conformado por (falta agregar una breve descripcion de los integrantes del equipo):
+- Ricardo Guti√©rrez
+- Eric Mainhard
+- Federico Messina.
+- Diego Nicita
 
-
-El grupo est· conformado por Diego Nicita, Eric Mainhard, Ricardo GutiÈrrez y Federico Messina.
-
-
+Aqui iran nuestros sitios cinco sitios de referencia (falta indicar brevemente porque fueron elegidos cada uno):
+1- www.solodeportes.com.ar
+2- www.mercadolibre.com.ar
+3-
+4-
+5-
