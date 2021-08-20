@@ -3,6 +3,8 @@
 La empresa “Solo Calzado” esta orientada a la venta de calzado para todo el público. Cuenta con variedad de calzados para todos los géneros (Hombres, mujeres y niños)
 Contaremos con una pagina la cual tenga imágenes de todos los productos.
 
+![Imagen de unos zapatos](https://github.com/EricMainhard/grupo_6_SoloCalzado/blob/master/botas-pixabay-640x426.jpg)
+
 El grupo está conformado por (falta agregar una breve descripcion de los integrantes del equipo):
 
 - Ricardo Gutiérrez
