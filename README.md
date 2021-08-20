@@ -12,8 +12,8 @@ El grupo está conformado por (falta agregar una breve descripcion de los integr
 
 Aqui iran nuestros sitios cinco sitios de referencia (falta indicar brevemente porque fueron elegidos cada uno):
 
-- www.solodeportes.com.ar
-- www.mercadolibre.com.ar
-- Otro sitio web
-- Otro sitio web
-- Otro sitio web
+1. www.solodeportes.com.ar
+2. www.mercadolibre.com.ar
+3. Otro sitio web
+4. Otro sitio web
+5. Otro sitio web
