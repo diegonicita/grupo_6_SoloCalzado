@@ -11,13 +11,14 @@ El grupo está conformado por:
 
 - Federico Messina.
 
-- Diego Nicita
+- Diego Nicita: Hola, soy Diego (Nick3d), me considero un apasionado en todo lo relacionado a las 💻 (PC). Mi hobby, desde hace ya muchos años, es intentar hacer juegos o apps de forma autodidacta. Voy a aportar mi experiencia para que logremos crear el mejor proyecto 🚀🚀 en la historia de Digital House 🤓🤡🤓🤡🤓.
 
 Aqui iran nuestros sitios cinco sitios de referencia:
 
 1. http://www.solodeportes.com.ar
-2. http://www.mercadolibre.com.ar
-3. https://www.drmartens.com/ar/es_ar/
-4. https://www.forleden.com.ar/
-5. Otro sitio web
-6. 
+2. http://www.mercadolibre.com.ar: plataforma de e-commerce (comercio electrónico) fundada en 1999 con operaciones en 18 países de América donde millones de usuarios compran y venden productos a través de internet. Tiene un rubro “calzados” que puede ser filtrado por género, color, tamaño, precio, etc. Por todo esto, seleccionamos este sitio como referente.
+3. https://kendra.com.ar: comercio electrónico del rubro calzados muy completo y potenciado en su desarrollo y diseño por Tiendanube, un referente en diseño de e-commerce para marcas.
+4. https://www.drmartens.com/ar/es_ar/
+5. https://www.forleden.com.ar/
+6. Otro sitio web
+7. 
