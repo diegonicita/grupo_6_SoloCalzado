@@ -20,5 +20,5 @@ Aqui iran nuestros sitios cinco sitios de referencia:
 3. https://kendra.com.ar: comercio electrónico del rubro calzados muy completo y potenciado en su desarrollo y diseño por Tiendanube, un referente en diseño de e-commerce para marcas.
 4. https://www.drmartens.com/ar/es_ar/
 5. https://www.forleden.com.ar/
-6. Otro sitio web
-7. 
+6. https://www.viamo.com/ : Viamo es una empresa orientada a la venta de calzados para la mujer, la pagina de esta empresa cuenta con un carrito en donde uno puede ir  comprando productos y luego los paga en caso de ser mas de un producto el elegido. Tambien tiene muchas imagenes sobre los productos los cuales se encuentran en la pagina principal con su respectivo precio.
+7. https://www.grimoldi.com/home2020/ : Grimoldi es una empresa la cual vende distintos tipos de calzado de varias marcas. Entre ellas estan Vans, CAT, Merrel, Kickers, Hush Puppies,etc. En la pagina principal podemos ver imagenes de los calzados mas importantes o mas vendidos de cada marca, y luego acceder a la coleccion que tienen de cada una de ellas. Tambien presentan ofertas y descuentos importantes.
