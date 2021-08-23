@@ -5,17 +5,19 @@ Contaremos con una pagina la cual tenga imágenes de todos los productos.
 
 ![Imagen de unos zapatos](https://github.com/EricMainhard/grupo_6_SoloCalzado/blob/master/botas-pixabay-640x426.jpg)
 
-El grupo está conformado por (falta agregar una breve descripcion de los integrantes del equipo):
+El grupo está conformado por:
 
-- Ricardo Gutiérrez
-- Eric Mainhard
+- Eric Mainhard: Hola! Me llamo Eric, tengo 23 años. A principios de este año me comencé a meter en el mundo del diseño y del desarrollo web, en la parte del Front, y comencé a sentir curiosidad por más y más temas. Decidí inscribirme en el curso para obtener las herramientas necesarias para continuar este viaje con bases más solidas.
+
 - Federico Messina.
+
 - Diego Nicita
 
-Aqui iran nuestros sitios cinco sitios de referencia (falta indicar brevemente porque fueron elegidos cada uno):
+Aqui iran nuestros sitios cinco sitios de referencia:
 
-1. www.solodeportes.com.ar
-2. www.mercadolibre.com.ar
-3. Otro sitio web
-4. Otro sitio web
+1. http://www.solodeportes.com.ar
+2. http://www.mercadolibre.com.ar
+3. https://www.drmartens.com/ar/es_ar/
+4. https://www.forleden.com.ar/
 5. Otro sitio web
+6. 
