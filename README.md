@@ -9,7 +9,7 @@ El grupo está conformado por:
 
 - Eric Mainhard: Hola! Me llamo Eric, tengo 23 años. A principios de este año me comencé a meter en el mundo del diseño y del desarrollo web, en la parte del Front, y comencé a sentir curiosidad por más y más temas. Decidí inscribirme en el curso para obtener las herramientas necesarias para continuar este viaje con bases más solidas.
 
-- Federico Messina.
+- Federico Messina : Buenas, me llamo Federico Messina, tengo 31 años y soy de Buenos Aires. Hace un tiempo me interesé en el mundo de la programacion web, y comence de manera autodidacta. Al poco tiempo decidi,que queria que este fuera mi futuro profesional y por eso me anote en el curso en Digital House. Soy una persona activa con ganas de aprender y perfeccionarme todo el tiempo.
 
 - Diego Nicita: Hola, soy Diego (Nick3d), me considero un apasionado en todo lo relacionado a las 💻 (PC). Mi hobby, desde hace ya muchos años, es intentar hacer juegos o apps de forma autodidacta. Voy a aportar mi experiencia para que logremos crear el mejor proyecto 🚀🚀 en la historia de Digital House 🤓🤡🤓🤡🤓.
 
