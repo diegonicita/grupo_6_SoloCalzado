@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+header div {
+    padding: 1rem;
+}
+
+header div i {
+    font-size: 2rem;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main div.wellcome {
+    width: 80%;
+    margin: .5rem auto;
+    position: relative;
+    bottom: 3rem;
+}
+
+main div.wellcome h3 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+    bottom: 1rem;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: .75rem;
+}
+
+form div label {
+    position: absolute;
+    top: -1.25rem;
+    left: 3.5rem;
+}
+form input, button {
+    width: 60%;
+    max-width: 400px;
+    height: 3rem;
+}
+
+form div.remember {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+form div.remember label {
+    position: static;
+    padding: 0 .5rem;
+}
+
+form input[type="checkbox"]{
+    width: 1rem;
+}
+
+form .password {
+    position: relative;
+}
+
+form .password p{
+    font-size: .7rem;
+}
+
+#pass-eye{
+    position: absolute;
+    bottom: 2rem;
+    right: 4rem;
+}
