@@ -5,8 +5,172 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>productCart.html</title>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/productCart.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>        
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
+    <header class="carrito-header">
+        <section class="carrito-header-left">
+            <button class="carrito-btn-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </section>
+        <section class="carrito-header-center">
+
+        </section>
+        <section class="carrito-header-right">
+            <button class="carrito-btn-white">
+            <i class="far fa-image"></i>
+            </button>
+        </section>
+    </header>
+
+    <main class="carrito-main">
+        <section>
+            <div class="carrito-titulo">Carrito de Compras</div>
+        </section>   
+
+        <!-- <section>
+            <ul class="lista-titulos">
+                <li>Descripcion</li>
+                <li>Color</li>
+                <li>Talle</li>
+                <li>Cantidad</li>
+                <li>Precio</li>                
+            </ul>
+        </section> -->
+
+        <section>
+
+        <article>
+            <ul class="carrito-producto">
+                <li class="carrito-imagen-container">
+                    <img src="./images/zapatilla001.png" alt="Imagen de una zapatilla">
+                </li>
+                <div class="carrito-resto-container">
+                    <li class="carrito-description">Zapatillas Running EcoPmp</li>
+                    <li class="carrito-trash-icon"><button class="carrito-btn-trash"><i class="fas fa-trash"></i></button></li>
+                    <!-- <li>Azul</li>
+                    <li>36</li> -->
+                    <li class="carrito-precio">$13.000</li>  
+                    <li class="carrito-unidades">
+                        <div class="carrito-unidades-subcontainer">
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-minus"></i>
+                            </button><span class="carrito-number"> 1 </span>
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </li>                                      
+                </div>
+            </ul>
+        </article>
+
+        <article>
+            <ul class="carrito-producto">
+                <li class="carrito-imagen-container">
+                    <img src="./images/zapatilla002.png" alt="Imagen de una zapatilla">
+                </li>
+                <div class="carrito-resto-container">
+                    <li class="carrito-description">Zapatillas Running EcoPmp</li>
+                    <li class="carrito-trash-icon"><button class="carrito-btn-trash"><i class="fas fa-trash"></i></button></li>
+                    <!-- <li>Azul</li>
+                    <li>36</li> -->
+                    <li class="carrito-precio">$13.000</li>  
+                    <li class="carrito-unidades">
+                        <div class="carrito-unidades-subcontainer">
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-minus"></i>
+                            </button><span class="carrito-number"> 1 </span>
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </li>                                      
+                </div>
+            </ul>
+        </article>
+
+        <article>
+            <ul class="carrito-producto">
+                <li class="carrito-imagen-container">
+                    <img src="./images/zapatilla003.png" alt="Imagen de una zapatilla">
+                </li>
+                <div class="carrito-resto-container">
+                    <li class="carrito-description">Zapatillas Running EcoPmp</li>
+                    <li class="carrito-trash-icon"><button class="carrito-btn-trash"><i class="fas fa-trash"></i></button></li>
+                    <!-- <li>Azul</li>
+                    <li>36</li> -->
+                    <li class="carrito-precio">$13.000</li>  
+                    <li class="carrito-unidades">
+                        <div class="carrito-unidades-subcontainer">
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-minus"></i>
+                            </button><span class="carrito-number"> 1 </span>
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </li>                                      
+                </div>
+            </ul>
+        </article>
+
+        <article>
+            <ul class="carrito-producto">
+                <li class="carrito-imagen-container">
+                    <img src="./images/zapatilla004.png" alt="Imagen de una zapatilla">
+                </li>
+                <div class="carrito-resto-container">
+                    <li class="carrito-description">Zapatillas Running EcoPmp</li>
+                    <li class="carrito-trash-icon"><button class="carrito-btn-trash"><i class="fas fa-trash"></i></button></li>
+                    <!-- <li>Azul</li>
+                    <li>36</li> -->
+                    <li class="carrito-precio">$13.000</li>  
+                    <li class="carrito-unidades">
+                        <div class="carrito-unidades-subcontainer">
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-minus"></i>
+                            </button><span class="carrito-number"> 1 </span>
+                            <button class="carrito-btn-white">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </li>                                      
+                </div>
+            </ul>
+        </article>
+        
+        </section>
+
+        <section class="carrito-total-a-pagar">
+            <div> Total a pagar: $ 100.000</div>
+            <button> Pagar </button>
+        </section>
+
+    </main>
+
+    <footer class="carrito-footer">
+            <section class="carrito-footer-left">
+               <button class="carrito-btn-white">
+                    <i class="far fa-image"></i>
+                </button> 
+            </section>
+            <section class="carrito-footer-center">
+                Todos los derechos reservados
+                <i class="far fa-registered"></i>
+            </section>
+            <section class="carrito-footer-right">
+                                
+            </section>
+    </footer>
     
 </body>
 </html>
