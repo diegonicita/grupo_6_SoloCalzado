@@ -28,6 +28,265 @@
     width: 60%;
 }
 
+/* MAIN */
+
+.detalle-main
+{    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.detalle-titulo
+{
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;   
+}
+
+.detalle-total-a-pagar {
+    text-align: right;
+} 
+
+.detalle-btn-trash {
+    border: 0px solid black;
+    background-color:gainsboro;
+    color: black;
+    padding: 5px 5px;   
+    cursor: pointer;
+  }
+
+.detalle-btn-white {
+    border: 0px solid black;
+    background-color:white;
+    color: black;
+    padding: 5px 3px;
+    margin: 0px;   
+    cursor: pointer;    
+    font-size: 1rem;
+ } 
+ 
+ .detalle-btn-black {
+    border: 0px solid white;
+    background-color:black;
+    color: white;
+    padding: 5px 5px;
+    margin: 0px;   
+    cursor: pointer;  
+    width: 100%;  
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 10px;
+ } 
+
+.detalle-producto {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none; 
+    flex-direction: row;      
+    justify-content: flex-start;
+    padding: 10px;            
+    margin-bottom: 5px;
+}
+
+.detalle-imagen-container
+{
+width: 100%;    
+text-align: center;
+}
+
+.detalle-producto li img {
+    width: 100%;    
+    max-width: 350px; 
+}
+
+.detalle-resto-container-1
+{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.detalle-minifoto
+{
+width: 33%;
+max-width: 114px; 
+}
+
+.detalle-resto-container-2
+{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.detalle-descripcion-titulo, .detalle-talles-titulo
+{
+width: 40%;
+text-align: center;    
+margin-right: 2px;
+max-width: 300px;
+padding: 5px;
+margin-bottom: 10px;
+
+border-bottom: 1px solid gray;
+}
+
+.detalle-descripcion-titulo-gris, .detalle-talles-titulo-gris
+{
+width: 40%;
+text-align: center;    
+margin-right: 2px;
+max-width: 300px;
+padding: 5px;    
+margin-bottom: 10px;
+
+color: gray;
+}    
+
+.detalle-descripcion
+{
+width: 81%;
+padding: 0px 5px 5px 5px;
+max-width: 640px;    
+} 
+
+.detalle-talles
+{
+width: 71%;
+text-align: center;
+}
+
+.detalle-botones-inferiores-subcontainer
+{
+    margin: auto;
+    width: 100%;
+    max-width: 210px;  
+}
+
+.detalle-unidades-subcontainer
+{
+margin: auto;
+background-color: white;
+border: 1px solid black;
+width: 100%;
+max-width: 210px; 
+margin-top: 5px; 
+margin-bottom: 5px;    
+}
+
+.detalle-number
+{
+text-align: center;    
+}
+
+.detalle-botones-inferiores
+{
+    width: 71%;
+    text-align: center;            
+} 
+
+.carrito-main
+{    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.carrito-titulo
+{
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;   
+}
+
+.carrito-total-a-pagar {
+    text-align: right;
+}
+
+.carrito-btn-trash {
+    border: 0px solid black;
+    background-color:gainsboro;
+    color: black;
+    padding: 5px 5px;   
+    cursor: pointer;
+  }
+
+.carrito-btn-white {
+    border: 0px solid black;
+    background-color:white;
+    color: black;
+    padding: 5px 5px;
+    margin: 0px;   
+    cursor: pointer;    
+ }
+
+
+.carrito-producto {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none; 
+    flex-direction: row;      
+    justify-content: flex-start;
+    padding: 10px;    
+    background-color: gainsboro;
+    margin-bottom: 5px;
+}
+
+.carrito-imagen-container
+{
+width: 25%;
+padding-bottom: 10px;
+text-align: center;
+}
+
+.carrito-producto li img {
+    width: 100%;    
+    max-width: 100px; 
+}
+
+.carrito-resto-container
+{
+width: 70%;
+display: flex;
+flex-wrap: wrap;
+}
+.carrito-description
+{
+width: 85%;
+}
+.carrito-trash-icon
+{
+width: 15%;
+}
+.carrito-precio
+{
+width: 50%;
+}
+
+.carrito-unidades
+{
+width: 50%;
+text-align: center;
+}
+
+.carrito-unidades-subcontainer
+{
+text-align: center;
+background-color: white;
+border: 1px solid black;
+width: 5rem;
+}
+
+.carrito-number
+{
+text-align: center;
+}
+
 /* FOOTER */
 
 .common-footer
