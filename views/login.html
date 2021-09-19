@@ -11,20 +11,31 @@
     <!-- FONTAWESOME -->
     <script src="https://kit.fontawesome.com/922a66722e.js" crossorigin="anonymous"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="/public/css/login.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
     <title>Inicio Sesión</title>
 </head>
 <body>
-    <header>
-        <div class="menuH"><i class="fas fa-bars"></i></div>
-        <div class="logo"><i class="far fa-image"></i></div>
+    <header class="common-header">
+        <section class="common-header-left">
+            <button class="common-btn-white">
+                <i class="fas fa-bars"></i>
+            </button>
+        </section>
+        <section class="common-header-center">
+
+        </section>
+        <section class="common-header-right">
+            <button class="common-btn-white">
+            <i class="far fa-image"></i>
+            </button>
+        </section>
     </header>
-    <main>
+    <main class="login-main">
         <div class="wellcome">
             <h3>Hola! Ingresá tu nombre de usuario o email y contraseña para continuar
             </h3>
         </div>
-        <form action="#" method="">
+        <form action="#" method="" class="login-form">
             <div class="usuario">
                 <label for="usuario">Usuario</label>
                 <input type="text" name="usuario">
@@ -45,6 +56,18 @@
             
         </form>
     </main>
-    <footer></footer>
+    <footer class="common-footer">
+        <section class="common-footer-left">
+           <button class="common-btn-white">
+                <i class="far fa-image"></i>
+            </button> 
+        </section>
+        <section class="common-footer-center">
+            Todos los derechos reservados
+            <i class="far fa-registered"></i>
+        </section>
+        <section class="common-footer-right">                            
+        </section>
+    </footer>
 </body>
 </html>
