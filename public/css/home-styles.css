@@ -7,20 +7,6 @@
 
 /* INDEX */
 
-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid gray;
-}
-
-header div {
-    padding: 1rem;
-}
-
-header div i {
-    font-size: 2rem;
-}
-
 main {
     display: flex;
     flex-direction: column;
@@ -69,29 +55,54 @@ section.carrousel {
     margin: 1rem 0;
 }
 
-    .index-footer
-    {
-        padding: 10px;
-        display: flex;
-        flex-wrap: wrap;
-    }
+/* HEADER */
 
-    .index-footer i {
-        font-size: 36px;
-    }
+.index-header
+{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    .index-footer-left, .register-footer-right {
-        width: 20%;
-        text-align: center;
-    }
+.index-header i {
+    font-size: 36px;
+}
 
-    .index-footer-center{
-        width: 60%;
-        text-align: center;
-    }
+.index-header-left, .index-header-right {
+    width: 20%;
+    text-align: center;
+}
 
-    .index-footer-center .fa-registered {
-        font-size: 12px;
-        display: block;
-    }
+.index-header-center{
+    width: 60%;
+}
+
+/* FOOTER */
+
+.index-footer
+{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.index-footer i {
+    font-size: 36px;
+}
+
+.index-footer-left, .index-footer-right {
+    width: 20%;
+    text-align: center;
+}
+
+.index-footer-center{
+    width: 60%;
+    text-align: center;
+}
+
+.index-footer-center .fa-registered {
+font-size: 12px;
+display: block;
+}
+
 
