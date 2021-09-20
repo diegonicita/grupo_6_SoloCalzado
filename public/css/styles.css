@@ -118,8 +118,7 @@ h2 {
   top: -1.25rem;
   left: 3.5rem;
 }
-.login-form input,
-button {
+.login-form input, .login-form button {
   width: 60%;
   max-width: 400px;
   height: 3rem;
@@ -430,27 +429,6 @@ button {
 
   /* REGISTER */
 
-.register-header {
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.register-header i {
-  font-size: 36px;
-}
-
-.register-header-left,
-.register-header-right {
-  width: 20%;
-  display: flex;
-  text-align: center;
-}
-
-.register-header-center {
-  width: 60%;
-}
-
 .fa-bars {
     background-color: black;
     color: white;
@@ -499,31 +477,4 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
-/* FOOTER */
 
-.register-footer {
-  box-shadow: 2px 2px 2px 2px gray;
-  padding: 10px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.register-footer i {
-  font-size: 36px;
-}
-
-.register-footer-left,
-.register-footer-right {
-  width: 20%;
-  text-align: center;
-}
-
-.register-footer-center {
-  width: 60%;
-  text-align: center;
-}
-
-.register-footer-center .fa-registered {
-  font-size: 12px;
-  display: block;
-}
