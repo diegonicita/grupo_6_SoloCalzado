@@ -9,3 +9,105 @@
   font-family: Quicksand;
   font-size: 14px;
 } */
+.register-header {
+  border: red dotted 2px;
+}
+/* REGISTER */
+* {
+  border: red 1px dotted;
+}
+
+.register-header {
+  /* background-color: blueviolet; */
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register-header i {
+  font-size: 36px;
+}
+
+.register-header-left,
+.register-header-right {
+  width: 20%;
+  display:flex;
+  text-align: center;
+}
+
+.register-header-center {
+  width: 60%;
+}
+
+/* MAIN*/
+.register-bienvenidos {
+  text-align: center;
+  align-self: center;
+}
+
+.register-crea-cuenta {
+  display: block;
+  text-align: center;
+}
+
+.register-formulario {
+  display: flex;
+  font-weight: bold;
+  text-align: left;
+  margin: 10vw;
+  align-content: center;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.register-siguiente {
+    background-color: #cfcdcc;
+    margin: auto;
+    text-align: center;
+    font-size: 22px;
+    display: block;
+    width: auto;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    padding: 5px;
+}
+/* FOOTER */
+
+.register-footer {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.register-footer i {
+  font-size: 36px;
+}
+
+.register-footer-left,
+.register-footer-right {
+  width: 20%;
+  text-align: center;
+}
+
+.register-footer-center {
+  width: 60%;
+  text-align: center;
+}
+
+.register-footer-center .fa-registered {
+  font-size: 12px;
+  display: block;
+}
+
+.fa-bars {
+  background-color:black;
+  color: white;
+  border: black 1px;
+  margin: auto;
+  border-radius: 8px;
+}
+/* 
+.register-btn-white{
+  background-color: blueviolet;
+} */
