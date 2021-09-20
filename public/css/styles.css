@@ -132,7 +132,7 @@
     top: -1.25rem;
     left: 3.5rem;
 }
-.login-form input, button {
+.login-form input, login-form button {
     width: 60%;
     max-width: 400px;
     height: 3rem;
@@ -355,6 +355,15 @@ text-align: center;
     padding: 5px 5px;   
     cursor: pointer;
   }
+
+  .carrito-btn-white {
+    border: 0px solid black;
+    background-color:white;
+    color: black;
+    padding: 5px 5px;
+    margin: 0px;   
+    cursor: pointer;    
+ }
 
 .carrito-producto {
     display: flex;
