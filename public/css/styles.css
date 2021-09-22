@@ -30,10 +30,9 @@
 
 .common-btn-white {
   border: 0px solid black;
-  background-color: white;
+  background-color: transparent;
   color: black;
   padding: 5px 5px;
-  margin: 0px;
   cursor: pointer;
 }
 
@@ -99,6 +98,7 @@ h2 {
   margin: 0.5rem auto;
   position: relative;
   bottom: 3rem;
+  
 }
 
 .login-main div.wellcome h3 {
@@ -131,6 +131,12 @@ h2 {
   width: 60%;
   max-width: 400px;
   height: 3rem;
+  cursor: pointer;
+}
+
+.login-form input:hover {
+    background-color: rgb(226, 126, 235);
+    transition: background-color .5s ease-in-out;
 }
 
 .login-form div.remember {
@@ -154,15 +160,21 @@ h2 {
 }
 
 .login-form .password p {
-  font-size: 0.7rem;
+  font-size: .7rem;
+  transition: 2s;
+  cursor: pointer;
+  font-weight: bold;
+  color: rgb(226, 126, 235);
+  text-decoration: underline;
+  text-decoration-color:rgb(226, 126, 235);
+  padding: .5rem;
 }
 
-#pass-eye {
-  position: absolute;
-  bottom: 2rem;
-  right: 4rem;
-}
-
+.login-form .password p:hover {
+    color: black;
+    background-color: rgb(226, 126, 235);
+    transition: all .2s ease-in-out;
+  }
 /* MAIN */
 
 .detalle-main {
