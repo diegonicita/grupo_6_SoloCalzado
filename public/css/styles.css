@@ -11,21 +11,15 @@
 .common-header {
   padding: 10px;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .common-header i {
   font-size: 36px;
-}
-
-.common-header-left,
-.common-header-right {
-  width: 20%;
-  text-align: center;
-}
-
-.common-header-center {
-  width: 60%;
 }
 
 .common-btn-white {
@@ -34,6 +28,13 @@
   color: black;
   padding: 5px 5px;
   cursor: pointer;
+}
+
+.logo {
+  width: 5rem;
+}
+.logo img {
+  width: 100%;
 }
 
 /* INDEX */
@@ -425,27 +426,21 @@ h2 {
 .common-footer {
   padding: 10px;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
 }
 
 .common-footer i {
   font-size: 36px;
 }
 
-.common-footer-left,
-.common-footer-right {
-  width: 20%;
-  text-align: center;
-}
-
 .common-footer-center {
-  width: 60%;
   text-align: center;
 }
 
 .common-footer-center .fa-registered {
   font-size: 12px;
-  display: block;
 }
 
   /* REGISTER */
@@ -499,3 +494,34 @@ h2 {
   padding: 5px;
 }
 
+/* MENU DESPLEGABLE */
+
+#hamMenu{
+  position: fixed;
+  z-index: 3;
+}
+.menu {
+  height: 0;
+  width: 100vw;
+  background-color: white;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow-y: hidden;
+  transition: .5s ease-in-out;
+}
+.menu a{
+  color: black;
+  display: block;
+  font-size: 2rem;
+  text-decoration: none;
+  position: relative;
+  z-index: 2;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.menu a:hover{
+  background-color:#DADADA;
+}
