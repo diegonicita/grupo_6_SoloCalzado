@@ -1,0 +1,25 @@
+<!-- Archivo parcial para mostrar un producto del carrito de compras -->
+
+<article>
+    <ul class="carrito-producto">
+        <li class="carrito-imagen-container">
+            <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+        </li>
+        <div class="carrito-resto-container">
+            <li class="carrito-description"><%= producto.descripcion %> <%= producto.marca %> <%= producto.color %></li>
+            <li class="carrito-trash-icon"><button class="carrito-btn-trash">
+                <i class="fas fa-trash"></i></button></li>           
+            <li class="carrito-precio">$<%= producto.precio %></li>  
+            <li class="carrito-unidades">
+                <div class="carrito-unidades-subcontainer">
+                    <button class="common-btn-white">
+                        <i class="fas fa-minus"></i>
+                    </button><span class="carrito-number"> 1 </span>
+                    <button class="common-btn-white">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </li>                                      
+        </div>
+    </ul>
+</article>

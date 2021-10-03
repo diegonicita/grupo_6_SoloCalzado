@@ -10,9 +10,16 @@ app.use(morgan('tiny'));
 
 app.listen(port, () => console.log('Server Running on port: ' + port));
 
-app.get('/', (req, res) => {res.sendFile(path.join(__dirname, "./views/index.html"))});
-app.get('/productDetail', (req, res) => {res.sendFile(path.join(__dirname, "./views/productDetail.html"))});
-app.get('/productCart', (req, res) => {res.sendFile(path.join(__dirname, "./views/productCart.html"))});
-app.get('/login', (req, res) => {res.sendFile(path.join(__dirname, "./views/login.html"))});
-app.get('/register', (req, res) => {res.sendFile(path.join(__dirname, "./views/register.html"))});
-app.get('*', (req, res) => {res.status(404).send('404 not found. <br> ¡Houston, tenemos problemas!');})
+/* Routes */
+var mainRouter = require('./routes/main');
+var usersRouter = require('./routes/users');
+var productsRouter = require('./routes/products');
+
+/* Set Carpeta de views y view Engine */
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+/*Rutas que vamos a usar */
+app.use('/', mainRouter);
+app.use('/users', usersRouter);
+app.use('/products', productsRouter);

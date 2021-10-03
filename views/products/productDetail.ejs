@@ -1,0 +1,63 @@
+<%- include('../partials/head') %>    
+<%- include('../partials/header') %>
+
+    <main class="detalle-main">
+        <!-- <section>
+            <div class="detalle-titulo">Detalle del Producto</div>
+        </section>    -->    
+
+        <section>
+        <article>
+            <ul class="detalle-producto">
+                <li class="detalle-imagen-container">
+                    <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                </li>
+                <div class="detalle-resto-container-1">
+                    <div class="detalle-minifoto">
+                        <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                    </div>
+                    <div class="detalle-minifoto">
+                        <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                    </div>                    
+                    <div class="detalle-minifoto">
+                        <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                    </div> 
+                </div>
+                <div class="detalle-resto-container-2">
+                    <% if (solapa == 1) { %>
+                    <a  class="detalle-descripcion-titulo" href="/products/productDetail/<%= producto.id %>/1"> <li>Descripción</li></a>
+                    <a  class="detalle-talles-titulo-gris" href="/products/productDetail/<%= producto.id %>/2"> <li>Talles</li></a>                   
+                    <div class="detalle-descripcion-container">
+                        <div class="detalle-descripcion">Zapatilla baja look urbano, confeccionada en canvas con wingflash raeaizado en PU a contratono, interior towel, suela con frente texturado de goma y cordones de algodón al tono.
+                    </div>
+                    </div>
+                    <% } %>
+                    <% if (solapa == 2) { %>
+                        <a class="detalle-descripcion-titulo-gris" href="/products/productDetail/<%= producto.id %>/1"><li>Descripción</li></a>
+                        <a class="detalle-talles-titulo" href="/products/productDetail/<%= producto.id %>/2"><li>Talles</li></a>                   
+                        <div class="detalle-talles"> 
+                            <div class="detalle-unidades-subcontainer">
+                                <% producto.tallesExistentes.forEach( talle => { %>
+                                <button class="common-btn-white"><%= talle %></button>                            
+                                <% }) %>
+                            </div>
+                        </div>
+                        <% } %>                                     
+                     
+                    <li class="detalle-botones-inferiores">
+                        <div class="detalle-botones-inferiores-subcontainer">
+                            <a href="/products/productCart"><button class="detalle-btn-black"> AGREGAR AL CARRITO </button></a>
+                        </div>
+                        <div class="detalle-botones-inferiores-subcontainer">
+                            <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
+                        </div>
+                    </li>                            
+                          
+
+                </div>
+            </ul>
+        </article>
+
+    </main>
+
+<%- include('../partials/footer') %>

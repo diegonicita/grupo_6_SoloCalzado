@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>    
+<%- include('../partials/header') %>
+
+    <main class="carrito-main">
+        <section>
+            <div class="carrito-titulo">Carrito de Compras</div>
+        </section>    
+
+        <section>        
+            <%  listaProductos.forEach(producto => { %>
+             <%- include('../partials/productCart-article', {producto:producto}); %>
+            <% }); %>            
+        </section>
+
+        <section class="carrito-total-a-pagar">
+            <div> Total a pagar: $ 100.000</div>
+            <button> Pagar </button>
+        </section>
+
+    </main>
+
+<%- include('../partials/footer') %>
