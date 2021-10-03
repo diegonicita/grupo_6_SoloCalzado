@@ -66,15 +66,16 @@ a {
 
 .index-main h1, .index-main
 h2 {
-  margin: 1rem;
+  margin: 0.5rem;
   text-align: center;
 }
 
 .index-main section div {
   width: 100%;
-  height: 212px;
-  max-width: 800px;
+  /* height: 212px; */
+  /* max-width: 800px; */
   position: relative;
+  padding: 0 20px;
 }
 
 .index-main section div img {
@@ -84,7 +85,7 @@ h2 {
 .index-categorias div p {
   width: 80%;
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -97,11 +98,29 @@ h2 {
 .index-mas-vendidos {
   display: flex;
   flex-wrap: nowrap;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .index-mas-vendidos-img-container {
-  margin: 1rem 0;
+  margin: 0rem 0;
+}
+
+#index-carrousel {    
+    
+  height: 500px;    
+  width: 100%;    
+  background: url("/images/carrousel.jpg");
+  background-position-x: 0px;
+  background-position-y: 0px;
+  animation: playX 25s linear infinite alternate;
+  text-align: center;
+  margin: auto;  
+  background-size: cover;
+}
+
+@keyframes playX {
+  from {background-position-x: 0px;}
+  to {background-position-x: -1900px;}
 }
 
 /* LOGIN */
