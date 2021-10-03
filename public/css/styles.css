@@ -532,10 +532,6 @@ h2 {
 
 /* MENU DESPLEGABLE */
 
-#hamMenu{
-  position: fixed;
-  z-index: 3;
-}
 .menu {
   height: 0;
   width: 100vw;
