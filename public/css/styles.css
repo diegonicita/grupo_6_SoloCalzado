@@ -107,9 +107,9 @@ h2 {
 
 #index-carrousel {    
     
-  height: 500px;    
+  height: 250px;    
   width: 100%;    
-  background: url("/images/carrousel.jpg");
+  background: url("/images/carrousel-half-size.jpg");
   background-position-x: 0px;
   background-position-y: 0px;
   animation: playX 25s linear infinite alternate;
@@ -120,7 +120,7 @@ h2 {
 
 @keyframes playX {
   from {background-position-x: 0px;}
-  to {background-position-x: -1900px;}
+  to {background-position-x: -950px;}
 }
 
 /* LOGIN */
@@ -581,5 +581,13 @@ h2 {
 {
   .login-form {
       width: 60%; 
+  }
+  #index-carrousel {  
+    height: 500px;       
+  }
+  
+  @keyframes playX {
+    from {background-position-x: 0px;}
+    to {background-position-x: -1900px;}
   }
 }
