@@ -150,7 +150,7 @@ camposProductoAlta.push(
                 nombre: "crearProducto",
                 label: "CREAR PRODUCTO",
                 tipo: "button",                
-                subtipo: "button",
+                subtipo: "submit",
                 enlace: "/"
         }
     );

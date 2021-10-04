@@ -22,3 +22,7 @@ app.set('view engine', 'ejs');
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+
+/* Configursando el método POST para envios de formularios*/
+app.use(express.urlencoded({'extended':false}));
+app.use(express.json());
