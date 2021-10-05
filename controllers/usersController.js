@@ -15,10 +15,10 @@ const controller = {
         return res.render('users/register');
     },
 
-    create: (req,res){
+    create: (req,res) => {
         console.log(req.body);
         res.redirect('/login');
-    }
+    },
 
     error: (req, res) => {
         res.send("error");
