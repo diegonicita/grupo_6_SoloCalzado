@@ -137,8 +137,8 @@ h2 {
 
 .login-main div.wellcome {
   width: 80%;
-  margin: 0.5rem auto;
-  position: relative;
+  /* margin: 0.5rem auto;
+  position: relative; */
   bottom: 3rem;  
 }
 
@@ -150,7 +150,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  position: relative;
+  /* position: relative; */
   bottom: 1rem;
   width: 100%;
 }
@@ -162,7 +162,8 @@ h2 {
   justify-content: flex-start;
   align-items: flex-start;  
   /* position: relative; */
-  margin: 0.75rem;
+  /* margin: 0.75rem; */
+  margin-bottom: 0.75rem;
 }
 
  .login-form div label {
