@@ -7,14 +7,17 @@
         </section>    
 
         <section>        
-            <%  listaProductos.forEach(producto => { %>
-             <%- include('../partials/productCart-article', {producto:producto}); %>
-            <% }); %>            
+            <%  var totalAPagar = 0;
+                listaProductos.forEach(producto => { %>
+             <%- include('../partials/productCart-article', {producto:producto});  %>
+              ;
+            
+            <% totalAPagar += producto.precio }); %>            
         </section>
 
         <section class="carrito-total-a-pagar">
-            <div> Total a pagar: $ 100.000</div>
-            <button> Pagar </button>
+            <div> Total a pagar: $ <%= toThousand(totalAPagar) %> </div>
+            <button> Pagar </button>                   
         </section>
 
     </main>

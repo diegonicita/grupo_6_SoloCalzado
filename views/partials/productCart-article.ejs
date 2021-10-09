@@ -9,7 +9,7 @@
             <li class="carrito-description"><%= producto.descripcion %> <%= producto.marca %> <%= producto.color %></li>
             <li class="carrito-trash-icon"><button class="carrito-btn-trash">
                 <i class="fas fa-trash"></i></button></li>           
-            <li class="carrito-precio">$<%= producto.precio %></li>  
+            <li class="carrito-precio">$<%= toThousand(producto.precio) %></li>  
             <li class="carrito-unidades">
                 <div class="carrito-unidades-subcontainer">
                     <button class="common-btn-white">

@@ -137,7 +137,8 @@ h2 {
 
 .login-main div.wellcome {
   width: 80%;
- n */
+  /* margin: 0.5rem auto;
+  position: relative; */
   bottom: 3rem;  
 }
 

@@ -1,7 +1,10 @@
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
+const productsFilePath = path.join(__dirname, '../data/productsList.json');
+var listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const formularioData = require('./formulariosData');
-const listaProductos = require('./listaProductos');
 
 const controller = {    
 
@@ -12,7 +15,7 @@ const controller = {
     },
 
     productCart: (req, res) => {        
-        return res.render('products/productCart', {listaProductos: listaProductos});
+        return res.render('products/productCart', {listaProductos: listaProductos, toThousand: toThousand});
     },
     
     productABM: (req, res) => {        
