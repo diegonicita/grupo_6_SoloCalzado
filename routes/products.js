@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer');
 const controller = require('../controllers/productsController');
+
+
+// Preparando products para recibir archivos de imágenes
+
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){},
+    filename:function(req,file,cb){}
+})
 
 // Ruta para el carrito de compras = productCart
 router.get('/productCart', controller.productCart);

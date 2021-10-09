@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const multer = require('multer')
 const controller = require('../controllers/usersController');
+
+// preparando el login para recibir imágenes
+
+const storage = multer.diskStorage({
+    destination:function(req,file,cb){},
+    filename:function(req,file,cb){}
+})
 
 // rutas para el login y el register (hay 2 versiones del register)
 router.get('/login', controller.login);
