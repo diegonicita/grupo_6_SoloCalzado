@@ -43,7 +43,7 @@ const camposProductoABM = [
     }
     ];
 
-const camposProductoAlta = camposProductoABM.slice(0, 6);
+const camposProductoAlta = [...camposProductoABM];
 camposProductoAlta.push(
         {       
             id: 7,
@@ -55,7 +55,7 @@ camposProductoAlta.push(
         }
     );
     
-const camposProductoModificacion = camposProductoABM.slice(0, 6);
+const camposProductoModificacion = [...camposProductoABM];
 camposProductoModificacion.push(
         {
             id: 7,
