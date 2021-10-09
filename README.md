@@ -3,7 +3,9 @@
 La empresa “Solo Calzado” esta orientada a la venta de calzado para todo el público. Cuenta con variedad de calzados para todos los géneros (Hombres, mujeres y niños)
 Contaremos con una pagina la cual tenga imágenes de todos los productos.
 
-![Imagen de unos zapatos](https://github.com/EricMainhard/grupo_6_SoloCalzado/blob/master/botas-pixabay-640x426.jpg)
+Si queres visitarnos estamos en Heroku! : https://solocalzado.herokuapp.com/
+
+![Imagen de unos zapatos](https://github.com/EricMainhard/grupo_6_SoloCalzado/blob/632561ac8656bcbf3db437701505a0ab3d11e0f5/public/images/zapatilla004.png)
 
 El grupo está conformado por:
 
