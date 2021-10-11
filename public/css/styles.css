@@ -477,6 +477,60 @@ h2 {
   text-align: center;
 }
 
+/* PRODUCT CARDS */
+.cards {
+  display: grid;
+  width: 80vw;
+  margin: auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.card {
+  margin-bottom: 1rem;
+}
+.cardImg {
+  position: relative;
+}
+i.wishlist {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+i.wishlist-hover {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0;
+}
+i.wishlist:hover ~ i.wishlist-hover{
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.cardImg img {
+  width: 100%;
+}
+
+@media screen and (min-width:600px) {
+  .cards{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width:1000px) {
+  .cards{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .cards{
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
 /* FOOTER */
 
 .common-footer {

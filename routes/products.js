@@ -11,6 +11,11 @@ const storage = multer.diskStorage({
     filename:function(req,file,cb){}
 })
 
+const upload = multer({storage});
+
+// Ruta para index de productos ( TODOS LOS PRODUCTOS )
+router.get('/', controller.index);
+
 // Ruta para el carrito de compras = productCart
 router.get('/productCart', controller.productCart);
 

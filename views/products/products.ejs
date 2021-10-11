@@ -1,0 +1,24 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="cards">
+
+    <% productos.forEach(function(producto){ %>
+      
+    <div class="card">
+        <div class="cardImg">
+            <img src="/images/products/<%= producto.imagen %> " alt="">
+            <i class="wishlist far fa-heart"></i>
+            <i class="wishlist-hover fas fa-heart"></i>
+        </div>
+        <div class="cardBody">
+            <h3><%= producto.nombre %> </h3>
+            <h5>$<%= producto.precio %> </h5>
+        </div>
+    </div>
+
+     <% }); %> 
+
+</main>
+
+<%- include('../partials/footer') %>

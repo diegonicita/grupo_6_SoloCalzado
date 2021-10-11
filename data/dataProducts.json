@@ -1,0 +1,10 @@
+[
+    {"Titulo de producto":"title"},
+    {"Descripción de producto":"description"},
+    {"Id de producto":"id"},
+    {"Categoría de producto":"category"},
+    {"Material":"material"},
+    {"Talles disponibles":"size"},
+    {"Colores":"colors"},
+    {"Sexo":"gender"}
+]

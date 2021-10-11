@@ -1,11 +1,11 @@
 [
-    {"Nombre":"Pepe"},
-    {"Apellido":"Gutierrez"},
-    {"DNI":"12345678"},
-    {"Email":"pepe.gutierrez@gmail.com"},
-    {"Usuario":"PepeG78"},
-    {"Contraseña":"12345678"},
-    {"Avatar":"/.jpg"},
-    {"Fecha de nacimiento":"10/10/60"},
-    {"Intereses/Categorías de interés":"Botines,Zapatillas de salir"}
+    {"Nombre":"firstName"},
+    {"Apellido":"lastName"},
+    {"DNI":"id"},
+    {"Email":"email"},
+    {"Usuario":"user"},
+    {"Contraseña":"password"},
+    {"Avatar":"image"},
+    {"Fecha de nacimiento":"date"},
+    {"Intereses/Categorías de interés":"category"}
 ]
