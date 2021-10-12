@@ -225,6 +225,8 @@ h2 {
     background-color: rgb(226, 126, 235);
     transition: all .2s ease-in-out;
   }
+
+
 /* MAIN */
 
 .detalle-main {
@@ -477,6 +479,47 @@ h2 {
   text-align: center;
 }
 
+/* PRODUCTS FORM */
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.product-form input, .product-form button {
+  width: 100%;
+  height: 3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+}
+
+.product-form a {
+  width: 100%;
+  text-align: center;
+  
+}
+
+.product-form input[type="radio"]{
+  width: 2rem;
+}
+
+.product-form input:hover {
+    background-color: rgb(226, 126, 235);
+    transition: background-color .5s ease-in-out;
+}
+.genderOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.genderOptions .masculino,.femenino,.unisex {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 /* PRODUCT CARDS */
 .cards {
   display: grid;

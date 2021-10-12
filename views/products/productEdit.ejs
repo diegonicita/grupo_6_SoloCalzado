@@ -1,0 +1,43 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+    <main class="login-main">
+        <div class="wellcome">
+            <h3>EDITAR PRODUCTO</h3>
+        </div>
+
+        <form action="/products/edit/<%= selectedProduct.id %>?_method=patch" method="POST" class="product-form" enctype="multipart/form-data">       
+            <label for="title">Nombre</label>
+            <input type="text" name="title" id="title">
+            <label for="description">Descripción</label>
+            <input type="text" name="description" id="description">
+            <label for="category">Categoría</label>
+            <input type="text" name="category" id="category">
+            <label for="size">Talles</label>
+            <input type="text" name="size" id="size">
+            <label for="colors">Colores</label>
+            <input type="text" name="colors" id="colors">
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock">
+            <div class="genderOptions">
+                <div class="masculino">
+                    <label for="gender">Masculino</label>
+                    <input type="radio" name="gender" id="gender" value="Masculino">
+                </div>
+                <div class="femenino">
+                    <label for="gender">Femenino</label>
+                    <input type="radio" name="gender" id="gender" value="Femenino">
+                </div>
+                <div class="unisex">
+                    <label for="gender">Unisex</label>
+                    <input type="radio" name="gender" id="gender" value="Unisex">
+                </div>
+            </div>
+            <label for="images">Imágenes</label>
+            <input type="file" name="images" id="images">
+            <button type="submit">CREAR</button>
+         </form>
+
+    </main>
+
+<%- include('../partials/footer') %>

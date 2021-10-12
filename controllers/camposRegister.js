@@ -44,5 +44,4 @@ const camposRegister = [
         enlace: "/"
     }
     ];
-
 module.exports = camposRegister;

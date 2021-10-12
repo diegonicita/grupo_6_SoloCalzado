@@ -20,8 +20,13 @@ router.get('/', controller.index);
 router.get('/productCart', controller.productCart);
 
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
-// Parametro ":ABM" puede tomar el valor de "alta" o "modificacion"// 
-router.get('/productABM/:ABM', controller.productABM);
+
+router.get('/create', controller.create);
+router.post('/', controller.store);
+
+
+router.get('/edit/:id', controller.edit);
+router.patch('/edit/:id', controller.update);
 
 // Ruta para mostrar los detalles de un producto
 // Parametro ":id" puede tomar el valor 1 o 2
