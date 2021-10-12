@@ -11,8 +11,9 @@ const controller = {
     },
 
     productDetail: (req, res) => {
-        let producto  = listaProductos.find(producto => producto.id == req.params.id);        
-        res.render('products/productDetail', {producto: producto});
+        let producto  = listaProductos.find(producto => producto.id == req.params.id);   
+        let tab = req.params.tab;     
+        res.render('products/productDetail', {producto, tab});
     },
 
     productCart: (req, res) => {        
@@ -62,8 +63,17 @@ const controller = {
         });
         fs.writeFileSync(productsFilePath,JSON.stringify(newProducts,null,' '));
         res.redirect('/');
-        
+    },
 
+    delete: (req,res ) => {
+        let producto = listaProductos.find(producto => producto.id == req.body )
+        res.render('products/productDelete',{producto:producto});
+    },
+
+    destroy: (req,res) => {
+        let id = listaProductos.find(producto => producto.id == req.body);
+        let finalProducts = listaProductos.filter(productos => producto.id != req.body);
+        fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
     },
 
     error: (req, res) => {

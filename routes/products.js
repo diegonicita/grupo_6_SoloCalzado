@@ -30,10 +30,12 @@ router.patch('/edit/:id', controller.update);
 
 // Ruta para mostrar los detalles de un producto
 // Parametro ":id" puede tomar el valor 1 o 2
-// 1 muestra una solapa con la descripcion
-// 2 muestra una solapa con los talles disponibles
-router.get('/products/:id/', controller.productDetail);
+// 1 muestra tab con la descripcion
+// 2 muestra tab con los talles disponibles
+router.get('/:id/:tab', controller.productDetail);
 
 router.get('/error', controller.error);
+
+router.get('/delete', controller.delete); 
 
 module.exports = router;
