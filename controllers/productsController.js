@@ -11,9 +11,8 @@ const controller = {
     },
 
     productDetail: (req, res) => {
-        let producto  = listaProductos.find(producto => producto.id == req.params.id);   
-        let solapa = req.params.solapa;     
-        res.render('products/productDetail', {producto: producto, solapa: solapa});
+        let producto  = listaProductos.find(producto => producto.id == req.params.id);        
+        res.render('products/productDetail', {producto: producto});
     },
 
     productCart: (req, res) => {        

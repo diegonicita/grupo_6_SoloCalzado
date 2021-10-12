@@ -32,7 +32,7 @@ router.patch('/edit/:id', controller.update);
 // Parametro ":id" puede tomar el valor 1 o 2
 // 1 muestra una solapa con la descripcion
 // 2 muestra una solapa con los talles disponibles
-router.get('/productDetail/:id/:solapa', controller.productDetail);
+router.get('/products/:id/', controller.productDetail);
 
 router.get('/error', controller.error);
 

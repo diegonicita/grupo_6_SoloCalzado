@@ -39,14 +39,14 @@ const camposLogin = [
     label: "CREAR PRODUCTO",
     tipo: "button",
     subtipo: "button",
-    enlace: "/products/productABM/alta"
+    enlace: "/products/create"
     },
     {id: 7,
     nombre: "modificarProducto",
     label: "MODIFICAR PRODUCTO",
     tipo: "button",
     subtipo: "button",
-    enlace: "/products/productABM/modificar"
+    enlace: "/products/edit"
     },
 
     ];
