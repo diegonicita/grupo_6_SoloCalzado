@@ -36,12 +36,12 @@ const camposRegister = [
     tipo: "password"
     },
     {   
-        id: 7,
-        nombre: "registrar",
-        label: "SIGUIENTE",
-        tipo: "button",            
-        subtipo: "button",
-        enlace: "/"
+    id: 7,
+    nombre: "registrar",
+    label: "SIGUIENTE",
+    tipo: "button",            
+    subtipo: "button",
+    enlace: "/"
     }
     ];
 module.exports = camposRegister;

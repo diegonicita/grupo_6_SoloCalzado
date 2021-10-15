@@ -4,11 +4,11 @@ const formularioData = require('./formulariosData');
 const controller = {
 
     login: (req, res) => {
-        return res.render('users/login', {formularioData: formularioData[0]});
+        return res.render('users/login');
     },
 
     register: (req, res) => {
-        return res.render('users/login', {formularioData: formularioData[1]});
+        return res.render('users/login');
     },
 
     register2: (req, res) => {
