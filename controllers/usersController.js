@@ -8,10 +8,6 @@ const controller = {
     },
 
     register: (req, res) => {
-        return res.render('users/login');
-    },
-
-    register2: (req, res) => {
         return res.render('users/register');
     },
 

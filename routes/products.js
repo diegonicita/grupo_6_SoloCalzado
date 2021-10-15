@@ -3,7 +3,6 @@ var router = express.Router();
 const multer = require('multer');
 const controller = require('../controllers/productsController');
 
-
 // Preparando products para recibir archivos de imágenes
 
 const storage = multer.diskStorage({

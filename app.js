@@ -5,11 +5,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 const morgan = require('morgan');
 const publicPath = path.resolve(__dirname, "./public");
-const override = require('method-override')
+const override = require('method-override');
 
 app.use(express.static(publicPath));
-app.use(morgan('tiny'));
+// app.use(morgan('tiny'));
 app.listen(port, () => console.log('Server Running on port: ' + port));
+
+/* Configursando el método POST para envios de formularios*/
+app.use(express.json());
+app.use(express.urlencoded({ extended:false }));
 
 // Require de nuestros archivos con las rutas //
 const mainRouter = require('./routes/main');
@@ -25,9 +29,6 @@ app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-/* Configursando el método POST para envios de formularios*/
-app.use(express.urlencoded({ extended:false }));
-app.use(express.json());
-
 /* Configurando OVERRIDE para uso de métodos extra */
 app.use(override('_method'));
+

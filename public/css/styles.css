@@ -139,7 +139,7 @@ h2 {
   width: 80%;
   /* margin: 0.5rem auto;
   position: relative; */
-  bottom: 3rem;  
+  margin-bottom: 1rem;
 }
 
 .login-main div.wellcome h3 {
@@ -153,17 +153,6 @@ h2 {
   /* position: relative; */
   bottom: 1rem;
   width: 100%;
-}
-
-.login-form div {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;  
-  /* position: relative; */
-  /* margin: 0.75rem; */
-  margin-bottom: 0.75rem;
 }
 
  .login-form div label {
@@ -185,20 +174,19 @@ h2 {
 }
 
 .login-form input:hover {
-    background-color: rgb(226, 126, 235);
+    border-color: rgb(226, 126, 235);
     transition: background-color .5s ease-in-out;
 }
 
-.login-form div.remember {
+.login-form .rememberPassword {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.login-form div.remember label {
-  position: static;
-  padding: 0 0.5rem;
+.login-form .rememberPassword label {
+  padding: 0 1rem;
 }
 
 .login-form input[type="checkbox"] {
@@ -226,6 +214,9 @@ h2 {
     transition: all .2s ease-in-out;
   }
 
+.separador-login{
+  margin:auto;
+}
 
 /* MAIN */
 
@@ -624,14 +615,25 @@ i.wishlist:hover ~ i.wishlist-hover{
 
 .register-formulario {
   display: flex;
-  font-weight: bold;
-  text-align: left;
-  margin: 10vw;
+  width: 80%;
   align-content: center;
-  flex-direction: column;
-  align-items: stretch;
+  margin: auto;
+  padding: 5rem;
+  justify-content: center;
   box-shadow: 2px 2px 2px 2px blueviolet;
   opacity: 80%;
+}
+
+.register-formulario div {
+  width: 100%;
+  /* max-width: 400px; */
+  height: 3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 5px;
+}
+.register-formulario input {
+  
 }
 
 .register-siguiente {

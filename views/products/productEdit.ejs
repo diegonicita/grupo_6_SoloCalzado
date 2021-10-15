@@ -8,34 +8,51 @@
 
         <form action="/products/edit/<%= selectedProduct.id %>?_method=patch" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="<%=selectedProduct.nombre%>">
+            
+            <label for="marca">Marca</label>
+            <input type="text" name="marca" id="marca" value="<%=selectedProduct.marca%>">
+
             <label for="description">Descripción</label>
-            <input type="text" name="description" id="description">
-            <label for="category">Categoría</label>
-            <input type="text" name="category" id="category">
-            <label for="size">Talles</label>
-            <input type="text" name="size" id="size">
+            <input type="text" name="description" id="description" value="<%=selectedProduct.descripcion%>">
+            
+            <label for="precio">Precio</label>
+            <input type="text" name="precio" id="precio" value="<%=selectedProduct.precio%>">
+
             <label for="colors">Colores</label>
-            <input type="text" name="colors" id="colors">
+            <input type="text" name="colors" id="colors" value="<%=selectedProduct.color%>">
+
+            <label for="size">Talles</label>
+            <input type="text" name="size" id="size" value="<%=selectedProduct.tallesExistentes%>">
+            
             <label for="stock">Stock</label>
-            <input type="number" name="stock" id="stock">
+            <input type="number" name="stock" id="stock" value="<%=selectedProduct.descripcion%>">
+            
             <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
-                    <input type="radio" name="gender" id="gender" value="Masculino">
+                    <input type="radio" name="gender" id="gender" value="Masculino" 
+                    <% if (selectedProduct.para === 'Hombres') { %> 
+                    checked <% } %> >
                 </div>
                 <div class="femenino">
                     <label for="gender">Femenino</label>
-                    <input type="radio" name="gender" id="gender" value="Femenino">
+                    <input type="radio" name="gender" id="gender" value="Femenino"
+                    <% if (selectedProduct.para === 'Mujeres') { %> 
+                        checked <% } %> >
                 </div>
                 <div class="unisex">
                     <label for="gender">Unisex</label>
-                    <input type="radio" name="gender" id="gender" value="Unisex">
+                    <input type="radio" name="gender" id="gender" value="Unisex"
+                    <% if (selectedProduct.para === 'Unisex') { %> 
+                        checked <% } %>>
                 </div>
             </div>
+
             <label for="images">Imágenes</label>
-            <input type="file" name="images" id="images">
-            <button type="submit">CREAR</button>
+            <input type="file" name="images" id="images" value="../public/images/<%=selectedProduct.imagen%>">
+        
+            <button type="submit">EDITAR</button>
          </form>
 
     </main>
