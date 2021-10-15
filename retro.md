@@ -1,4 +1,4 @@
-//RETROSPECTIVA SPRINT 2
+//RETROSPECTIVA SPRINT 3
 
 ¿Qué fue lo más difícil que les tocó hacer?
 
