@@ -1,7 +1,7 @@
 [
  {
   "id": 1,
-  "nombre": "Zapatillas Running 1000",
+  "title": "Zapatillas Running 1000",
   "marca": "EcoPmp",
   "descripcion": "Zapatillas de lona",
   "precio": 10000,
@@ -15,7 +15,7 @@
  },
  {
   "id": 2,
-  "nombre": "Zapatillas Running 2000",
+  "title": "Zapatillas Running 2000",
   "marca": "EcoPmp",
   "descripcion": "Zapatillas de cuero ultrarresistente",
   "precio": 10000,
@@ -31,7 +31,7 @@
  },
  {
   "id": 3,
-  "nombre": "Zapatillas Running 3000",
+  "title": "Zapatillas Running 3000",
   "marca": "EcoPmp",
   "descripcion": "Zapatillas de goma",
   "precio": 10000,
@@ -49,7 +49,7 @@
  },
  {
   "id": 4,
-  "nombre": "Zapatillas Running 4000",
+  "title": "Zapatillas Running 4000",
   "marca": "EcoPmp",
   "descripcion": "Zapatillas de plastico",
   "precio": 10000,
@@ -64,6 +64,13 @@
   "imagen": "zapatilla004.png"
  },
  {
-  "id": 5
+  "id": 5,
+  "title": "Zapass",
+  "description": "verdess",
+  "category": "",
+  "size": "",
+  "colors": "",
+  "stock": "",
+  "images": "wave.jpg"
  }
 ]

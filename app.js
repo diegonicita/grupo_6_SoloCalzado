@@ -32,3 +32,7 @@ app.use('/products', productsRouter);
 /* Configurando OVERRIDE para uso de métodos extra */
 app.use(override('_method'));
 
+/* PÁGINA 404*/
+app.use(function(req,res,next){
+	res.status(404).render('main/404');
+});

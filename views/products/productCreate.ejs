@@ -6,19 +6,28 @@
             <h3>Crear Producto</h3>
         </div>
     
-        <form action="/products" method="POST" class="product-form" enctype="multipart/form-data">       
+        <form action="/products" method="POST" class="product-form">       
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title">
+            
+            <label for="marca">Marca</label>
+            <input type="text" name="marca" id="marca">
+
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description">
-            <label for="category">Categoría</label>
-            <input type="text" name="category" id="category">
-            <label for="size">Talles</label>
-            <input type="text" name="size" id="size">
+            
+            <label for="precio">Precio</label>
+            <input type="text" name="precio" id="precio">
+
             <label for="colors">Colores</label>
             <input type="text" name="colors" id="colors">
+
+            <label for="size">Talles</label>
+            <input type="text" name="size" id="size">
+            
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock">
+            
             <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
@@ -26,15 +35,17 @@
                 </div>
                 <div class="femenino">
                     <label for="gender">Femenino</label>
-                    <input type="radio" name="gender" id="gender" value="Femenino">
+                    <input type="radio" name="gender" id="gender">
                 </div>
                 <div class="unisex">
                     <label for="gender">Unisex</label>
-                    <input type="radio" name="gender" id="gender" value="Unisex">
+                    <input type="radio" name="gender" id="gender">
                 </div>
             </div>
+
             <label for="images">Imágenes</label>
             <input type="file" name="images" id="images">
+
             <button type="submit">CREAR</button>
          </form>
 
