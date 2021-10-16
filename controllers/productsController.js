@@ -28,6 +28,7 @@ const controller = {
         let newProduct = {
             id: listaProductos[listaProductos.length - 1].id + 1,
             ...req.body,
+            images:req.file.filename
         };
         listaProductos.push(newProduct);
         fs.writeFileSync(productsFilePath, JSON.stringify(listaProductos, null , ' '))
@@ -54,7 +55,6 @@ const controller = {
             ...req.body,
             image: selectedProduct.image,
         };
-
         let newProducts = listaProductos.map(producto => {
             if(producto.id == selectedProduct.id){
                 return producto = selectedProduct;

@@ -10,17 +10,17 @@
         <article>
             <ul class="detalle-producto">
                 <li class="detalle-imagen-container">
-                    <img src="/images/products/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                    <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
                 </li>
                 <div class="detalle-resto-container-1">
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
                     </div>
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
                     </div>                    
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
                     </div> 
                 </div> 
                 <div class="detalle-resto-container-2">
@@ -38,7 +38,7 @@
                         <a class="detalle-talles-titulo" href="/products/<%= producto.id %>/2"><li>Talles</li></a>                   
                         <div class="detalle-talles"> 
                             <div class="detalle-unidades-subcontainer">
-                                <% producto.tallesExistentes.forEach( talle => { %>
+                                <% producto.size.forEach( talle => { %>
                                 <button class="common-btn-white"><%= talle %></button>                            
                                 <% }) %>
                             </div>

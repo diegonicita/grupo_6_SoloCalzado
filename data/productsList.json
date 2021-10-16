@@ -2,41 +2,43 @@
  {
   "id": 1,
   "title": "Zapatillas Running 1000",
-  "marca": "EcoPmp",
-  "descripcion": "Zapatillas de lona",
-  "precio": 10000,
-  "color": "Negro",
-  "tallesExistentes": [
+  "brand": "EcoPmp",
+  "description": "Zapatillas de lona",
+  "price": 10000,
+  "colors": "Negro",
+  "size": [
    37,
    38
   ],
-  "para": "Hombres",
-  "imagen": "zapatilla001.png"
+  "stock": 4,
+  "gender": "Hombres",
+  "images": "zapatilla001.png"
  },
  {
   "id": 2,
   "title": "Zapatillas Running 2000",
-  "marca": "EcoPmp",
-  "descripcion": "Zapatillas de cuero ultrarresistente",
-  "precio": 10000,
-  "color": "Rojo",
-  "tallesExistentes": [
+  "brand": "EcoPmp",
+  "description": "Zapatillas de cuero ultrarresistente",
+  "price": 10000,
+  "colors": "Rojo",
+  "size": [
    39,
    40,
    41,
    42
   ],
-  "para": "Hombres",
-  "imagen": "zapatilla002.png"
+  "stock": 5,
+  "gender": "Hombres",
+  "images": "zapatilla002.png"
  },
  {
   "id": 3,
   "title": "Zapatillas Running 3000",
-  "marca": "EcoPmp",
-  "descripcion": "Zapatillas de goma",
-  "precio": 10000,
-  "color": "Rojo",
-  "tallesExistentes": [
+  "brand": "EcoPmp",
+  "description": "Zapatillas de goma",
+  "price": 10000,
+  "colors": "Rojo",
+  "size": [
    37,
    38,
    39,
@@ -44,33 +46,25 @@
    41,
    42
   ],
-  "para": "Hombres",
-  "imagen": "zapatilla003.png"
+  "stock": 1,
+  "gender": "Hombres",
+  "images": "zapatilla003.png"
  },
  {
   "id": 4,
   "title": "Zapatillas Running 4000",
-  "marca": "EcoPmp",
-  "descripcion": "Zapatillas de plastico",
-  "precio": 10000,
-  "color": "Rojo",
-  "tallesExistentes": [
+  "brand": "EcoPmp",
+  "description": "Zapatillas de plastico",
+  "price": 10000,
+  "colors": "Rojo",
+  "size": [
    39,
    40,
    41,
    42
   ],
-  "para": "Hombres",
-  "imagen": "zapatilla004.png"
- },
- {
-  "id": 5,
-  "title": "Zapass",
-  "description": "verdess",
-  "category": "",
-  "size": "",
-  "colors": "",
-  "stock": "",
-  "images": "wave.jpg"
+  "stock": 10,
+  "gender": "Hombres",
+  "images": "zapatilla004.png"
  }
 ]
