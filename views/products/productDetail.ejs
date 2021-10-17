@@ -52,11 +52,17 @@
                         <div class="detalle-botones-inferiores-subcontainer">
                             <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
                         </div>
-                    </li>                            
+                    </li>
+                    <li class="botones-inferiores-action">
+                        <a href="/products/edit/<%=producto.id%>">EDITAR</a>
+                    </li>                      
                           
 
                 </div>
             </ul>
+            <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="detalle-btn-black">ELIMINAR</button>
+            </form>
         </article>
 
     </main>

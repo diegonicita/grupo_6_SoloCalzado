@@ -1,12 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/productsList.json');
-const listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+let listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const controller = {   
-    
-    index: (req,res) => {
+    index: (req,res) => { 
         res.render('products/products', {productos: listaProductos,toThousand});
     },
 
@@ -53,7 +52,7 @@ const controller = {
         selectedProduct = {
             id: selectedProduct.id,
             ...req.body,
-            image: selectedProduct.image,
+            images: req.file.filename,
         };
         let newProducts = listaProductos.map(producto => {
             if(producto.id == selectedProduct.id){
@@ -62,18 +61,15 @@ const controller = {
             return producto;
         });
         fs.writeFileSync(productsFilePath,JSON.stringify(newProducts,null,' '));
-        res.redirect('/');
-    },
-
-    delete: (req,res ) => {
-        let producto = listaProductos.find(producto => producto.id == req.body )
-        res.render('products/productDelete',{producto:producto});
+        listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        res.redirect('/products');
     },
 
     destroy: (req,res) => {
-        let id = listaProductos.find(producto => producto.id == req.body);
-        let finalProducts = listaProductos.filter(productos => producto.id != req.body);
+        let id = listaProductos.find(producto => producto.id == req.params.id);
+        let finalProducts = listaProductos.filter(producto => producto.id != id);
         fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
+        res.redirect('/products');
     },
 
     error: (req, res) => {

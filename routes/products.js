@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     },
     filename:function(req,file,cb){
         console.log(file);
-        let imageName = Date.now() + path.extname(file.originalname);
+        let imageName = 'product'+ Date.now() + path.extname(file.originalname);
         cb(null,imageName);
     }
 })
@@ -44,6 +44,6 @@ router.get('/:id/:tab', controller.productDetail);
 
 router.get('/error', controller.error);
 
-router.get('/delete', controller.delete); 
+router.delete('/:id', controller.destroy);
 
 module.exports = router;

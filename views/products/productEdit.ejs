@@ -6,7 +6,7 @@
             <h3>EDITAR PRODUCTO</h3>
         </div>
 
-        <form action="/products/edit/<%= selectedProduct.id %>?_method=patch" method="POST" class="product-form" enctype="multipart/form-data">       
+        <form action="/products/edit/<%= selectedProduct.id %>?_method=PATCH" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title" value="<%=selectedProduct.title%>">
             
@@ -26,7 +26,7 @@
             <input type="text" name="size" id="size" value="<%=selectedProduct.size%>">
             
             <label for="stock">Stock</label>
-            <input type="number" name="stock" id="stock" value="<%=selectedProduct.description%>">
+            <input type="number" name="stock" id="stock" value="<%=selectedProduct.stock%>">
             
             <div class="genderOptions">
                 <div class="masculino">

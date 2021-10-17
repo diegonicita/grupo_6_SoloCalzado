@@ -5,17 +5,19 @@
 
     <% productos.forEach(function(producto){ %>
       
-    <div class="card">
-        <div class="cardImg">
-            <img src="/images/products/<%= producto.images %> " alt="">
-            <i class="wishlist far fa-heart"></i>
-            <i class="wishlist-hover fas fa-heart"></i>
+    <a href="/products/<%=producto.id%>/1">
+        <div class="card">
+            <div class="cardImg">
+                <img src="/images/products/<%= producto.images %> " alt="">
+                <i class="wishlist far fa-heart"></i>
+                <i class="wishlist-hover fas fa-heart"></i>
+            </div>
+            <div class="cardBody">
+                <h3><%= producto.title %> </h3>
+                <h5>$<%= producto.price %> </h5>
+            </div>
         </div>
-        <div class="cardBody">
-            <h3><%= producto.title %> </h3>
-            <h5>$<%= producto.price %> </h5>
-        </div>
-    </div>
+    </a>
 
      <% }); %> 
 

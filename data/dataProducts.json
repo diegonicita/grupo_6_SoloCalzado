@@ -1,11 +1,11 @@
 [
     {"Id de producto":"id"},
     {"Titulo de producto":"title"},
+    {"Marca":"brand"},
     {"Descripción de producto":"description"},
-    {"Categoría de producto":"category"},
-    {"Material":"material"},
-    {"Talles disponibles":"size"},
+    {"Precio":"price"},
     {"Colores":"colors"},
+    {"Talles":"size"},
     {"Stock":"stock"},
     {"Sexo":"gender"},
     {"Imagenes":"images"}
