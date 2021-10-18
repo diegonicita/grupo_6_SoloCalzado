@@ -12,14 +12,14 @@
              <%- include('../partials/productCart-article', {producto:producto});  %>
               ;
             
-            <% totalAPagar += producto.precio }); %>            
+            <% totalAPagar += parseInt(producto.price)}); %>            
         </section>
 
         <section class="carrito-total-a-pagar">
             <div> Total a pagar: $ <%= toThousand(totalAPagar) %> </div>
             <button> Pagar </button>                   
         </section>
-
+        
     </main>
 
 <%- include('../partials/footer') %>

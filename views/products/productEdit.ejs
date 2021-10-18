@@ -32,13 +32,13 @@
                 <div class="masculino">
                     <label for="gender">Masculino</label>
                     <input type="radio" name="gender" id="gender" value="Masculino" 
-                    <% if (selectedProduct.gender === 'Hombres') { %> 
+                    <% if (selectedProduct.gender === 'Masculino') { %> 
                     checked <% } %> >
                 </div>
                 <div class="femenino">
                     <label for="gender">Femenino</label>
                     <input type="radio" name="gender" id="gender" value="Femenino"
-                    <% if (selectedProduct.gender === 'Mujeres') { %> 
+                    <% if (selectedProduct.gender === 'Femenino') { %> 
                         checked <% } %> >
                 </div>
                 <div class="unisex">
@@ -49,8 +49,8 @@
                 </div>
             </div>
 
-            <label for="images">Imágenes</label>
-            <input type="file" name="images" id="images" value="../public/images/products/<%=selectedProduct.images%>">
+            <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
+            <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
         
             <button type="submit">EDITAR</button>
          </form>

@@ -26,9 +26,13 @@ const controller = {
     store: (req,res) => {
         let newProduct = {
             id: listaProductos[listaProductos.length - 1].id + 1,
-            ...req.body,
-            images:req.file.filename
+            ...req.body            
         };
+        if (req.file == undefined)
+        {newProduct.images = "default-image.png";}
+        else
+        {newProduct.images = req.file.filename; } 
+
         listaProductos.push(newProduct);
         fs.writeFileSync(productsFilePath, JSON.stringify(listaProductos, null , ' '))
         res.redirect('/products'); 
@@ -47,16 +51,21 @@ const controller = {
 
     update: (req,res) => {
         let id = req.params.id;
-        let selectedProduct = listaProductos.find(product => product.id == id);
-
-        selectedProduct = {
+        // Busca el producto editado para obtener su imagen previa y su id //
+        let selectedProduct = listaProductos.find(product => product.id == id);        
+        // crea una variable nueva con datos de selectedProduct y del req.body
+        let editedProduct = {
             id: selectedProduct.id,
             ...req.body,
-            images: req.file.filename,
+            images: selectedProduct.images         
         };
+        // si el input type="file" no viene vacio, cambia el nombre del archivo
+        if (req.file != undefined)            
+            {editedProduct.images = req.file.filename; }        
+
         let newProducts = listaProductos.map(producto => {
             if(producto.id == selectedProduct.id){
-                return producto = selectedProduct;
+                return producto = editedProduct;
             }
             return producto;
         });
@@ -66,9 +75,10 @@ const controller = {
     },
 
     destroy: (req,res) => {
-        let id = listaProductos.find(producto => producto.id == req.params.id);
-        let finalProducts = listaProductos.filter(producto => producto.id != id);
+        let p = listaProductos.find(producto => producto.id == req.params.id);
+        let finalProducts = listaProductos.filter(producto => producto.id != p.id);
         fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
+        listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         res.redirect('/products');
     },
 

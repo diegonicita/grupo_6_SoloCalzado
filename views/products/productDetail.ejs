@@ -29,7 +29,7 @@
                     <a  class="detalle-descripcion-titulo" href="/products/<%= producto.id %>/1"> <li>Descripción</li></a>
                     <a  class="detalle-talles-titulo-gris" href="/products/<%= producto.id %>/2"> <li>Talles</li></a>                   
                     <div class="detalle-descripcion-container">
-                        <div class="detalle-descripcion">Zapatilla baja look urbano, confeccionada en canvas con wingflash raeaizado en PU a contratono, interior towel, suela con frente texturado de goma y cordones de algodón al tono.
+                        <div class="detalle-descripcion"><%= producto.description %>
                     </div>
                     </div>
                     <% } %>
@@ -38,7 +38,9 @@
                         <a class="detalle-talles-titulo" href="/products/<%= producto.id %>/2"><li>Talles</li></a>                   
                         <div class="detalle-talles"> 
                             <div class="detalle-unidades-subcontainer">
-                                <% producto.size.forEach( talle => { %>
+                                <% const tallesArray = producto.size.split(",");
+                                    if (tallesArray.length > 0)
+                                    tallesArray.forEach( talle => { %>
                                 <button class="common-btn-white"><%= talle %></button>                            
                                 <% }) %>
                             </div>
@@ -52,17 +54,19 @@
                         <div class="detalle-botones-inferiores-subcontainer">
                             <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
                         </div>
-                    </li>
-                    <li class="botones-inferiores-action">
-                        <a href="/products/edit/<%=producto.id%>">EDITAR</a>
-                    </li>                      
-                          
-
+                        <div class="detalle-botones-inferiores-subcontainer">
+                            <a href="/products/edit/<%=producto.id%>"><button class="detalle-btn-black"> EDITAR </button></a>                        
+                        </div>
+                        <div class="detalle-botones-inferiores-subcontainer">
+                            <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="detalle-btn-black">ELIMINAR</button>
+                            </form>
+                        </div>
+                    </li>                   
+                    
                 </div>
             </ul>
-            <form action="/products/<%= producto.id %>?_method=DELETE" method="POST">
-                <button type="submit" class="detalle-btn-black">ELIMINAR</button>
-            </form>
+            
         </article>
 
     </main>

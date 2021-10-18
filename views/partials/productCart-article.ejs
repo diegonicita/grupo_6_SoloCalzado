@@ -3,13 +3,13 @@
 <article>
     <ul class="carrito-producto">
         <li class="carrito-imagen-container">
-            <img src="/images/<%= producto.imagen %>" alt="<%= producto.descripcion %>">
+            <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
         </li>
         <div class="carrito-resto-container">
-            <li class="carrito-description"><%= producto.descripcion %> <%= producto.marca %> <%= producto.color %></li>
+            <li class="carrito-description"><%= producto.description %> <%= producto.brand %> <%= producto.colors %></li>
             <li class="carrito-trash-icon"><button class="carrito-btn-trash">
                 <i class="fas fa-trash"></i></button></li>           
-            <li class="carrito-precio">$<%= toThousand(producto.precio) %></li>  
+            <li class="carrito-precio">$ <%= toThousand(producto.price) %></li>  
             <li class="carrito-unidades">
                 <div class="carrito-unidades-subcontainer">
                     <button class="common-btn-white">
