@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const productsFilePath = path.join(__dirname, '../data/productsList.json');
+const productsFilePath = path.join(__dirname, '../data/products.json');
 let listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -59,6 +59,9 @@ const controller = {
             ...req.body,
             images: selectedProduct.images         
         };
+
+        editedProduct.size = req.body.size.split(",");
+
         // si el input type="file" no viene vacio, cambia el nombre del archivo
         if (req.file != undefined)            
             {editedProduct.images = req.file.filename; }        

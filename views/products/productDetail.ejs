@@ -38,7 +38,7 @@
                         <a class="detalle-talles-titulo" href="/products/<%= producto.id %>/2"><li>Talles</li></a>                   
                         <div class="detalle-talles"> 
                             <div class="detalle-unidades-subcontainer">
-                                <% const tallesArray = producto.size.split(",");
+                                <% const tallesArray = producto.size;
                                     if (tallesArray.length > 0)
                                     tallesArray.forEach( talle => { %>
                                 <button class="common-btn-white"><%= talle %></button>                            
