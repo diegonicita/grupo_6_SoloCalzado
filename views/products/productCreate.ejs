@@ -9,16 +9,25 @@
         <form action="/products" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title">
+            
+            <label for="brand">Marca</label>
+            <input type="text" name="brand" id="brand">
+
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description">
-            <label for="category">Categoría</label>
-            <input type="text" name="category" id="category">
-            <label for="size">Talles</label>
-            <input type="text" name="size" id="size">
+            
+            <label for="price">Precio</label>
+            <input type="text" name="price" id="price">
+
             <label for="colors">Colores</label>
             <input type="text" name="colors" id="colors">
+
+            <label for="size">Talles</label>
+            <input type="text" name="size" id="size">
+            
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock">
+            
             <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
@@ -26,15 +35,17 @@
                 </div>
                 <div class="femenino">
                     <label for="gender">Femenino</label>
-                    <input type="radio" name="gender" id="gender" value="Femenino">
+                    <input type="radio" name="gender" id="gender">
                 </div>
                 <div class="unisex">
                     <label for="gender">Unisex</label>
-                    <input type="radio" name="gender" id="gender" value="Unisex">
+                    <input type="radio" name="gender" id="gender">
                 </div>
             </div>
+
             <label for="images">Imágenes</label>
-            <input type="file" name="images" id="images">
+            <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
+
             <button type="submit">CREAR</button>
          </form>
 

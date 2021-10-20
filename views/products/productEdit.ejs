@@ -6,51 +6,51 @@
             <h3>EDITAR PRODUCTO</h3>
         </div>
 
-        <form action="/products/edit/<%= selectedProduct.id %>?_method=patch" method="POST" class="product-form" enctype="multipart/form-data">       
+        <form action="/products/edit/<%= selectedProduct.id %>?_method=PATCH" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
-            <input type="text" name="title" id="title" value="<%=selectedProduct.nombre%>">
+            <input type="text" name="title" id="title" value="<%=selectedProduct.title%>">
             
-            <label for="marca">Marca</label>
-            <input type="text" name="marca" id="marca" value="<%=selectedProduct.marca%>">
+            <label for="brand">Marca</label>
+            <input type="text" name="brand" id="brand" value="<%=selectedProduct.brand%>">
 
             <label for="description">Descripción</label>
-            <input type="text" name="description" id="description" value="<%=selectedProduct.descripcion%>">
+            <input type="text" name="description" id="description" value="<%=selectedProduct.description%>">
             
-            <label for="precio">Precio</label>
-            <input type="text" name="precio" id="precio" value="<%=selectedProduct.precio%>">
+            <label for="price">Precioq</label>
+            <input type="text" name="price" id="price" value="<%=selectedProduct.price%>">
 
             <label for="colors">Colores</label>
-            <input type="text" name="colors" id="colors" value="<%=selectedProduct.color%>">
+            <input type="text" name="colors" id="colors" value="<%=selectedProduct.colors%>">
 
             <label for="size">Talles</label>
-            <input type="text" name="size" id="size" value="<%=selectedProduct.tallesExistentes%>">
+            <input type="text" name="size" id="size" value="<%=selectedProduct.size%>">
             
             <label for="stock">Stock</label>
-            <input type="number" name="stock" id="stock" value="<%=selectedProduct.descripcion%>">
+            <input type="number" name="stock" id="stock" value="<%=selectedProduct.stock%>">
             
             <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
                     <input type="radio" name="gender" id="gender" value="Masculino" 
-                    <% if (selectedProduct.para === 'Hombres') { %> 
+                    <% if (selectedProduct.gender === 'Masculino') { %> 
                     checked <% } %> >
                 </div>
                 <div class="femenino">
                     <label for="gender">Femenino</label>
                     <input type="radio" name="gender" id="gender" value="Femenino"
-                    <% if (selectedProduct.para === 'Mujeres') { %> 
+                    <% if (selectedProduct.gender === 'Femenino') { %> 
                         checked <% } %> >
                 </div>
                 <div class="unisex">
                     <label for="gender">Unisex</label>
                     <input type="radio" name="gender" id="gender" value="Unisex"
-                    <% if (selectedProduct.para === 'Unisex') { %> 
+                    <% if (selectedProduct.gender === 'Unisex') { %> 
                         checked <% } %>>
                 </div>
             </div>
 
-            <label for="images">Imágenes</label>
-            <input type="file" name="images" id="images" value="../public/images/<%=selectedProduct.imagen%>">
+            <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
+            <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
         
             <button type="submit">EDITAR</button>
          </form>

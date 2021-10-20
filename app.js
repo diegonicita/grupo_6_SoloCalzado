@@ -15,6 +15,9 @@ app.listen(port, () => console.log('Server Running on port: ' + port));
 app.use(express.json());
 app.use(express.urlencoded({ extended:false }));
 
+/* Configurando OVERRIDE para uso de métodos extra */
+app.use(override('_method'));
+
 // Require de nuestros archivos con las rutas //
 const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
@@ -29,6 +32,7 @@ app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
-/* Configurando OVERRIDE para uso de métodos extra */
-app.use(override('_method'));
-
+/* PÁGINA 404*/
+app.use(function(req,res,next){
+	res.status(404).render('main/404');
+});

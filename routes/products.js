@@ -2,12 +2,21 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const controller = require('../controllers/productsController');
+const fs = require('fs');
+const path = require('path');
 
 // Preparando products para recibir archivos de imágenes
 
 const storage = multer.diskStorage({
-    destination:function(req,file,cb){},
-    filename:function(req,file,cb){}
+    destination:function(req,file,cb){
+        let folder = path.join(__dirname,'../public/images/products');
+        cb(null,folder);
+    },
+    filename:function(req,file,cb){
+        console.log(file);
+        let imageName = 'product'+ Date.now() + path.extname(file.originalname);
+        cb(null,imageName);
+    }
 })
 
 const upload = multer({storage});
@@ -21,11 +30,11 @@ router.get('/productCart', controller.productCart);
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 
 router.get('/create', controller.create);
-router.post('/', controller.store);
+router.post('/', upload.single('images'), controller.store);
 
 
 router.get('/edit/:id', controller.edit);
-router.patch('/edit/:id', controller.update);
+router.patch('/edit/:id', upload.single('images'), controller.update);
 
 // Ruta para mostrar los detalles de un producto
 // Parametro ":id" puede tomar el valor 1 o 2
@@ -35,6 +44,6 @@ router.get('/:id/:tab', controller.productDetail);
 
 router.get('/error', controller.error);
 
-router.get('/delete', controller.delete); 
+router.delete('/:id', controller.destroy);
 
 module.exports = router;
