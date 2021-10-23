@@ -11,8 +11,13 @@ const controller = {
 
     productDetail: (req, res) => {
         let producto  = listaProductos.find(producto => producto.id == req.params.id);   
-        let tab = req.params.tab;     
-        res.render('products/productDetail', {producto, tab});
+        let tab = "1";
+        if (req.params.tab) tab = req.params.tab;  
+        if (producto) {res.render('products/productDetail', {producto, tab});}
+        else {        
+            console.log("el producto no existe");
+            res.status(404).render('main/404');
+        }
     },
 
     productCart: (req, res) => {        

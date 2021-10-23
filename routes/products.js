@@ -40,7 +40,7 @@ router.patch('/edit/:id', upload.single('images'), controller.update);
 // Parametro ":id" puede tomar el valor 1 o 2
 // 1 muestra tab con la descripcion
 // 2 muestra tab con los talles disponibles
-router.get('/:id/:tab', controller.productDetail);
+router.get('/:id/:tab?', controller.productDetail);
 
 router.get('/error', controller.error);
 
