@@ -33,6 +33,8 @@ const controller = {
         else
         {newProduct.images = req.file.filename; } 
 
+        newProduct.size = req.body.size.split(",");
+
         listaProductos.push(newProduct);
         fs.writeFileSync(productsFilePath, JSON.stringify(listaProductos, null , ' '))
         res.redirect('/products'); 
