@@ -9,9 +9,7 @@
         <section>        
             <%  var totalAPagar = 0;
                 listaProductos.forEach(producto => { %>
-             <%- include('../partials/productCart-article', {producto:producto});  %>
-              ;
-            
+             <%- include('../partials/productCart-article', {producto:producto});  %>             
             <% totalAPagar += parseInt(producto.price)}); %>            
         </section>
 

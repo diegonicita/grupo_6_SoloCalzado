@@ -3,7 +3,7 @@
 <article>
     <ul class="carrito-producto">
         <li class="carrito-imagen-container">
-            <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
+            <a href="/products/<%= producto.id %>"><img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>"></a>
         </li>
         <div class="carrito-resto-container">
             <li class="carrito-description"><%= producto.description %> <%= producto.brand %> <%= producto.colors %></li>
