@@ -77,6 +77,38 @@ a {
   font-size: 36px;
 }
 
+.hamburger {
+  display: inline-block;
+}
+
+.common-header-nav-bar {
+  display: none;  
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.common-header-nav-bar ul {
+  display: flex;
+}
+
+.common-header-nav-bar ul li{
+  list-style-type: none;
+  padding: 7px;
+  font-weight: bolder;
+  font-size: 1.1rem;
+}
+
+.common-header-down {
+  width: 100%;
+ text-align: center;
+ /* background-color: gainsboro; */
+ padding: 9px;
+ font-weight: bolder;
+ border: #D4484833 solid 2px;
+ border-left-width: 0px; 
+ border-right-width: 0px 
+}
+
 .common-btn-white {
   border: 0px solid black;
   background-color: transparent;
@@ -727,6 +759,14 @@ i.wishlist:hover ~ i.wishlist-hover{
   @keyframes playX {
     from {background-position-x: 0px;}
     to {background-position-x: -1900px;}
+  }
+
+  .common-header-nav-bar {
+    display: flex;     
+  }
+
+  .hamburger {
+    display: none;
   }
 }
 
