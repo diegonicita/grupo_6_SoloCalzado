@@ -17,6 +17,22 @@ a {
 
 /* HEADER */
 
+.common-header-up {
+  width: 100%;
+ text-align: center;
+ background-color: gainsboro;
+ padding: 9px;
+ font-weight: bolder;
+}
+
+.common-header-center-right-container
+{ 
+  display: flex;  
+  justify-content: space-around;
+  flex-wrap: wrap;   
+  width: 50%;
+}
+
 .common-header-right {
   display: flex;
   flex-wrap: wrap;
@@ -25,16 +41,36 @@ a {
 
 .common-header-right a i {
   padding:10px;
+  font-size: 1.5rem;
+}
+
+.common-header-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;  
+}
+
+.common-header-left {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;     
+  width: 45%;
+  margin-left: 5%;
+}
+
+.common-header-left a i{
+  padding: 10px;
+  font-size: 1.5rem;
 }
 
 .common-header {
-  padding: 10px;
+  /* padding: 10px; */
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 1000px;
-  margin: auto;
+  /* max-width: 1000px; */
+  /* margin: auto; */
 }
 
 .common-header i {
@@ -51,6 +87,7 @@ a {
 
 .logo {
   width: 5rem;
+  margin: 10px;  
 }
 .logo img {
   width: 100%;
