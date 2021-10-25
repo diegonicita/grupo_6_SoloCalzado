@@ -1,18 +1,38 @@
-var path = require('path');
+let path = require('path');
 const formularioData = require('./formulariosData');
+const { validationResult } = require('express-validator');
+const fs = require('fs');
+const usersPath = path.join(__dirname,'../data/users.json');
+const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 
 const controller = {
 
     login: (req, res) => {
-        return res.render('users/login');
+        res.render('users/login');
     },
-
+    processLogin: (req,res) => {
+        let errors = validationResult(req);	
+        if (errors.isEmpty()){
+        res.send('Ingresaste!');
+        } else {
+        res.render('users/login',{errors:errors.mapped()});
+        };
+    },
     register: (req, res) => {
-        return res.render('users/register');
+        res.render('users/register');
     },
-
-    create: (req,res) => {
-        console.log(req.body);
+    processRegister: (req,res) => {
+        let newUser = {
+            "id":users.length+1,
+            ...req.body
+        }
+        if (req.file == undefined){
+            newUser.avatar = 'user-placeholder.png'
+        } else {
+            newUser.avatar = req.file.filename
+        }
+        users.push(newUser);
+        fs.writeFileSync(usersPath,JSON.stringify(users,null,' '));
         res.redirect('/login');
     },
 

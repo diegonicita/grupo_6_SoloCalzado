@@ -6,9 +6,10 @@ const port = process.env.PORT || 3000;
 const morgan = require('morgan');
 const publicPath = path.resolve(__dirname, "./public");
 const override = require('method-override');
+const validator = require('express-validator');
 
 app.use(express.static(publicPath));
-// app.use(morgan('tiny'));
+app.use(morgan('tiny'));
 app.listen(port, () => console.log('Server Running on port: ' + port));
 
 /* Configursando el método POST para envios de formularios*/
