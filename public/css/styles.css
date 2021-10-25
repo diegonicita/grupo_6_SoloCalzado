@@ -109,7 +109,7 @@ h2 {
     
   height: 250px;    
   width: 100%;    
-  background: url("/images/carrousel-half-size.jpg");
+  background: url("/images/site/carrousel-half-size.jpg");
   background-position-x: 0px;
   background-position-y: 0px;
   animation: playX 25s linear infinite alternate;
