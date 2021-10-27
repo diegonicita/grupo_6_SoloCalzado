@@ -9,7 +9,7 @@
         <form action="/users/login" method="POST" class="login-form"> 
             <div class="usuario">
                 <label for="usuario">Usuario</label>
-                <input type="text" name="usuario" id="usuario">
+                <input type="text" name="usuario" id="usuario" value="<%= locals.old && old.usuario ? old.usuario : '' %> ">
             </div>
             <% if (locals.errors && errors.usuario) { %>
                 

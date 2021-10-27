@@ -6,6 +6,7 @@ const path = require('path');
 const controller = require('../controllers/usersController');
 const { userInfo } = require('os');
 
+
 // Preparando el login para recibir imágenes
 
 const storage = multer.diskStorage({
@@ -28,7 +29,7 @@ const loginValidations = [
 const registerValidations = [
     body('firstName').notEmpty().withMessage('Debes completar el campo'),
     body('lastName').notEmpty().withMessage('Debes completar el campo'),
-    body('email').notEmpty().withMessage('Debes completar el campo'),
+    body('email').notEmpty().isEmail().withMessage('Debes completar el campo'),
     body('user').notEmpty().withMessage('Debes completar el campo'),
     body('password').notEmpty().withMessage('Debes completar el campo')
 ];

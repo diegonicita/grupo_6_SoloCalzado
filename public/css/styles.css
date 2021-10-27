@@ -87,15 +87,21 @@ a {
   flex-wrap: wrap;
 }
 
-.common-header-nav-bar ul {
+.header-categories {
   display: flex;
 }
 
-.common-header-nav-bar ul li{
+.header-categories li{
   list-style-type: none;
   padding: 7px;
   font-weight: bolder;
   font-size: 1.1rem;
+  cursor: pointer;
+  transition:.5s ease;
+}
+
+.header-categories li:hover{
+  background: gainsboro;
 }
 
 .common-header-down {
@@ -655,20 +661,6 @@ i.wishlist:hover ~ i.wishlist-hover{
 .common-footer-center .fa-registered {
   font-size: 12px;
 }
-
-  /* REGISTER */
-
-/* .fa-bars {
-    background-color: black;
-    color: white;
-    border: black 1px;
-    margin: auto;
-    border-radius: 8px;
-  }
-  
-  .fa-image {
-    border-radius: 5px;
-  } */
   
 /* MAIN*/
 .register-bienvenidos {
@@ -699,9 +691,10 @@ i.wishlist:hover ~ i.wishlist-hover{
   cursor: pointer;
   font-size: 1rem;
   padding: 5px;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
-.register-formulario input {
+
+.register-formulario input,select {
   width: 100%;
   /* max-width: 400px; */
   height: 3rem;
@@ -814,9 +807,6 @@ i.wishlist:hover ~ i.wishlist-hover{
 /* Error messages */
 
 .error-msg{
-  background: tomato;
-  color: white;
+  color: rgb(255, 75, 43);
   text-align: center;
-  margin: .5rem;
-  padding: .5rem;
 }

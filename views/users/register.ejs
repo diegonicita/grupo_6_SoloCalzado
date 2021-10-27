@@ -9,32 +9,32 @@
 
         <form action="/users/register" method="POST" enctype="multipart/form-data" class="reg-form">
           
-          <% if (locals.errors && errors.firstName) { %>
-                
-            <p class="error-msg"><%= errors.firstName.msg %></p>      
-            
-          <% } %> 
           <div>
             <label for="firstName">Nombre</label>
             <input type="text" name="firstName" id="firstName" />
+            <% if (locals.errors && errors.firstName) { %>
+                  
+              <p class="error-msg"><%= errors.firstName.msg %></p>      
+              
+            <% } %> 
           </div>
-          <% if (locals.errors && errors.lastName) { %>
-                
-            <p class="error-msg"><%= errors.lastName.msg %></p>      
-            
-          <% } %> 
           <div>
             <label for="lastName">Apellido</label>
             <input type="text" name="lastName" id="lastName" />
+            <% if (locals.errors && errors.lastName) { %>
+                  
+              <p class="error-msg"><%= errors.lastName.msg %></p>      
+              
+            <% } %> 
           </div>
-          <% if (locals.errors && errors.email) { %>
-                
-            <p class="error-msg"><%= errors.email.msg %></p>      
-            
-          <% } %> 
           <div>
             <label for="email">E-mail</label>
             <input type="email" name="email" />
+            <% if (locals.errors && errors.email) { %>
+                  
+              <p class="error-msg"><%= errors.email.msg %></p>      
+              
+            <% } %> 
           </div>
 
           <div>
@@ -51,23 +51,23 @@
             </select>
           </div>
 
-          <% if (locals.errors && errors.user) { %>
-                
-            <p class="error-msg"><%= errors.user.msg %></p>      
-            
-          <% } %> 
           <div>
             <label for="user">Usuario</label>
             <input type="text" name="user" id="user">
+            <% if (locals.errors && errors.user) { %>
+                  
+              <p class="error-msg"><%= errors.user.msg %></p>      
+              
+            <% } %> 
           </div>
-          <% if (locals.errors && errors.password) { %>
-                
-            <p class="error-msg"><%= errors.password.msg %></p>      
-            
-          <% } %> 
           <div>
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password">
+            <% if (locals.errors && errors.password) { %>
+                  
+              <p class="error-msg"><%= errors.password.msg %></p>      
+              
+            <% } %> 
           </div>
 
           <div>
