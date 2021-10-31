@@ -119,16 +119,5 @@
   "user": "ERIC123",
   "password": "12345",
   "avatar": "user-placeholder.png"
- },
- {
-  "id": 12,
-  "firstName": "Eric",
-  "lastName": "Mainhard",
-  "email": "mainhard.eric@gmail.com",
-  "bornDate": "1998-06-21",
-  "gender": "Male",
-  "user": "ERIC123",
-  "password": "$2a$10$cow7TnWr6s6NEBEx4RZ5Een0oJ/.5rSGbaOl4FgQlM2k/1fzRPUwi",
-  "avatar": "user-placeholder.png"
  }
 ]

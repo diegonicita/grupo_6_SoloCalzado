@@ -28,6 +28,31 @@ const controller = {
         res.render('users/register');
     },
     processRegister: (req,res) => {
+
+        const email = req.body.email;
+        if (users.find(user => user.email === email )){
+           return res.render('users/register', {
+               errors: {
+                   email: {
+                       msg: 'Email ya existente'
+                   }
+               },
+               old: req.body
+           });
+        }
+
+        const username = req.body.user;
+        if (users.find(user => user.user === username)){
+            return res.render('users/register', {
+                errors: {
+                user:{
+                    msg: 'Usuario ya existente'
+                }
+            },
+            old: req.body
+            });
+        }
+
         req.body.password = bcrypt.hashSync(req.body.password,10);
         let newUser = {
             "id":users.length+1,
@@ -48,7 +73,6 @@ const controller = {
             errors:errors.mapped(),
             old: req.body });
         };
-        
     },
 
     error: (req, res) => {
