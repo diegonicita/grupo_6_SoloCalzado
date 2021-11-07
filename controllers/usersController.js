@@ -12,12 +12,22 @@ const controller = {
         res.render('users/login');
     },
     processLogin: (req,res) => {
-        let password = req.body.password;
-        hashPassword = bcrypt.hashSync(password,10);
         let errors = validationResult(req);	
-        if (errors.isEmpty()){
-        res.send('Ingresaste!');
-        } else {
+        let userName = req.body.usuario.trim();
+        let userLogin = users.find(user => user.user === userName);
+        
+        if (errors.isEmpty()) {
+            if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
+            console.log('Ingresaste');
+            }
+            else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
+                console.log('Contraseña incorrecta');
+            }
+            else {
+                console.log('usuario no encontrado');
+            }
+        }
+        else {
         res.render('users/login',{
             errors:errors.mapped(),
             old: req.body
@@ -30,6 +40,7 @@ const controller = {
     processRegister: (req,res) => {
 
         const email = req.body.email;
+        const userName = req.body.user;
         if (users.find(user => user.email === email )){
            return res.render('users/register', {
                errors: {
@@ -39,6 +50,16 @@ const controller = {
                },
                old: req.body
            });
+        }
+        if (users.find(u => u.user === userName )){
+            return res.render('users/register', {
+                errors: {
+                    user: {
+                        msg: 'Usuario ya existente'
+                    }
+                },
+                old: req.body
+            });
         }
 
         const username = req.body.user;
