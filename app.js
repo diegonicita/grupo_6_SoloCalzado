@@ -7,9 +7,19 @@ const morgan = require('morgan');
 const publicPath = path.resolve(__dirname, "./public");
 const override = require('method-override');
 const validator = require('express-validator');
+const session = require('express-session');
+const hiddenMenu = require('./middlewares/hiddenMenu');
+
+app.use(hiddenMenu);
 
 app.use(express.static(publicPath));
 app.use(morgan('tiny'));
+app.use(session({
+	secret:"User session",
+	resave: false,
+	saveUninitialized: false
+}));
+
 app.listen(port, () => console.log('Server Running on port: ' + port));
 
 /* Configursando el método POST para envios de formularios*/
@@ -18,6 +28,8 @@ app.use(express.urlencoded({ extended:false }));
 
 /* Configurando OVERRIDE para uso de métodos extra */
 app.use(override('_method'));
+
+
 
 // Require de nuestros archivos con las rutas //
 const mainRouter = require('./routes/main');

@@ -18,7 +18,9 @@ const controller = {
         
         if (errors.isEmpty()) {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
-            console.log('Ingresaste');
+            delete userLogin.password;
+            req.session.userLogged = userLogin;
+            res.redirect('/users/profile')
             }
             else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
                 console.log('Contraseña incorrecta');
@@ -95,7 +97,15 @@ const controller = {
             old: req.body });
         };
     },
-
+    profile: (req,res) => {
+        res.render('users/account',{
+            user: req.session.userLogged
+        })
+    },
+    logout: (req,res) => {
+        req.session.destroy();
+        res.redirect('/');
+    },
     error: (req, res) => {
         res.send("error");
     }
