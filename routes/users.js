@@ -6,6 +6,12 @@ const path = require('path');
 const controller = require('../controllers/usersController');
 const { userInfo } = require('os');
 
+// MIDDLEWARES
+
+const authMiddleware = require('../middlewares/authMiddleware');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+
+
 
 // Preparando el login para recibir imágenes
 
@@ -35,10 +41,16 @@ const registerValidations = [
 ];
 
 // rutas para el login y el register
-router.get('/login', controller.login);
+router.get('/login', authMiddleware ,controller.login);
 router.post('/login',loginValidations,controller.processLogin);
-router.get('/register', controller.register);
+
+router.get('/register', authMiddleware , controller.register);
 router.post('/register', upload.single('avatar'), registerValidations ,controller.processRegister);
+
+router.get('/profile', guestMiddleware ,controller.profile);
+
+router.get('/logout', controller.logout);
+
 router.get('/error', controller.error);
 
 module.exports = router;
