@@ -18,7 +18,7 @@ const controller = {
         
         if (errors.isEmpty()) {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
-            delete userLogin.password;
+            // delete userLogin.password;
             req.session.userLogged = userLogin;
             res.redirect('/users/profile')
             }

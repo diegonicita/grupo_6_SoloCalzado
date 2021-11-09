@@ -119,5 +119,16 @@
   "user": "Eric123",
   "password": "$2a$10$R35UQEcw0TATmY0e7o7.ZeUtV6/oPSQlXatPmFAnLGUmklXbOmOgq",
   "avatar": "avatar-1636326564176-img-.jpeg"
+ },
+ {
+  "id": 12,
+  "firstName": "Diego",
+  "lastName": "Nicita",
+  "email": "diegonicita@hotmail.com",
+  "bornDate": "1977-10-12",
+  "gender": "Male",
+  "user": "diegonic",
+  "password": "$2a$10$i9mmcVM8rEgVJe4u//Bp5ubL5UkZ0H40Gur/9XgkbEm9KRGmyCVvO",
+  "avatar": "avatar-1636410780339-img-.gif"
  }
 ]
