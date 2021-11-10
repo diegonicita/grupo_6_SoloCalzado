@@ -5,9 +5,10 @@
 
 <h2 class="register-bienvenidos"><%=user.firstName%> bienvenido a tu perfil!</h2>
  
-<p style="display: flex; flex-wrap: nowrap; justify-content: center; padding: 5px;">
-    <img src="/images/avatars/<%= user.avatar %>">
-  </div>
+<div class="img-container">
+  <img src="/images/avatars/<%= user.avatar %>">
+</div> 
+  
 
 <div class="register-formulario">
     <form action="/users/update" method="POST" enctype="multipart/form-data" class="reg-form">      

@@ -131,6 +131,14 @@ a {
   width: 100%;
 }
 
+/* ACCOUNT */
+
+.img-container{
+  display: flex; 
+  justify-content: center;
+  padding: 5px;
+}
+
 /* INDEX */
 
 .index-main {

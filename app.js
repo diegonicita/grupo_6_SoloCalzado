@@ -10,7 +10,7 @@ const validator = require('express-validator');
 const session = require('express-session');
 const hiddenMenu = require('./middlewares/hiddenMenu');
 
-app.use(hiddenMenu);
+
 
 app.use(express.static(publicPath));
 app.use(morgan('tiny'));
@@ -19,6 +19,8 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }));
+
+app.use(hiddenMenu);
 
 app.listen(port, () => console.log('Server Running on port: ' + port));
 
