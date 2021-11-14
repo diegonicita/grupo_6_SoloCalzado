@@ -130,5 +130,16 @@
   "user": "diego",
   "password": "$2a$10$i9mmcVM8rEgVJe4u//Bp5ubL5UkZ0H40Gur/9XgkbEm9KRGmyCVvO",
   "avatar": "avatar-1636410780339-img-.gif"
+ },
+ {
+  "id": 13,
+  "firstName": "Federico",
+  "lastName": "Messina",
+  "email": "federico.messina@hotmail.com",
+  "bornDate": "1990-05-09",
+  "gender": "Male",
+  "user": "Federico",
+  "password": "$2a$10$Y161TJcvqsgG/baKuJi9OOdvv0OyoCsH2d0CQ9qtFqh0vfoV98JMi",
+  "avatar": "user-placeholder.png"
  }
 ]

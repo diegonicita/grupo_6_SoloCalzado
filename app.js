@@ -9,7 +9,7 @@ const override = require('method-override');
 const validator = require('express-validator');
 const session = require('express-session');
 const hiddenMenu = require('./middlewares/hiddenMenu');
-
+const cookieParser = require('cookie-parser')
 
 
 app.use(express.static(publicPath));
@@ -19,7 +19,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false
 }));
-
+app.use(cookieParser());
 app.use(hiddenMenu);
 
 app.listen(port, () => console.log('Server Running on port: ' + port));

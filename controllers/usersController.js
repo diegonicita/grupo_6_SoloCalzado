@@ -1,10 +1,12 @@
-let path = require('path');
+const path = require('path');
 const formularioData = require('./formulariosData');
 const { validationResult } = require('express-validator');
 const fs = require('fs');
 const usersPath = path.join(__dirname,'../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 const bcrypt = require('bcryptjs');
+
+
 
 const controller = {
 
@@ -20,6 +22,7 @@ const controller = {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
             // delete userLogin.password;
             req.session.userLogged = userLogin;
+            res.cookie('recordarUsuario', userLogin.id, {maxAge: 1000 * 60 * 60 * 24 * 90})
             res.redirect('/users/profile')
             }
             else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
@@ -104,6 +107,7 @@ const controller = {
     },
     logout: (req,res) => {
         req.session.destroy();
+        res.clearCookie('recordarUsuario')
         res.redirect('/');
     },
     error: (req, res) => {
