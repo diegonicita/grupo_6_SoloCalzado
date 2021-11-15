@@ -104,6 +104,12 @@ a {
   background: gainsboro;
 }
 
+.header-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px; 
+}
+
 .common-header-down {
   width: 100%;
  text-align: center;

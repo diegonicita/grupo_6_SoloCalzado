@@ -18,8 +18,9 @@ function guestMiddleware(req,res,next){
         res.redirect('/users/login');
         
     }
-    
-    next()
+    else {    
+    next();
+    }
 }
 
 module.exports = guestMiddleware;

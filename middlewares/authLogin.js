@@ -21,13 +21,18 @@ function authLogin(req,res,next){
     }
 
     res.locals.logged = false;
+    res.locals.loggedName = "Profile";
+    res.locals.loggedImage = undefined;
     
     // console.log("req.session.userLogged: " + req.session.userLogged);
     if (req.session && req.session.userLogged != undefined) {
           res.locals.logged = true;
+          res.locals.loggedUsername = req.session.userLogged.user;
+          res.locals.loggedImage = req.session.userLogged.avatar;
       }      
 
     // console.log("locals.logged: " + res.locals.logged);
+        
     next();
 }
 

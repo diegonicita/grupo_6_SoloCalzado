@@ -4,9 +4,9 @@ function authMiddleware(req,res,next){
         console.log("authMiddleware redirecting to profile")
         res.redirect('/users/profile')
        
+    } else {    
+    next();
     }
-    
-    next()
 }
 
 module.exports = authMiddleware;
