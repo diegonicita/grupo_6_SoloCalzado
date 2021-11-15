@@ -6,8 +6,6 @@ const usersPath = path.join(__dirname,'../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 const bcrypt = require('bcryptjs');
 
-
-
 const controller = {
 
     login: (req, res) => {
@@ -20,10 +18,11 @@ const controller = {
         
         if (errors.isEmpty()) {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
-            req.session.userLogged = userLogin;
-            
-            if (req.body.rememberPassword){
-                res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 });
+            req.session.userLogged = userLogin;           
+            if (req.body.rememberPassword == "on"){
+                res.clearCookie('recordarUsuario');
+                res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 }); 
+                console.log("recordando cookie");
             }
             
             res.redirect('/users/profile')
@@ -103,7 +102,7 @@ const controller = {
             old: req.body });
         };
     },
-    profile: (req,res) => {
+    profile: (req,res) => {        
         res.render('users/account',{
             user: req.session.userLogged
         })
@@ -113,7 +112,7 @@ const controller = {
         req.session.destroy();
         res.clearCookie('recordarUsuario')
         res.redirect('/');
-        res.clearCookie.recordarUsuario;
+        // res.clearCookie.recordarUsuario;
     },
     error: (req, res) => {
         res.send("error");

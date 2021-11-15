@@ -10,21 +10,24 @@ const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 function authLogin(req,res,next){
 
     let idInCookie = req.cookies.recordarUsuario;
-    let userInCookie = users.find(function(user){
-        user.id === idInCookie
-    }) 
-
+    // console.log("cookie: " + idInCookie);
+    let userInCookie = users.find(user => 
+        user.id == idInCookie
+    ) 
+    
+    // console.log("User in cookie: " + userInCookie);
     if (userInCookie){
         req.session.userLogged = userInCookie
     }
 
     res.locals.logged = false;
     
-    if (req.session && req.session.userLogged) {
+    // console.log("req.session.userLogged: " + req.session.userLogged);
+    if (req.session && req.session.userLogged != undefined) {
           res.locals.logged = true;
-      }
-      
+      }      
 
+    // console.log("locals.logged: " + res.locals.logged);
     next();
 }
 

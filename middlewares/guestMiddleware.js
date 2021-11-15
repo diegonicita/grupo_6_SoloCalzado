@@ -14,7 +14,9 @@ function guestMiddleware(req,res,next){
    // }        
         
     if(!req.session.userLogged){
-        res.redirect('/users/login')
+        console.log("guestMiddleware redirecting to login")
+        res.redirect('/users/login');
+        
     }
     
     next()
