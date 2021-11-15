@@ -140,6 +140,7 @@
   "gender": "Male",
   "user": "Federico",
   "password": "$2a$10$Y161TJcvqsgG/baKuJi9OOdvv0OyoCsH2d0CQ9qtFqh0vfoV98JMi",
-  "avatar": "user-placeholder.png"
+  "avatar": "user-placeholder.png",
+  "admin": true
  }
 ]

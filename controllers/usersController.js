@@ -20,9 +20,12 @@ const controller = {
         
         if (errors.isEmpty()) {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
-            // delete userLogin.password;
             req.session.userLogged = userLogin;
-            res.cookie('recordarUsuario', userLogin.id, {maxAge: 1000 * 60 * 60 * 24 * 90})
+            
+            if (req.body.rememberPassword){
+                res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 });
+            }
+            
             res.redirect('/users/profile')
             }
             else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
@@ -104,11 +107,13 @@ const controller = {
         res.render('users/account',{
             user: req.session.userLogged
         })
+
     },
     logout: (req,res) => {
         req.session.destroy();
         res.clearCookie('recordarUsuario')
         res.redirect('/');
+        res.clearCookie.recordarUsuario;
     },
     error: (req, res) => {
         res.send("error");

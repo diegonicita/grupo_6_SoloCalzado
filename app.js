@@ -8,8 +8,8 @@ const publicPath = path.resolve(__dirname, "./public");
 const override = require('method-override');
 const validator = require('express-validator');
 const session = require('express-session');
-const hiddenMenu = require('./middlewares/hiddenMenu');
-const cookieParser = require('cookie-parser')
+const authLogin = require('./middlewares/authLogin');
+const cookieParser = require('cookie-parser');
 
 
 app.use(express.static(publicPath));
@@ -20,7 +20,7 @@ app.use(session({
 	saveUninitialized: false
 }));
 app.use(cookieParser());
-app.use(hiddenMenu);
+app.use(authLogin);
 
 app.listen(port, () => console.log('Server Running on port: ' + port));
 
