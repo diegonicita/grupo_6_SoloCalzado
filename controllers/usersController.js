@@ -17,22 +17,24 @@ const controller = {
         let userLogin = users.find(user => user.user === userName);
         
         if (errors.isEmpty()) {
-            if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {
-            req.session.userLogged = userLogin;           
-            if (req.body.rememberPassword == "on"){
-                res.clearCookie('recordarUsuario');
-                res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 }); 
-                console.log("recordando cookie");
-            }
-            
-            res.redirect('/users/profile')
+            if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {            
+                req.session.userLogged = userLogin;           
+                if (req.body.rememberPassword == "on")
+                {
+                    res.clearCookie('recordarUsuario');
+                    res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 }); 
+                    console.log("recordando cookie");
+                }            
+                res.redirect('/users/profile')
             }
             else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
                 console.log('Contraseña incorrecta');
+                res.redirect('/users/login');            
             }
             else {
                 console.log('usuario no encontrado');
-            }
+                res.redirect('/users/login');            
+            }            
         }
         else {
         res.render('users/login',{
