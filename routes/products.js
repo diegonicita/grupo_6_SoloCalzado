@@ -4,6 +4,7 @@ const multer = require('multer');
 const controller = require('../controllers/productsController');
 const fs = require('fs');
 const path = require('path');
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 // Preparando products para recibir archivos de imágenes
 
@@ -29,11 +30,11 @@ router.get('/productCart', controller.productCart);
 
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 
-router.get('/create', controller.create);
+router.get('/create', guestMiddleware, controller.create);
 router.post('/', upload.single('images'), controller.store);
 
 
-router.get('/edit/:id', controller.edit);
+router.get('/edit/:id', guestMiddleware, controller.edit);
 router.patch('/edit/:id', upload.single('images'), controller.update);
 
 // Ruta para mostrar los detalles de un producto
@@ -44,6 +45,6 @@ router.get('/:id/:tab?', controller.productDetail);
 
 router.get('/error', controller.error);
 
-router.delete('/:id', controller.destroy);
+router.delete('/:id', guestMiddleware, controller.destroy);
 
 module.exports = router;
