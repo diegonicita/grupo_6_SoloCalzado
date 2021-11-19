@@ -5,7 +5,8 @@ const controller = require('../controllers/productsController');
 const fs = require('fs');
 const path = require('path');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-
+const levelOneMiddleware = require('../middlewares/levelOneMiddleware');
+const levelTwoMiddleware = require('../middlewares/levelTwoMiddleware');
 // Preparando products para recibir archivos de imágenes
 
 const storage = multer.diskStorage({
@@ -30,11 +31,11 @@ router.get('/productCart', controller.productCart);
 
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 
-router.get('/create', guestMiddleware, controller.create);
+router.get('/create', guestMiddleware,levelTwoMiddleware, controller.create);
 router.post('/', upload.single('images'), controller.store);
 
 
-router.get('/edit/:id', guestMiddleware, controller.edit);
+router.get('/edit/:id', guestMiddleware,levelTwoMiddleware, controller.edit);
 router.patch('/edit/:id', upload.single('images'), controller.update);
 
 // Ruta para mostrar los detalles de un producto
@@ -45,6 +46,6 @@ router.get('/:id/:tab?', controller.productDetail);
 
 router.get('/error', controller.error);
 
-router.delete('/:id', guestMiddleware, controller.destroy);
+router.delete('/:id', guestMiddleware,levelTwoMiddleware, controller.destroy);
 
 module.exports = router;

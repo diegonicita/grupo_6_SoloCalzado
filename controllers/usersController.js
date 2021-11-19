@@ -19,6 +19,14 @@ const controller = {
         if (errors.isEmpty()) {
             if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === true ) {            
                 req.session.userLogged = userLogin;           
+                if(userLogin.userLevel == 1){
+                    req.session.levelOne = true;
+                }
+                else if (userLogin.userLevel == 2){
+                    req.session.levelTwo = true;
+                    
+                }
+
                 if (req.body.rememberPassword == "on")
                 {
                     res.clearCookie('recordarUsuario');
@@ -86,13 +94,16 @@ const controller = {
         req.body.password = bcrypt.hashSync(req.body.password,10);
         let newUser = {
             "id":users.length+1,
-            ...req.body,
+            ...req.body
+            
         }
         if (req.file == undefined){
             newUser.avatar = 'user-placeholder.png'
         } else {
             newUser.avatar = req.file.filename
         }
+            newUser.userLevel = 0;
+            
         let errors = validationResult(req);	
         if (errors.isEmpty()){
         users.push(newUser);

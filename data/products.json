@@ -1,23 +1,5 @@
 [
  {
-  "id": 3,
-  "title": "sapien cursus vestibulum",
-  "brand": "interdum mauris ullamcorper purus sit amet nulla quisque arcu libero",
-  "description": "aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in",
-  "price": 2647,
-  "colors": "Orange",
-  "size": [
-   34,
-   35,
-   36,
-   37,
-   38
-  ],
-  "stock": 75,
-  "gender": "Unisex",
-  "images": "zapatilla002.png"
- },
- {
   "id": 4,
   "title": "ut erat id",
   "brand": "velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat",
@@ -1792,21 +1774,5 @@
   "stock": "222",
   "gender": "Femenino",
   "images": "product1635010023219.png"
- },
- {
-  "id": 103,
-  "title": "La",
-  "brand": "LE",
-  "description": "Li",
-  "price": "10",
-  "colors": "rojo, azul",
-  "size": [
-   "41",
-   " 42",
-   " 43"
-  ],
-  "stock": "10",
-  "gender": "Femenino",
-  "images": "product1635010067861.jpg"
  }
 ]
