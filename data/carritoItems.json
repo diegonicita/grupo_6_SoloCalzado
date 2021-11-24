@@ -1,0 +1,13 @@
+[{
+    "id": 1,
+    "carritoId": 1,
+    "productoId": 5,
+    "CreatedAt": "2021-10-10"
+},
+{
+    "id": 2,
+    "carritoId": 1,
+    "productoId": 6,
+    "CreatedAt": "2021-10-10"
+}
+]

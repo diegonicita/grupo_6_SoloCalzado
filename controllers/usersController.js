@@ -32,8 +32,14 @@ const controller = {
                     res.clearCookie('recordarUsuario');
                     res.cookie('recordarUsuario', userLogin.id, {maxAge: (1000 * 60) * 2 }); 
                     console.log("recordando cookie");
-                }            
-                res.redirect('/users/profile')
+                }     
+                       
+                // res.redirect('/users/profile')
+                if (!req.session.returnTo) {res.redirect('/users/profile')} 
+                else {
+                    res.redirect(req.session.returnTo);
+                    }
+                
             }
             else if (userLogin != undefined && bcrypt.compareSync(req.body.password,userLogin.password) === false ) {
                 console.log('Contraseña incorrecta');

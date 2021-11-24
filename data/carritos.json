@@ -1,0 +1,20 @@
+[
+    {
+     "id": 1,
+     "userId": 14,
+     "createdDate": "2021-10-10",
+     "status": "Compra Pendiente"
+    },
+    {
+    "id": 2,
+    "userId": 14,
+    "CreatedDate": "2021-09-10",
+    "status": "Compra Finalizada"
+    },
+    {
+    "id": 3,
+    "userId": 14,
+    "CreatedDate": "2021-08-10",
+    "status": "Compra Cancelada"
+    }
+]

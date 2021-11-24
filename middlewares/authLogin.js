@@ -29,6 +29,7 @@ function authLogin(req,res,next){
           res.locals.logged = true;
           res.locals.loggedUsername = req.session.userLogged.user;
           res.locals.loggedImage = req.session.userLogged.avatar;
+          res.locals.loggedId = req.session.userLogged.id;
       }      
 
     // console.log("locals.logged: " + res.locals.logged);

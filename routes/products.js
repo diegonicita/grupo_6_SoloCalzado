@@ -27,7 +27,7 @@ const upload = multer({storage});
 router.get('/', controller.index);
 
 // Ruta para el carrito de compras = productCart
-router.get('/productCart', controller.productCart);
+router.get('/productCart', guestMiddleware, controller.productCart);
 
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 

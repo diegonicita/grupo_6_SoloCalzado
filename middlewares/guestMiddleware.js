@@ -15,6 +15,7 @@ function guestMiddleware(req,res,next){
         
     if(!req.session.userLogged){
         console.log("guestMiddleware redirecting to login")
+        req.session.returnTo = req.originalUrl;
         res.redirect('/users/login');
         
     }
