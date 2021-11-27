@@ -46,15 +46,20 @@
                             </div>
                         </div>
                         <% } %>                                     
-                     
+                <% if (locals.logged) { %>
+                   
                     <li class="detalle-botones-inferiores">
-                        <div class="detalle-botones-inferiores-subcontainer">
-                            <a href="/products/productCart"><button class="detalle-btn-black"> AGREGAR AL CARRITO </button></a>
-                        </div>
+                        <form action="/products/productCartAddItem" method="POST">                                
+                            <div class="detalle-botones-inferiores-subcontainer">                                
+                                <button type="submit" class="detalle-btn-black"> AGREGAR AL CARRITO </button>
+                            </div>
+                            <input type="hidden" name="id" id="id" value="<%=producto.id%>">
+                        </form>
+
                         <div class="detalle-botones-inferiores-subcontainer">
                             <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
                         </div>
-                    <% if (locals.logged) { %>
+                    
                         <div class="detalle-botones-inferiores-subcontainer">
                             <a href="/products/edit/<%=producto.id%>"><button class="detalle-btn-black"> EDITAR </button></a>                        
                         </div>
@@ -63,10 +68,10 @@
                                 <button type="submit" class="detalle-btn-black">ELIMINAR</button>
                             </form>
                         </div>
-                    <% } %>
+                    
                     </li>                   
                     
-                </div>
+                </div><% } %>
             </ul>
             
         </article>

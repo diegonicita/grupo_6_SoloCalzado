@@ -1,8 +1,16 @@
+const session = require('express-session');
 const fs = require('fs');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../data/products.json');
 let listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+// Products Carts y Carts Items //
+const cartsFilePath = path.join(__dirname, '../data/carts.json');
+const cartsItemsFilePath = path.join(__dirname, '../data/cartsItems.json');
+let listaCarts = JSON.parse(fs.readFileSync(cartsFilePath, 'utf-8'));
+let listaCartsItems = JSON.parse(fs.readFileSync(cartsItemsFilePath, 'utf-8'));
+//////////////////////////////////
 
 const controller = {   
     index: (req,res) => { 
@@ -18,11 +26,7 @@ const controller = {
             console.log("el producto no existe");
             res.status(404).render('main/404');
         }
-    },
-
-    productCart: (req, res) => {        
-        res.render('products/productCart', {listaProductos: listaProductos, toThousand: toThousand});
-    },
+    },    
     
     create: (req, res) => {
         res.render('products/productCreate');
@@ -90,6 +94,46 @@ const controller = {
         fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
         listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
         res.redirect('/products');
+    },
+
+    // Product Carts //
+
+    productCart: (req, res) => {
+        // Los usuarios pueden tener carritos de compras en status "Compra Cancelada", "Compra Finalizada" y "Compra Pendiente"
+        // Busca un carrito con su compra en status "Compra Pendiente" del usuario logueado //        
+        let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId);  
+        // Busca los items del carrito //
+        let cartItems = listaCartsItems.filter( item => item.carritoId == cart.id);
+        // Crea una lista de productos usando los items del carrito //
+        cartListaProductos = [];        
+        for (let i=0; i < cartItems.length; i++)
+            {
+            let item = listaProductos.filter( item => item.id == cartItems[i].productoId)
+            cartListaProductos.push(item[0]);
+            }
+        // Renderiza la lista de productos //
+        res.render('products/productCart', {listaProductos: cartListaProductos, toThousand: toThousand});
+    },
+    productCartAddItem: (req,res) => {
+        // Busca un carrito con su compra pendiente del usuario actual //
+        let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId); 
+        // Crea el nuevo Item agregandole un id nuevo
+        let lastId = 0;
+        if (listaCartsItems.length != 0) lastId = listaCartsItems[listaCartsItems.length - 1].id;        
+        let newItem = {
+            id: lastId + 1,
+            carritoId: cart.id,
+            productoId: req.body.id
+        }; 
+        listaCartsItems.push(newItem);
+        fs.writeFileSync(cartsItemsFilePath, JSON.stringify(listaCartsItems, null , ' '))
+        res.redirect('/products/productCart'); 
+    },
+    productCartDeleteItem: (req,res) => {        
+        let lista = listaCartsItems.filter(producto => producto.productoId != req.body.id);        
+        fs.writeFileSync(cartsItemsFilePath, JSON.stringify(lista, null , ' '))
+        listaCartsItems = JSON.parse(fs.readFileSync(cartsItemsFilePath, 'utf-8'));
+        res.redirect('/products/productCart'); 
     },
 
     error: (req, res) => {
