@@ -1,15 +1,5 @@
 [
  {
-  "id": 5,
-  "carritoId": 1,
-  "productoId": "13"
- },
- {
-  "id": 6,
-  "carritoId": 1,
-  "productoId": "5"
- },
- {
   "id": 7,
   "carritoId": 1,
   "productoId": "14"

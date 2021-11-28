@@ -103,7 +103,9 @@ const controller = {
         // Busca un carrito con su compra en status "Compra Pendiente" del usuario logueado //        
         let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId);  
         // Busca los items del carrito //
-        let cartItems = listaCartsItems.filter( item => item.carritoId == cart.id);
+
+        let cartItems = [];
+        if (cart) listaCartsItems.filter( item => item.carritoId == cart.id);
         // Crea una lista de productos usando los items del carrito //
         cartListaProductos = [];        
         for (let i=0; i < cartItems.length; i++)
@@ -112,7 +114,7 @@ const controller = {
             cartListaProductos.push(item[0]);
             }
         // Renderiza la lista de productos //
-        res.render('products/productCart', {listaProductos: cartListaProductos, toThousand: toThousand});
+       res.render('products/productCart', {listaProductos: cartListaProductos, toThousand: toThousand});
     },
     productCartAddItem: (req,res) => {
         // Busca un carrito con su compra pendiente del usuario actual //

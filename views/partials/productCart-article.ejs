@@ -9,10 +9,10 @@
             <li class="carrito-description"><%= producto.description %> <%= producto.brand %> <%= producto.colors %></li>
             <li class="carrito-trash-icon">
                 <form action="/products/productCartDeleteItem" method="POST">                                
-                <button class="carrito-btn-trash" type="submit">
-                    <i class="fas fa-trash"></i>
-                </button>
-                <input type="hidden" name="id" id="id" value="<%=producto.id%>">
+                    <button class="carrito-btn-trash" type="submit">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    <input type="hidden" name="id" id="id" value="<%=producto.id%>">
                 </form>
             </li>           
             <li class="carrito-precio">$ <%= toThousand(producto.price) %></li>  
