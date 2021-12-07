@@ -103,14 +103,16 @@ const controller = {
         // Busca un carrito con su compra en status "Compra Pendiente" del usuario logueado //        
         let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId);  
         // Busca los items del carrito //
+        console.log(cart);
 
         let cartItems = [];
-        if (cart) listaCartsItems.filter( item => item.carritoId == cart.id);
+        if (cart) cartItems = listaCartsItems.filter( item => item.carritoId == cart.id);
+        console.log(cartItems);
         // Crea una lista de productos usando los items del carrito //
         cartListaProductos = [];        
         for (let i=0; i < cartItems.length; i++)
-            {
-            let item = listaProductos.filter( item => item.id == cartItems[i].productoId)
+            {            
+            let item = listaProductos.filter( item => item.id == cartItems[i].productoId)            
             cartListaProductos.push(item[0]);
             }
         // Renderiza la lista de productos //

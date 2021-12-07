@@ -3,5 +3,20 @@
   "id": 7,
   "carritoId": 1,
   "productoId": "14"
+ },
+ {
+  "id": 8,
+  "carritoId": 1,
+  "productoId": "4"
+ },
+ {
+  "id": 9,
+  "carritoId": 1,
+  "productoId": "4"
+ },
+ {
+  "id": 10,
+  "carritoId": 1,
+  "productoId": "6"
  }
 ]
