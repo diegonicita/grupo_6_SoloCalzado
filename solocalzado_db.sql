@@ -2,6 +2,36 @@ DROP DATABASE IF EXISTS solocalzado_db;
 CREATE DATABASE solocalzado_db;
 USE solocalzado_db;
 
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+   `id` INT NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(100) NOT NULL,
+   `email` VARCHAR(100) NOT NULL,
+   `password` VARCHAR(100) NOT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `image` varchar(300) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `offer` tinyint(4) DEFAULT '0',
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+   `id` INT NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(100) NOT NULL,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `carts`;
 CREATE TABLE `carts` (
    `id` INT NOT NULL AUTO_INCREMENT,
@@ -9,30 +39,9 @@ CREATE TABLE `carts` (
    `status` INT NOT NULL DEFAULT 0,
    `products` INT NOT NULL DEFAULT 0,
    PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 1, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 2, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 3, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 4, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 5, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 6, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 7, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 8, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 9, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 10, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 11, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 12, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 13, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 14, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 15, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 16, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 17, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 18, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 19, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 20, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 21, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 22, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 23, 0, 0);
-INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (NULL, 24, 0, 0);
-
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `created_at`, `deleted_at`, `updated_at`, `offer`) VALUES (null, 'Zapatilla Generica 1', 'Zapatilla muy Generica numero 1', '1529', NULL, NULL, NULL, NULL, 15);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `created_at`, `deleted_at`, `updated_at`, `offer`) VALUES (null, 'Zapatilla Generica 2', 'Zapatilla muy Generica numero 2', '2529', NULL, NULL, NULL, NULL, 5);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `created_at`, `deleted_at`, `updated_at`, `offer`) VALUES (null, 'Zapatilla Generica 2', 'Zapatilla muy Generica numero 3', '3529', NULL, NULL, NULL, NULL, 25);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `created_at`, `deleted_at`, `updated_at`, `offer`) VALUES (null, 'Zapatilla Generica 2', 'Zapatilla muy Generica numero 4', '4529', NULL, NULL, NULL, NULL, 0);
