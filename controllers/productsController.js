@@ -33,14 +33,28 @@ const controller = {
     },
 
     productDetail: (req, res) => {
-        let producto  = listaProductos.find(producto => producto.id == req.params.id);   
-        let tab = "1";
-        if (req.params.tab) tab = req.params.tab;  
-        if (producto) {res.render('products/productDetail', {producto, tab});}
-        else {        
-            console.log("el producto no existe");
-            res.status(404).render('main/404');
-        }
+        // let producto  = listaProductos.find(producto => producto.id == req.params.id);   
+        // let tab = "1";
+        // if (req.params.tab) tab = req.params.tab;  
+        // if (producto) {res.render('products/productDetail', {producto, tab});}
+        // else {        
+        //     console.log("el producto no existe");
+        //     res.status(404).render('main/404');
+        // }
+
+        if (req.params.tab) tab = req.params.tab;
+        Product.findByPk(req.params.id,
+            {      
+                raw: true,         
+                attributes: ['id', ['name', 'title'], 'description', 'price', ['image', 'images']] 
+            }
+        )
+              .then(                   
+                    p => { 
+                    console.log(p);
+                    res.render("products/productDetail", {producto: p, tab });
+                    })
+              .catch(error => res.send(error));
     },    
     
     create: (req, res) => {
