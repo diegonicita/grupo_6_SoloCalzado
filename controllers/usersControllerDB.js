@@ -63,12 +63,12 @@ const controller = {
     register: (req, res) => {
         res.render('users/register');
     },
-    processRegister: (req,res) => {
+    processRegister: async (req,res) => {
 
         const userEmail = req.body.email;
         const userName = req.body.user;
 
-        User.findOne(
+        await User.findOne(
             {      
                 where: {email: userEmail},
                 raw: true,         
@@ -129,7 +129,7 @@ const controller = {
         let errors = validationResult(req);	
         if (errors.isEmpty()){
 
-        User
+        await User
         .create(
             {
                 name: newUser.user,
