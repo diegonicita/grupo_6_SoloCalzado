@@ -62,67 +62,124 @@ const controller = {
     },
     
     store: (req,res) => {
-        let newProduct = {
-            id: listaProductos[listaProductos.length - 1].id + 1,
-            ...req.body            
-        };
-        if (req.file == undefined)
-        {newProduct.images = "default-image.png";}
-        else
-        {newProduct.images = req.file.filename; } 
+        // let newProduct = {
+        //     id: listaProductos[listaProductos.length - 1].id + 1,
+        //     ...req.body            
+        // };
+        // if (req.file == undefined)
+        // {newProduct.images = "default-image.png";}
+        // else
+        // {newProduct.images = req.file.filename; } 
+        // newProduct.size = req.body.size.split(",");
+        // listaProductos.push(newProduct);
+        // fs.writeFileSync(productsFilePath, JSON.stringify(listaProductos, null , ' '))
+        // res.redirect('/products'); 
 
-        newProduct.size = req.body.size.split(",");
+        let newProductImage = "default-image.png";
+        if (req.file != undefined) {newProductImage = req.file.filename; }
+        Product
+        .create(
+            {
+                name: req.body.title,
+                description: req.body.description,
+                price: req.body.price,
+                image: newProductImage                
+            }
+        )
+        .then(()=> {
+            return res.redirect('/products')})            
+        .catch(error => res.send(error))       
 
-        listaProductos.push(newProduct);
-        fs.writeFileSync(productsFilePath, JSON.stringify(listaProductos, null , ' '))
-        res.redirect('/products'); 
     },
 
     edit: (req, res) => {   
-        let id = req.params.id
-        let selectedProduct = listaProductos.find(product => product.id == id);
-        if (selectedProduct != undefined){
-            res.render('products/productEdit',{selectedProduct});
-        }
-        else {
-            res.send('ID not found')
-        };
+        // let id = req.params.id
+        // let selectedProduct = listaProductos.find(product => product.id == id);
+        // if (selectedProduct != undefined){
+        //     res.render('products/productEdit',{selectedProduct});
+        // }
+        // else {
+        //     res.send('ID not found')
+        // };
+
+        let id = req.params.id;        
+        Product.findByPk(id, 
+            {      
+                raw: true,         
+                attributes: ['id', ['name', 'title'], 'description', 'price', ['image', 'images']] 
+            })
+        .then( p => {            
+            if (p != undefined){
+                     res.render('products/productEdit',{selectedProduct: p});
+                 }
+                 else {
+                     res.send('ID not found')
+                 }
+            }                     
+            )
+        .catch(error => res.send(error))        
     },
 
     update: (req,res) => {
-        let id = req.params.id;
-        // Busca el producto editado para obtener su imagen previa y su id //
-        let selectedProduct = listaProductos.find(product => product.id == id);        
-        // crea una variable nueva con datos de selectedProduct y del req.body
-        let editedProduct = {
-            id: selectedProduct.id,
-            ...req.body,
-            images: selectedProduct.images         
-        };
+        // let id = req.params.id;
+        // // Busca el producto editado para obtener su imagen previa y su id //
+        // let selectedProduct = listaProductos.find(product => product.id == id);        
+        // // crea una variable nueva con datos de selectedProduct y del req.body
+        // let editedProduct = {
+        //     id: selectedProduct.id,
+        //     ...req.body,
+        //     images: selectedProduct.images         
+        // };
 
-        editedProduct.size = req.body.size.split(",");
+        // editedProduct.size = req.body.size.split(",");
 
-        // si el input type="file" no viene vacio, cambia el nombre del archivo
-        if (req.file != undefined)            
-            {editedProduct.images = req.file.filename; }        
+        // // si el input type="file" no viene vacio, cambia el nombre del archivo
+        // if (req.file != undefined)            
+        //     {editedProduct.images = req.file.filename; }        
 
-        let newProducts = listaProductos.map(producto => {
-            if(producto.id == selectedProduct.id){
-                return producto = editedProduct;
-            }
-            return producto;
-        });
-        fs.writeFileSync(productsFilePath,JSON.stringify(newProducts,null,' '));
-        listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        res.redirect('/products');
+        // let newProducts = listaProductos.map(producto => {
+        //     if(producto.id == selectedProduct.id){
+        //         return producto = editedProduct;
+        //     }
+        //     return producto;
+        // });
+        // fs.writeFileSync(productsFilePath,JSON.stringify(newProducts,null,' '));
+        // listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        // res.redirect('/products');
+
+        let productId = req.params.id;
+        let newProductImage = "default-image.png";
+        if (req.file != undefined) {newProductImage = req.file.filename; }
+
+        Product
+        .update(
+            {
+                name: req.body.title,
+                description: req.body.description,
+                price: req.body.price,
+                image: newProductImage                
+            },
+            {
+                where: {id: productId}
+            })
+        .then(()=> {
+            return res.redirect('/products')})            
+        .catch(error => res.send(error))
     },
 
     destroy: (req,res) => {
-        let p = listaProductos.find(producto => producto.id == req.params.id);
-        let finalProducts = listaProductos.filter(producto => producto.id != p.id);
-        fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
-        listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-        res.redirect('/products');
+        // let p = listaProductos.find(producto => producto.id == req.params.id);
+        // let finalProducts = listaProductos.filter(producto => producto.id != p.id);
+        // fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
+        // listaProductos = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+        // res.redirect('/products');
+
+        let productId = req.params.id;
+        Product
+        .destroy({where: {id: productId}, force: true}) // force: true es para asegurar que se ejecute la acción
+        .then(()=>{
+            return res.redirect('/products')})
+        .catch(error => res.send(error)) 
     },
 
     // Product Carts //
