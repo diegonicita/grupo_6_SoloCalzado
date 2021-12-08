@@ -29,31 +29,34 @@ const controller = {
                 }            )
                   .then(                   
                         u => { 
-                            if (u != null) { 
-                                console.log("el usuario existe pero falta chequear su contraseña");
-                                req.session.userLogged = u;
-                                req.session.levelOne = true;
+                            if (u != null && bcrypt.compareSync(req.body.password,u.password)) 
+                            {                                
+                                    req.session.userLogged = u;
+                                    req.session.levelOne = true;
 
-                            if (req.body.rememberPassword == "on")
-                            {
-                                res.clearCookie('recordarUsuario');
-                                res.cookie('recordarUsuario', u.id, {maxAge: (1000 * 60) * 2 }); 
-                                console.log("recordando cookie");
-                            }                                     
-                           
-                            if (!req.session.returnTo) {res.redirect('/users/profile')} 
-                            else {
-                                res.redirect(req.session.returnTo);
-                                }
-                            
+                                    if (req.body.rememberPassword == "on")
+                                    {
+                                        res.clearCookie('recordarUsuario');
+                                        res.cookie('recordarUsuario', u.id, {maxAge: (1000 * 60) * 2 }); 
+                                        console.log("recordando cookie");
+                                    }                                     
+                                
+                                    if (!req.session.returnTo) {res.redirect('/users/profile')} 
+                                    else {
+                                        res.redirect(req.session.returnTo);
+                                        }                            
                             }
-                            else { res.send("el usuario no existe = null ");}
+                            else {  
+                                    //res.send("user no existe o contraseña incorrecta");
+                                    res.redirect('/users/login');  
+                                 }
                         })
                   .catch(error => res.send(error)); 
     
                 }
-                else {                    
-                    res.send("errores de validacion");
+                else { 
+                    res.redirect('/users/login');                     
+                    // res.send("errores de validacion");
                 }
     },
 
