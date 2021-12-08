@@ -1,22 +1,37 @@
 const fs = require('fs');
 const path = require('path');
 const usersPath = path.join(__dirname,'../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
+// const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 
 // const userInCookie = users.find(function(user){
 //     user.id === req.cookies.recordarUsuario
 // })
 
-function authLogin(req,res,next){
+const db = require('../database/models');
+const { User } = require('../database/models');
 
+const authLogin = async(req,res,next) => 
+{ 
     let idInCookie = req.cookies.recordarUsuario;
+    let userInCookie = null;
+    if (idInCookie != undefined)
+    {
+    userInCookie = await User.findOne(
+        {      
+            where: {id: idInCookie},
+            raw: true,         
+            attributes: ['id', ['name', 'user'], 'email', 'password', 'avatar'] 
+        }            )
+        .then( u => {return u});
+    }
+   
     // console.log("cookie: " + idInCookie);
-    let userInCookie = users.find(user => 
-        user.id == idInCookie
-    ) 
+    // let userInCookie = users.find(user => 
+    //     user.id == idInCookie
+    // ) 
     
     // console.log("User in cookie: " + userInCookie);
-    if (userInCookie){
+    if (userInCookie != null){
         req.session.userLogged = userInCookie
     }
 
