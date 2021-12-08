@@ -3,15 +3,13 @@ let router = express.Router();
 const multer = require('multer')
 const {body} = require('express-validator');
 const path = require('path');
-const controller = require('../controllers/usersController');
+const controller = require('../controllers/usersControllerDB');
 const { userInfo } = require('os');
 
 // MIDDLEWARES
 
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
-
-
 
 // Preparando el login para recibir imágenes
 
