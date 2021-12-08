@@ -39,10 +39,10 @@ CREATE TABLE `carts` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user1", "user1@gmail.com", "123456", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user2", "user2@gmail.com", "123456", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user3", "user3@gmail.com", "123456", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user4", "user4@gmail.com", "123456", "user-placeholder.png");
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user1", "user1@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user2", "user2@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user3", "user3@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user4", "user4@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES (null, "Zapatilla Generica 1", "Zapatilla muy Generica numero 1", "1529", "zapatilla001.png");
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`) VALUES (null, "Zapatilla Generica 2", "Zapatilla muy Generica numero 2", "2529", "zapatilla002.png");
