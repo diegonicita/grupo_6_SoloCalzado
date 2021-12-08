@@ -11,10 +11,25 @@ const cartsItemsFilePath = path.join(__dirname, '../data/cartsItems.json');
 let listaCarts = JSON.parse(fs.readFileSync(cartsFilePath, 'utf-8'));
 let listaCartsItems = JSON.parse(fs.readFileSync(cartsItemsFilePath, 'utf-8'));
 //////////////////////////////////
+const db = require('../database/models');
+const { Product } = require('../database/models');
+//////////////////////////////////////////////////////
 
 const controller = {   
     index: (req,res) => { 
-        res.render('products/products', {productos: listaProductos,toThousand});
+        //res.render('products/products', {productos: listaProductos,toThousand});
+        Product.findAll(
+            {      
+                raw: true,         
+                attributes: ['id', ['name', 'title'], 'description', 'price', ['image', 'images']] 
+            }
+        )
+              .then(                   
+                    p => { 
+                    console.log(p);
+                    res.render("products/products", {productos: p, toThousand });
+                    })
+              .catch(error => res.send(error));
     },
 
     productDetail: (req, res) => {
