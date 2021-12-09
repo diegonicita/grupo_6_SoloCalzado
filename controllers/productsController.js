@@ -26,7 +26,7 @@ const controller = {
         )
               .then(                   
                     p => { 
-                    console.log(p);
+                    // console.log(p);                   
                     res.render("products/products", {productos: p, toThousand });
                     })
               .catch(error => res.send(error));
@@ -51,7 +51,7 @@ const controller = {
         )
               .then(                   
                     p => { 
-                    console.log(p);
+                    // console.log(p);
                     res.render("products/productDetail", {producto: p, tab });
                     })
               .catch(error => res.send(error));
@@ -109,7 +109,7 @@ const controller = {
                 attributes: ['id', ['name', 'title'], 'description', 'price', ['image', 'images']] 
             })
         .then( p => {            
-            if (p != undefined){
+            if (p != null){
                      res.render('products/productEdit',{selectedProduct: p});
                  }
                  else {

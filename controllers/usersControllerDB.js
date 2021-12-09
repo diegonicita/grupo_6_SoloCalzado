@@ -127,7 +127,7 @@ const controller = {
             newUser.userLevel = 1;
             
         let errors = validationResult(req);	
-        if (errors.isEmpty()){
+        if (errors.isEmpty()){        
 
         await User
         .create(
@@ -138,7 +138,9 @@ const controller = {
                 password: newUser.password               
             }
         )
-        .then(()=> {
+        .then((u)=> {
+            res.clearCookie('recordarUsuario');
+            res.cookie('recordarUsuario', u.dataValues.id, {maxAge: (1000 * 60) * 2 }); 
             return res.redirect('/users/profile')})            
         .catch(error => res.send(error)) 
 
