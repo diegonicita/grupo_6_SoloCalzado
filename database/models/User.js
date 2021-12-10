@@ -13,8 +13,8 @@ module.exports = (sequelize, dataTypes) => {
        timestamps: false
      };
     
-    const User = sequelize.define(alias, cols, config);
+    const Model = sequelize.define(alias, cols, config);
     
-    return User;
+    return Model;
     
     }

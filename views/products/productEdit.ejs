@@ -8,10 +8,7 @@
 
         <form action="/products/edit/<%= selectedProduct.id %>?_method=PATCH" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
-            <input type="text" name="title" id="title" value="<%=selectedProduct.title%>">
-            
-            <label for="brand">Marca</label>
-            <input type="text" name="brand" id="brand" value="<%=selectedProduct.brand%>">
+            <input type="text" name="title" id="title" value="<%=selectedProduct.title%>"> 
 
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description" value="<%=selectedProduct.description%>">
@@ -28,26 +25,22 @@
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock" value="<%=selectedProduct.stock%>">
             
-            <div class="genderOptions">
-                <div class="masculino">
-                    <label for="gender">Masculino</label>
-                    <input type="radio" name="gender" id="gender" value="Masculino" 
-                    <% if (selectedProduct.gender === 'Masculino') { %> 
-                    checked <% } %> >
-                </div>
-                <div class="femenino">
-                    <label for="gender">Femenino</label>
-                    <input type="radio" name="gender" id="gender" value="Femenino"
-                    <% if (selectedProduct.gender === 'Femenino') { %> 
-                        checked <% } %> >
-                </div>
-                <div class="unisex">
-                    <label for="gender">Unisex</label>
-                    <input type="radio" name="gender" id="gender" value="Unisex"
-                    <% if (selectedProduct.gender === 'Unisex') { %> 
-                        checked <% } %>>
-                </div>
-            </div>
+            <label for="gender">Genero</label>
+            <select name="gender" id="gender">                
+            <% genders.forEach( p => { %>
+                <option value="<%= p.id %>" <%= (p.id == selectedProduct.productgender.id) ? "selected" : "" %> >
+                    <%= p.name %>
+                </option>
+            <% }) %>
+            </select>
+
+            <label for="brand">Marca</label>
+            <select name="brand" id="brand">                
+            <% brands.forEach( b => { %>
+                <option value="<%= b.id %>" <%= (b.id == selectedProduct.brand.id) ? "selected" : "" %> >
+                    <%= b.name %>
+                </option>
+            <% }) %>          
 
             <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">

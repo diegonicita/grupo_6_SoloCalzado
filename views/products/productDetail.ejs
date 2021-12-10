@@ -10,17 +10,17 @@
         <article>
             <ul class="detalle-producto">
                 <li class="detalle-imagen-container">
-                    <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
+                    <img src="/images/products/<%= producto.image %>" alt="<%= producto.description %>">
                 </li>
                 <div class="detalle-resto-container-1">
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
+                        <img src="/images/products/<%= producto.image %>" alt="<%= producto.description %>">
                     </div>
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
+                        <img src="/images/products/<%= producto.image %>" alt="<%= producto.description %>">
                     </div>                    
                     <div class="detalle-minifoto">
-                        <img src="/images/products/<%= producto.images %>" alt="<%= producto.description %>">
+                        <img src="/images/products/<%= producto.image %>" alt="<%= producto.description %>">
                     </div> 
                 </div> 
                 <div class="detalle-resto-container-2">
@@ -29,8 +29,9 @@
                     <a  class="detalle-descripcion-titulo" href="/products/<%= producto.id %>/1"> <li>Descripción</li></a>
                     <a  class="detalle-talles-titulo-gris" href="/products/<%= producto.id %>/2"> <li>Talles</li></a>                   
                     <div class="detalle-descripcion-container">
-                        <div class="detalle-descripcion"><%= producto.description %>
-                    </div>
+                        <div class="detalle-descripcion"><%= producto.description %></div>
+                        <div class="detalle-descripcion">Marca: <%= producto.brand.name %></div>
+                        <div class="detalle-descripcion">Genero: <%= producto.productgender.name %></div>                    
                     </div>
                     <% } %>
                     <% if (tab == 2) { %>

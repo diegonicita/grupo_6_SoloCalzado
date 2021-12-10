@@ -8,13 +8,15 @@
     <a href="/products/<%=producto.id%>/1">
         <div class="card">
             <div class="cardImg">
-                <img src="/images/products/<%= producto.images %> " alt="">
+                <img src="/images/products/<%= producto.image %> " alt="">
                 <i class="wishlist far fa-heart"></i>
                 <i class="wishlist-hover fas fa-heart"></i>
             </div>
             <div class="cardBody">
                 <h3><%= producto.title %> </h3>
                 <h5>$<%= producto.price %> </h5>
+                <h5>Marca: <%= producto.brand.name %> </h5>
+                <h5>Genero: <%= producto.productgender.name %> </h5>
             </div>
         </div>
     </a>

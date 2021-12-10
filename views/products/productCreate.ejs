@@ -10,8 +10,8 @@
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title">
             
-            <label for="brand">Marca</label>
-            <input type="text" name="brand" id="brand">
+            <!-- <label for="brand">Marca</label>
+            <input type="text" name="brand" id="brand"> -->
 
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description">
@@ -28,7 +28,24 @@
             <label for="stock">Stock</label>
             <input type="number" name="stock" id="stock">
             
-            <div class="genderOptions">
+            <label for="gender">Genero</label>
+            <select name="gender" id="gender">                
+            <% genders.forEach( p => { %>
+                <option value="<%= p.id %>">
+                    <%= p.name %>
+                </option>
+            <% }) %>
+            </select>
+
+            <label for="brand">Marca</label>
+            <select name="brand" id="brand">                
+            <% brands.forEach( b => { %>
+                <option value="<%= b.id %>">
+                    <%= b.name %>
+                </option>
+            <% }) %>
+            
+            <!-- <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
                     <input type="radio" name="gender" id="gender" value="Masculino">
@@ -41,7 +58,7 @@
                     <label for="gender">Unisex</label>
                     <input type="radio" name="gender" id="gender" value="Unisex">
                 </div>
-            </div>
+            </div> -->
 
             <label for="images">Imágenes</label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
