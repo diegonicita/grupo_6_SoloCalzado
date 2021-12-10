@@ -3,13 +3,17 @@ const db = require('../database/models');
 const { Product, Brand, ProductGender } = require('../database/models');
 
 const controller = {   
-    index: (req,res) => {        
-        Product.findAll(
-            {   
-                attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                include: [{association: "brand"}, {association: "productgender"}]
-            }
-        )
+    index: (req,res) => { 
+        var objecto = {};
+        objecto.attributes = ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'];
+        objecto.include = [{association: "brand"}, {association: "productgender"}];
+        
+        if (req.query.brand)
+            objecto.where = { brand_id: req.query.brand } 
+        if (req.query.gender)
+            objecto.where = { productgender_id: req.query.gender }
+
+        Product.findAll( objecto )
               .then(                   
                     p => { 
                     //console.log(p[0].image);                   
@@ -78,8 +82,7 @@ const controller = {
 
         let id = req.params.id;        
         Product.findByPk(id, 
-            {      
-                // raw: true,         
+            {                              
                 attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
                 include: [{association: "brand"}, {association: "productgender"}]
             })

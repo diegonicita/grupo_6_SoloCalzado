@@ -112,10 +112,19 @@ INSERT INTO `sizes` (`id`, `num`) values (null, 37);
 INSERT INTO `sizes` (`id`, `num`) values (null, 38);
 INSERT INTO `sizes` (`id`, `num`) values (null, 39);
 
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla muy Generica numero 1", 1529, "zapatilla001.png",1,1);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla muy Generica numero 2", 2529, "zapatilla002.png",1,1);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla muy Generica numero 3", 3529, "zapatilla003.png",1,1);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla muy Generica numero 4", 4529, "zapatilla004.png",1,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapatilla001.png",1,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapatilla002.png",1,2);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapatilla003.png",1,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapatilla004.png",1,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapatilla001.png",2,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapatilla002.png",2,2);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapatilla003.png",2,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapatilla004.png",2,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapatilla001.png",3,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapatilla002.png",3,2);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapatilla003.png",3,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapatilla004.png",3,3);
+
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user1", "user1@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user2", "user2@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
