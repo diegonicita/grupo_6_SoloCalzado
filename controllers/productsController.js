@@ -1,6 +1,8 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
 const { Product, Brand, ProductGender } = require('../database/models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const controller = {   
     index: (req,res) => { 
@@ -12,6 +14,15 @@ const controller = {
             objecto.where = { brand_id: req.query.brand } 
         if (req.query.gender)
             objecto.where = { productgender_id: req.query.gender }
+        
+        if (req.query.search)
+        {
+        objecto.where = {
+                        title: {
+                                [Op.like]: '%'+ req.query.search + '%'
+                             }
+                        }
+        }
 
         Product.findAll( objecto )
               .then(                   
