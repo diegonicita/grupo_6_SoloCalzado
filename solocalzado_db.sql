@@ -53,42 +53,37 @@ CREATE TABLE `product_size` (
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- CREATE TABLE `products` (
--- `id` INT NOT NULL AUTO_INCREMENT,
--- `title` varchar(100) DEFAULT NULL,
--- `description` varchar(255) DEFAULT NULL,
--- `price` decimal(10,2) DEFAULT NULL,
--- `image` varchar(300) DEFAULT NULL,  
--- PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
    `id` INT NOT NULL AUTO_INCREMENT,
-   `name` VARCHAR(100) NOT NULL,
+   `username` VARCHAR(100) NOT NULL,
+   `first_name` VARCHAR(100),
+   `last_name` VARCHAR(100),
+   `born_date` DATE,
    `email` VARCHAR(100) NOT NULL,
-   `password` VARCHAR(100) NOT NULL,
+   `password` VARCHAR(100) NOT NULL,   
+   `usergender_id` INT NOT NULL,
+   `usercategory_id` INT NOT NULL,
    `avatar` VARCHAR(100) DEFAULT NULL,
    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- DROP TABLE IF EXISTS `categories`;
--- CREATE TABLE `categories` (
-   -- `id` INT NOT NULL AUTO_INCREMENT,
-   -- `name` VARCHAR(100) NOT NULL,
-   -- `description` text DEFAULT NULL,
-   -- PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `usercategories`;
+CREATE TABLE `usercategories` (
+   `id` INT NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(100),
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- DROP TABLE IF EXISTS `carts`;
--- CREATE TABLE `carts` (
-   -- `id` INT NOT NULL AUTO_INCREMENT,
-   -- `user_id` INT NOT NULL,
-   -- `status` INT NOT NULL DEFAULT 0,
-   -- `products` INT NOT NULL DEFAULT 0,
-   -- PRIMARY KEY (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `usergenders`;
+CREATE TABLE `usergenders` (
+   `id` INT NOT NULL AUTO_INCREMENT,
+   `name` VARCHAR(100),
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+ALTER TABLE `users` ADD CONSTRAINT `FK_cbef446d-07fb-436f-8f1d-765605e15a2d` FOREIGN KEY (`usercategory_id`) REFERENCES `usercategories`(`id`);
+ALTER TABLE `users` ADD CONSTRAINT `FK_2dc03b6f-e380-4c4b-a5c8-9b660ba7f75d` FOREIGN KEY (`usergender_id`) REFERENCES `usergenders`(`id`);
 ALTER TABLE `products` ADD CONSTRAINT `FK_4678dd58-7592-4012-8c90-52d712a5b613` FOREIGN KEY (`brand_id`) REFERENCES `brands`(`id`);
 ALTER TABLE `products` ADD CONSTRAINT `FK_56f156ba-35c6-4d45-8d99-c56eff8502bc` FOREIGN KEY (`productgender_id`) REFERENCES `productgenders`(`id`);
 ALTER TABLE `product_color` ADD CONSTRAINT `FK_0bd5eead-c17f-40f4-a45f-23e2a897a877` FOREIGN KEY (`color_id`) REFERENCES `colors`(`id`);
@@ -112,6 +107,15 @@ INSERT INTO `sizes` (`id`, `num`) values (null, 37);
 INSERT INTO `sizes` (`id`, `num`) values (null, 38);
 INSERT INTO `sizes` (`id`, `num`) values (null, 39);
 
+INSERT INTO `usercategories` (`id`, `name`) values (null, "Usuario Comun");
+INSERT INTO `usercategories` (`id`, `name`) values (null, "Usuario Avanzado");
+INSERT INTO `usercategories` (`id`, `name`) values (null, "Administrador");
+
+INSERT INTO `usergenders` (`id`, `name`) values (null, "No Informado");
+INSERT INTO `usergenders` (`id`, `name`) values (null, "Femenino");
+INSERT INTO `usergenders` (`id`, `name`) values (null, "Masculino");
+INSERT INTO `usergenders` (`id`, `name`) values (null, "Otres");
+
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapatilla001.png",1,1);
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapatilla002.png",1,2);
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapatilla003.png",1,3);
@@ -125,18 +129,7 @@ INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `product
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapatilla003.png",3,3);
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapatilla004.png",3,3);
 
-
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user1", "user1@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user2", "user2@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user3", "user3@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (null, "user4", "user4@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm", "user-placeholder.png");
-
--- INSERT INTO `categories` (`id`, `name`, `description`) VALUES (null, "Categoria 1", "Esta es una categoria 1");
--- INSERT INTO `categories` (`id`, `name`, `description`) VALUES (null, "Categoria 2", "Esta es una categoria 2");
--- INSERT INTO `categories` (`id`, `name`, `description`) VALUES (null, "Categoria 3", "Esta es una categoria 3");
--- INSERT INTO `categories` (`id`, `name`, `description`) VALUES (null, "Categoria 4", "Esta es una categoria 4");
-
--- INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (null, 1, 0, 0);
--- INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (null, 2, 0, 0);
--- INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (null, 3, 0, 0);
--- INSERT INTO `carts` (`id`, `user_id`, `status`, `products`) VALUES (null, 4, 0, 0);
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "user1", "user1@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "user2", "user2@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "user3", "user3@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "user4", "user4@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");

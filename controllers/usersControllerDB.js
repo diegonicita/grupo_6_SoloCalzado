@@ -1,15 +1,7 @@
-// const path = require('path');
-// const formularioData = require('./formulariosData');
 const { validationResult } = require('express-validator');
-// const fs = require('fs');
-// const usersPath = path.join(__dirname,'../data/users.json');
-// const users = JSON.parse(fs.readFileSync(usersPath,'utf-8'));
 const bcrypt = require('bcryptjs');
-
-//////////////////////////////////
 const db = require('../database/models');
 const { User } = require('../database/models');
-//////////////////////////////////////////////////////
 
 const controller = {
 
@@ -18,22 +10,23 @@ const controller = {
     },
     processLogin: (req,res) => {
         let errors = validationResult(req);	
-        let userName = req.body.usuario.trim();        
+        let nombre = req.body.usuario.trim();        
         
         if (errors.isEmpty()) {
             User.findOne(
-                {      
-                    where: {name: userName},
-                    raw: true,         
-                    attributes: ['id', ['name', 'user'], 'email', 'password', 'avatar'] 
+                {    
+                    where: {username: nombre},                      
+                    attributes: ['id', 'username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                    include: [{association: "usercategory"}, {association: "usergender"}]
                 }            )
                   .then(                   
                         u => { 
+                            // console.log(u.toJSON());
                             if (u != null && bcrypt.compareSync(req.body.password,u.password)) 
                             {                                
                                     req.session.userLogged = u;
+                                    // console.log(req.session.userLogged.usercategory.dataValues.name);
                                     req.session.levelOne = true;
-
                                     if (req.body.rememberPassword == "on")
                                     {
                                         res.clearCookie('recordarUsuario');
@@ -72,7 +65,7 @@ const controller = {
             {      
                 where: {email: userEmail},
                 raw: true,         
-                attributes: ['id', ['name', 'user'], 'email', 'password', 'avatar'] 
+                attributes: ['id', 'username', 'email', 'password', 'avatar'] 
             }            )
               .then(                   
                     u => {
@@ -132,10 +125,12 @@ const controller = {
         await User
         .create(
             {
-                name: newUser.user,
+                username: newUser.user,
                 email: newUser.email,
                 avatar: newUser.avatar, 
-                password: newUser.password               
+                password: newUser.password,
+                usergender_id: 1,
+                usercategory_id: 1             
             }
         )
         .then((u)=> {

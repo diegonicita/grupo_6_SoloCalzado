@@ -18,9 +18,9 @@ const authLogin = async(req,res,next) =>
     {
     userInCookie = await User.findOne(
         {      
-            where: {id: idInCookie},
-            raw: true,         
-            attributes: ['id', ['name', 'user'], 'email', 'password', 'avatar'] 
+            where: {id: idInCookie},                                
+            attributes: ['id', 'username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+            include: [{association: "usercategory"}, {association: "usergender"}]
         }            )
         .then( u => {return u});
     }
@@ -34,7 +34,7 @@ const authLogin = async(req,res,next) =>
     if (userInCookie != null){
         req.session.userLogged = userInCookie
     }
-
+    
     res.locals.logged = false;
     res.locals.loggedName = "Profile";
     res.locals.loggedImage = undefined;
@@ -42,7 +42,7 @@ const authLogin = async(req,res,next) =>
     // console.log("req.session.userLogged: " + req.session.userLogged);
     if (req.session && req.session.userLogged != undefined) {
           res.locals.logged = true;
-          res.locals.loggedUsername = req.session.userLogged.user;
+          res.locals.loggedUsername = req.session.userLogged.username;
           res.locals.loggedImage = req.session.userLogged.avatar;
           res.locals.loggedId = req.session.userLogged.id;
       }      
