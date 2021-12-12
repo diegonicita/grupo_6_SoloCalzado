@@ -3,7 +3,7 @@ let router = express.Router();
 const multer = require('multer')
 const {body} = require('express-validator');
 const path = require('path');
-const controller = require('../controllers/usersControllerDB');
+const controller = require('../controllers/usersController');
 const { userInfo } = require('os');
 
 // MIDDLEWARES

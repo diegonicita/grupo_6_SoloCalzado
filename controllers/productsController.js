@@ -33,22 +33,22 @@ const controller = {
               .catch(error => res.send(error));
     },
 
-    productDetail: (req, res) => {        
-
+    productDetail: (req, res) => { 
         if (req.params.tab) tab = req.params.tab;
-        Product.findByPk(req.params.id,
+        Product
+        .findByPk(req.params.id,
             {   
                  attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
                  include: [{association: "brand"}, {association: "productgender"}]
-
-            }
-        )
-              .then(                   
-                    p => { 
-                    // console.log(p);
+            })
+        .then( p => {   
+            if (p != null) {                  
                     res.render("products/productDetail", {producto: p.dataValues, tab });
+            } else {
+                res.send("El producto que quieres ver no fue encontrado!");
+            }
                     })
-              .catch(error => res.send(error));
+        .catch(error => res.send(error));
     },    
     
     create: (req, res) => {
@@ -62,10 +62,7 @@ const controller = {
                 })
                 .catch(error => console.log(error));
         })
-        .catch(error => console.log(error));
-
-
-        
+        .catch(error => console.log(error));        
     },
     
     store: (req,res) => {      
@@ -85,38 +82,29 @@ const controller = {
         )
         .then(()=> {
             return res.redirect('/products')})            
-        .catch(error => res.send(error))       
+        .catch(error => res.send(error))      
 
     },
 
     edit: (req, res) => {
-
-        let id = req.params.id;        
-        Product.findByPk(id, 
+        let id = req.params.id;
+        let promesa1 = Product.findByPk(id, 
             {                              
                 attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
                 include: [{association: "brand"}, {association: "productgender"}]
-            })
-        .then( p => {            
-            if (p != null){
-                Brand
-                .findAll()
-                .then(brands => {
-                    ProductGender
-                        .findAll()
-                        .then(genders => {                                            
-                            return res.render('products/productEdit', { selectedProduct: p.dataValues, brands, genders });
-                        })
-                        .catch(error => console.log(error));
-                    })
-                    .catch(error => console.log(error));
-                 }
-                 else {
-                     res.send('ID not found')
-                 }
-            }                     
-            )
-        .catch(error => res.send(error))        
+            });
+        let promesa2 = Brand.findAll();
+        let promesa3 = ProductGender.findAll();        
+        Promise.all([promesa1, promesa2, promesa3])
+        .then(([p, brands, genders]) => {
+            if (p != null) {
+            return res.render('products/productEdit', { selectedProduct: p.dataValues, brands, genders });
+            } else 
+            {
+            return res.send('El producto que quiere Editar no fue encontrado!')
+            }
+                                        })
+        .catch(error => {console.log("error:" + error)});        
     },
 
     update: (req,res) => {        
