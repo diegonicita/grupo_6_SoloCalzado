@@ -28,10 +28,26 @@ module.exports = (sequelize, dataTypes) => {
           as: 'productgender',
           foreignKey: 'productgender_id'
       })
-  }
+
+      Model.belongsToMany(models.Color, {
+        as: "colors",
+        through: 'product_color',
+        foreignKey: "product_id",
+        otherKey: "color_id",
+        timestamps: false       
+      })
+
+      Model.belongsToMany(models.Size, {
+        as: "sizes",
+        through: 'product_size',
+        foreignKey: "product_id",
+        otherKey: "size_id",
+        timestamps: false       
+      })
+    }
     
     return Model;
     
-    }
+  }
     
     

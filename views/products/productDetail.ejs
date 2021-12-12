@@ -31,7 +31,26 @@
                     <div class="detalle-descripcion-container">
                         <div class="detalle-descripcion"><%= producto.description %></div>
                         <div class="detalle-descripcion">Marca: <%= producto.brand.name %></div>
-                        <div class="detalle-descripcion">Genero: <%= producto.productgender.name %></div>                    
+                        <div class="detalle-descripcion">Genero: <%= producto.productgender.name %></div>   
+                        <br>
+
+                        <% if (producto.colors.length > 0) { %>
+                        <div class="detalle-descripcion">Colores Disponibles</div>   
+                        <% } %>
+                        <% for (let i=0; i < producto.colors.length; i++)
+                        { %>
+                        <div class="detalle-descripcion">Color Nº <%= i+1 %> : <%= producto.colors[i].name %></div>                    
+                        <% } %>
+
+                        <br>
+
+                        <% if (producto.sizes.length > 0) { %>
+                        <div class="detalle-descripcion">Talles Disponibles</div>   
+                        <% } %>
+                        <% for (let i=0; i < producto.sizes.length; i++)
+                        { %>
+                        <div class="detalle-descripcion">Talle Nº <%= i+1 %> : <%= producto.sizes[i].num %></div>                    
+                        <% } %>
                     </div>
                     <% } %>
                     <% if (tab == 2) { %>

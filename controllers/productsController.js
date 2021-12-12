@@ -39,10 +39,11 @@ const controller = {
         .findByPk(req.params.id,
             {   
                  attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                 include: [{association: "brand"}, {association: "productgender"}]
+                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
             })
         .then( p => {   
             if (p != null) {                  
+                    //console.log(p.dataValues.colors[0].dataValues);
                     res.render("products/productDetail", {producto: p.dataValues, tab });
             } else {
                 res.send("El producto que quieres ver no fue encontrado!");
@@ -91,7 +92,7 @@ const controller = {
         let promesa1 = Product.findByPk(id, 
             {                              
                 attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                include: [{association: "brand"}, {association: "productgender"}]
+                include: [{association: "brand"}, {association: "productgender"}, ]
             });
         let promesa2 = Brand.findAll();
         let promesa3 = ProductGender.findAll();        

@@ -135,3 +135,13 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `pass
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "Juan", "Perez", "user2", "user2@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "Juan", "Perez", "user3", "user3@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "Juan", "Perez", "user4", "user4@gmail.com", "$2a$10$xlqlLmgzHRvQaji0Ib/ZCOzBWzodfqBMhDSZMxuSJCDHcCV2szdvm",1,1,"user-placeholder.png");
+
+INSERT INTO `product_size` (`id`, `product_id`, `size_id`, `stock`) VALUES (null, 1, 1, 1);
+INSERT INTO `product_size` (`id`, `product_id`, `size_id`, `stock`) VALUES (null, 1, 2, 1);
+INSERT INTO `product_size` (`id`, `product_id`, `size_id`, `stock`) VALUES (null, 2, 1, 1);
+INSERT INTO `product_size` (`id`, `product_id`, `size_id`, `stock`) VALUES (null, 2, 2, 1);
+
+INSERT INTO `product_color` (`id`, `color_id`, `product_id`) VALUES (null, 1, 1);
+INSERT INTO `product_color` (`id`, `color_id`, `product_id`) VALUES (null, 2, 1);
+INSERT INTO `product_color` (`id`, `color_id`, `product_id`) VALUES (null, 1, 2);
+INSERT INTO `product_color` (`id`, `color_id`, `product_id`) VALUES (null, 2, 2);
