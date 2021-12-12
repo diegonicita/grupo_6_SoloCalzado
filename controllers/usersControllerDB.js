@@ -16,12 +16,12 @@ const controller = {
             User.findOne(
                 {    
                     where: {username: nombre},                      
-                    attributes: ['id', 'username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                    attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
                     include: [{association: "usercategory"}, {association: "usergender"}]
                 }            )
                   .then(                   
                         u => { 
-                            // console.log(u.toJSON());
+                             console.log(u.toJSON());
                             if (u != null && bcrypt.compareSync(req.body.password,u.password)) 
                             {                                
                                     req.session.userLogged = u;
@@ -60,30 +60,37 @@ const controller = {
 
         const userEmail = req.body.email;
         const userName = req.body.user;
-
-        await User.findOne(
+        console.log(req.body);
+        let user_con_email_existente = await User.findOne(
             {      
                 where: {email: userEmail},
                 raw: true,         
                 attributes: ['id', 'username', 'email', 'password', 'avatar'] 
             }            )
-              .then(                   
-                    u => {
-                        if (u != null)
-                        {
-                            return res.render('users/register', {
+        let user_con_username_existente = await User.findOne(
+                {      
+                    where: {username: userName},
+                    raw: true,         
+                    attributes: ['id', 'username', 'email', 'password', 'avatar'] 
+                }            )
+        if (user_con_email_existente != null  || user_con_username_existente != null)
+           {
+               let msg1 = ""; let msg2 = "";
+               if (user_con_email_existente != null) {msg1 = "email existente"}
+               if (user_con_username_existente != null) {msg2 = "usuario existente"}
+
+           return res.render('users/register', {
                                 errors: {
                                     email: {
-                                        msg: 'Email ya existente'
+                                        msg: msg1
+                                    },
+                                    user: {
+                                        msg: msg2
                                     }
                                 },
                                 old: req.body
                             });
-                        }
-
-                    })
-              .catch(error => res.send(error));
-
+            }            
      
         // if (users.find(u => u.user === userName )){
         //     return res.render('users/register', {
@@ -126,6 +133,8 @@ const controller = {
         .create(
             {
                 username: newUser.user,
+                first_name: newUser.firstName,
+                last_name: newUser.lastName,
                 email: newUser.email,
                 avatar: newUser.avatar, 
                 password: newUser.password,
