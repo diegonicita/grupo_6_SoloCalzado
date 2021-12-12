@@ -1,23 +1,35 @@
 const db = require('../database/models');
 const { User } = require('../database/models');
+const userController = require('../controllers/usersController');
 
 const authLogin = async(req,res,next) => 
 { 
-    let idInCookie = req.cookies.recordarUsuario;
-    let userInCookie = null;
-    if (idInCookie != undefined)
+    let ts = Date.now();    
+    let idCookie = req.cookies.recordarUsuario;;
+    let user = req.session.userLogged;
+    if (user == undefined && idCookie != undefined)
     {
-    userInCookie = await User.findOne(
-        {      
-            where: {id: idInCookie},                                
-            attributes: ['id', 'first_name', 'last_name', 'username', 'born_date', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
-            include: [{association: "usercategory"}, {association: "usergender"}]
-        }            )        
-    }   
-    
-    if (userInCookie != null){
-        req.session.userLogged = userInCookie
+        console.log("user : " + user + " - id in cookie: " + idCookie + " at " + ts);
+        try {
+        user = await userController.findUserById(idCookie);
+            }
+        catch(err) { console.log(err);}
+        console.log("user in cookie: " + user.username);
+        req.session.userLogged = user;
     }
+
+    // let idInCookie = req.cookies.recordarUsuario;    
+    // console.log("id in cookie: " + idInCookie + " at " + ts);
+    // let userInCookie = null;
+    // if (idInCookie != undefined)
+    // {
+    // userInCookie = await userController.findUserById(idInCookie);
+    // console.log("we found an user in a cookie! => " + userInCookie);
+    // }   
+    
+    // if (userInCookie != null){
+    //     req.session.userLogged = userInCookie
+    // }
     
     res.locals.logged = false;
     res.locals.loggedName = "Profile";

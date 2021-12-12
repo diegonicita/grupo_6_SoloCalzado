@@ -5,6 +5,22 @@ const { User } = require('../database/models');
 
 const controller = {
 
+    findUserById: async(user_id) =>
+    {
+        let user = null;        
+        try {
+            user = await User.findOne(
+                {    
+                    where: {id: user_id},                      
+                    attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                    include: [{association: "usercategory"}, {association: "usergender"}]
+                })
+            return user;
+        }
+        catch(errores) { 
+            console.log("errores: "+errores)
+                        }
+    },
     login: (req, res) => {
         res.render('users/login');
     },
@@ -21,7 +37,7 @@ const controller = {
                 }            )
                 .then(                   
                         u => { 
-                             console.log(u.toJSON());
+                            //  console.log(u.toJSON());
                             if (u != null && bcrypt.compareSync(req.body.password,u.password)) 
                             {                                
                                     req.session.userLogged = u;
