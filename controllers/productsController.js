@@ -1,6 +1,6 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
-const { Product, Brand, ProductGender } = require('../database/models');
+const { Product, Brand, ProductGender, Product_Size_Color } = require('../database/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -70,8 +70,11 @@ const controller = {
         console.log(req.body)
         let newProductImage = "default-image.png";
         if (req.file != undefined) {newProductImage = req.file.filename; }
+        
+        var newProduct = null;
+
         try{ 
-            let p = await Product
+            newProduct= await Product
         .create(
             {
                 title: req.body.title,
@@ -83,11 +86,29 @@ const controller = {
             }
         )}
         catch(errores) { 
-                        console.log("errores: "+errores)}
+                        console.log("errores create product: "+errores)
+                    }
+
+        var newProductSizeColor = null;
+
+        req.body.size.forEach( async talle => {
+
+            try{ 
+                newProductSizeColor = await Product_Size_Color
+            .create(
+                {
+                    size_id: talle,
+                    product_id: newProduct.id,            
+                    color_id: req.body.color[0],
+                    stock: req.body.stock,                           
+                }
+            )}
+            catch(errores) { 
+                            console.log("errores create product-size-color: "+errores)
+                        }
+            })
          
-
-
-                        return res.redirect('/products')},
+    return res.redirect('/products')},
                         
 
     edit: (req, res) => {
