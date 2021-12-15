@@ -66,11 +66,12 @@ const controller = {
         .catch(error => console.log(error));        
     },
     
-    store: (req,res) => {      
-
+    store: async (req,res) => {      
+        console.log(req.body)
         let newProductImage = "default-image.png";
         if (req.file != undefined) {newProductImage = req.file.filename; }
-        Product
+        try{ 
+            let p = await Product
         .create(
             {
                 title: req.body.title,
@@ -80,12 +81,14 @@ const controller = {
                 productgender_id: req.body.gender,
                 brand_id: req.body.brand                
             }
-        )
-        .then(()=> {
-            return res.redirect('/products')})            
-        .catch(error => res.send(error))      
+        )}
+        catch(errores) { 
+                        console.log("errores: "+errores)}
+         
 
-    },
+
+                        return res.redirect('/products')},
+                        
 
     edit: (req, res) => {
         let id = req.params.id;
