@@ -15,16 +15,41 @@
             
             <label for="price">Precio</label>
             <input type="text" name="price" id="price" value="<%=selectedProduct.price%>">      
-                
-            <h3> Talle </h3>
-            <div><input type="checkbox" id="size37" name="size" value="1"> <label for="size37">37</label></div>
-            <div><input type="checkbox" id="size38" name="size" value="2"> <label for="size38">38</label></div>
-            <div><input type="checkbox" id="size39" name="size" value="3"> <label for="size39">39</label></div>
-            <h3> Color </h3>
-            <div><input type="radio" id="red" name="color" value="1"><label for="red">Rojo</label><br></div>
-            <div><input type="radio" id="blue" name="color" value="2"><label for="blue">Azul</label><br></div>
-            <div><input type="radio" id="green" name="color" value="3"><label for="green">Verde</label><br></div>
             
+            <!-- HARDCODEANDO START-->
+
+            <% let talles = [37, 38, 39]; 
+               let colores = ["Rojo", "Azul", "Verde"]; 
+               let existeTalle = [false, false, false];
+               let existeColor = [false, false, false];
+            
+            for (let i=0; i < talles.length; i++)
+            for (let o=0; o < selectedProduct.sizes.length; o++)
+            if (selectedProduct.sizes[o].num == talles[i])
+            {
+                existeTalle[i] = true;
+            }
+
+            for (let i=0; i < colores.length; i++)
+            for (let o=0; o < selectedProduct.colors.length; o++)
+            if (selectedProduct.colors[o].name == colores[i])
+            {
+                existeColor[i] = true;
+            }        
+            
+            %>
+
+            <h3> Talle </h3>
+            <div><input type="checkbox" id="size37" name="size" value="1" <%= existeTalle[0]?"checked":""%>> <label for="size37">37</label></div>
+            <div><input type="checkbox" id="size38" name="size" value="2" <%= existeTalle[1]?"checked":""%>> <label for="size38">38</label></div>
+            <div><input type="checkbox" id="size39" name="size" value="3" <%= existeTalle[2]?"checked":""%>> <label for="size39">39</label></div>
+            <h3> Color </h3>
+            <div><input type="radio" id="red" name="color" value="1" <%= existeColor[0]?"checked":""%>><label for="red">Rojo</label><br></div>
+            <div><input type="radio" id="blue" name="color" value="2" <%= existeColor[1]?"checked":""%>><label for="blue">Azul</label><br></div>
+            <div><input type="radio" id="green" name="color" value="3" <%= existeColor[2]?"checked":""%>><label for="green">Verde</label><br></div>
+            
+            <!-- HARDCODEANDO END -->
+
             <label for="gender">Genero</label>
             <select name="gender" id="gender">                
             <% genders.forEach( p => { %>
