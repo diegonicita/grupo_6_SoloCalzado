@@ -1,6 +1,6 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
-const { Product, Brand, ProductGender, Product_Size_Color } = require('../database/models');
+const { Product, Brand, ProductGender, Product_Size_Color, Color, Size } = require('../database/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -8,7 +8,7 @@ const controller = {
     index: (req,res) => { 
         var objecto = {};
         objecto.attributes = ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'];
-        objecto.include = [{association: "brand"}, {association: "productgender"}];
+        objecto.include = [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}];
         
         if (req.query.brand)
             objecto.where = { brand_id: req.query.brand } 
@@ -126,14 +126,16 @@ const controller = {
         let promesa1 = Product.findByPk(id, 
             {                              
                 attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                include: [{association: "brand"}, {association: "productgender"}, ]
+                include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
             });
         let promesa2 = Brand.findAll();
-        let promesa3 = ProductGender.findAll();        
-        Promise.all([promesa1, promesa2, promesa3])
-        .then(([p, brands, genders]) => {
-            if (p != null) {
-            return res.render('products/productEdit', { selectedProduct: p.dataValues, brands, genders });
+        let promesa3 = ProductGender.findAll();   
+        let promesa4 = Color.findAll();
+        let promesa5 = Size.findAll();     
+        Promise.all([promesa1, promesa2, promesa3, promesa4, promesa5])
+        .then(([p, brands, genders, colors, sizes]) => {
+            if (p != null) {               
+            return res.render('products/productEdit', { selectedProduct: p.dataValues, brands, genders, colors, sizes });
             } else 
             {
             return res.send('El producto que quiere Editar no fue encontrado!')

@@ -19,6 +19,17 @@
                     <h5>$<%= producto.price %> </h5>
                     <h5>Marca: <%= producto.brand.name %> </h5>
                     <h5>Genero: <%= producto.productgender.name %> </h5>
+                    <% if (producto.sizes.length > 0) { let textoTalle = "Talles: ";  %>
+                    <h5 style="background-color: lightgreen; color: white; text-align: center;"> CON TALLES Y COLORES </h5>
+                        <% for (let i=0; i < producto.sizes.length; i++) { textoTalle += "-" + producto.sizes[i].num  %>                                
+                        <% } %>
+                        <h5><%= textoTalle + "-" %></h5>                                                                    
+                        <% for (let i=0; i < producto.colors.length; i++)
+                                { %>
+                                <h5>Colores : <%= producto.colors[i].name %></div>                    
+                    <% } } else { %>   
+                        <h5 style="background-color: rosybrown; color: white; text-align: center;"> SIN TALLES NI COLORES </h5>
+                        <% } %>
                 </div>
             </div>
         </a>
