@@ -155,21 +155,33 @@ const controller = {
         })
 
     },
-    list: (req,res) => {        
-        res.render('users/list',{
-            users: [{id: 1, username: "juancito", email: "juancito@email.com", born_date: "2010-10-10", avatar: "user-placeholder.png", first_name: "Juan", last_name: "Perez"}]
-        })
+    list: (req,res) => {         
+        User.findAll(
+            {   
+                attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                include: [{association: "usercategory"}, {association: "usergender"}]
+            })
+            .then( (users) => {                
+                res.render('users/list',{users: users}                
+            )})
+            .catch(errors => console.log(errors));
+    },
 
-    },
     edit: (req,res) => {   
+
         userId = req.params.id;
-        res.render('users/edit',{
-            user: {id: userId, username: "juancito", email: "juancito@email.com", 
-            born_date: "2010-10-10", avatar: "user-placeholder.png", 
-            first_name: "Juan", last_name: "Perez",
-        usercategory_id: 1}
-        })
-    },
+
+            User.findByPk(userId,
+                {   
+                    attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                    include: [{association: "usercategory"}, {association: "usergender"}]
+                })
+                .then( (user) => {                
+                    res.render('users/edit',{user: user}                
+                )})
+                .catch(errors => console.log(errors));
+
+    },    
 
     update: (req,res) => {   
         res.send('Aca va el codigo para actualizar los datos');

@@ -24,8 +24,8 @@
         <input type="email" name="email" value="<%= user.email %>"/>        
       </div>
       <div>
-        <label for="date">Fecha de nacimiento</label>
-        <input type="date" name="bornDate" id="date" value="<%= user.born_date%>"/>
+        <label for="bornDate">Fecha de nacimiento</label>
+        <input type="date" name="bornDate" id="bornDate" value="<%= user.born_date%>"/>
       </div> 
       
       <div>
@@ -39,17 +39,25 @@
 
       <div>
         <label for="usercategory">Categoria de usuario </label>
-        <input type="usercategory" name="usercategory" id="usercategory" disabled value="<%= user.usercategory_id%>"/>
+        <input type="number" name="usercategory" id="usercategory" disabled value="<%= user.usercategory_id%>"/>
       </div> 
-      <div>
-        <label for="password">Password</label>
+      <div><label for="avatar">Selecciona tu avatar</label>
+        <input type="file" name="avatar" id="avatar">
+    </div>     
+      <div></div>
+      <div><input type="checkbox" id="change_password" name="change_password">
+      <label for="change_password"> ¿ Editar Contraseña ? </label>
+    </div>
+      <div></div>
+      <div>              
+        <label for="password"> Password</label>
         <input type="password" name="password" id="password" value=""/>       
       </div>
+      <div></div>
       <div>
         <label for="repassword">Repite tu Password</label>
-        <input type="password" name="repassword" id="repassword" value=""/>       
+        <input display="display: block" type="password" name="repassword" id="repassword" value=""/>       
       </div>
-
       <button class="register" type="submit">CREAR</button>
       
     </form>   

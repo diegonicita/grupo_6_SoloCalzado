@@ -696,7 +696,14 @@ i.wishlist:hover ~ i.wishlist-hover{
   margin-bottom: 3rem;
 }
 
-.register-formulario input,select {
+.register-formulario input[type=password], 
+.register-formulario input[type=number], 
+.register-formulario input[type=date], 
+.register-formulario input[type=email], 
+.register-formulario input[type=text], 
+.register-formulario button, 
+.register-formulario select 
+{
   width: 100%;
   /* max-width: 400px; */
   height: 3rem;
