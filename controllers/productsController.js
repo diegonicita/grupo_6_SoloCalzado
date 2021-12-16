@@ -91,7 +91,17 @@ const controller = {
 
         var newProductSizeColor = null;
 
-        req.body.size.forEach( async talle => {
+        let talles = [];
+
+        if (Array.isArray(req.body.size))
+        {
+            talles = [...req.body.size];
+        }
+        else {
+            talles.push(req.body.size);
+        }
+
+        talles.forEach( async talle => {
 
             try{ 
                 newProductSizeColor = await Product_Size_Color
@@ -106,7 +116,7 @@ const controller = {
             catch(errores) { 
                             console.log("errores create product-size-color: "+errores)
                         }
-            })
+            })        
          
     return res.redirect('/products')},
                         
