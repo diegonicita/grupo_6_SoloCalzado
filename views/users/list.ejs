@@ -1,0 +1,32 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<% if (users.length > 0) { %>
+
+    <main class="cards"> 
+    
+    <% users.forEach(function(user) { %>
+      
+        <a href="/users/edit/<%=user.id%>">
+            <div class="card">
+                <div class="cardImg">
+                    <img src="/images/avatars/<%= user.avatar %> " alt="">                    
+                </div>
+                <div class="cardBody">
+                    <h3>Usuario: <%= user.user %> </h3>
+                    <h5>Nombre: <%= user.first_name %> </h5>
+                    <h5>Apellido: <%= user.last_name %> </h5>                    
+                </div>
+            </div>
+        </a>
+    
+     <% }); %>
+
+    </main>
+    
+    <% } else { %>
+    
+    <p style="text-align: center">Lo siento, no se encontraron los usuarios que buscabas. </p>
+    <%  } %> 
+
+<%- include('../partials/footer') %>

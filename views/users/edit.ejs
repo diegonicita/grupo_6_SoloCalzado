@@ -1,0 +1,61 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<main class="userAccount">
+
+<h2 class="register-bienvenidos">Administrador, bienvenido a a la edicion de los datos de <%= user.username %></h2>
+ 
+<div class="img-container">
+  <img src="/images/avatars/<%= user.avatar %>">
+</div> 
+
+<div class="register-formulario">
+    <form action="/users/update" method="POST" enctype="multipart/form-data" class="reg-form">      
+      <div>
+        <label for="firstName">Nombre</label>
+        <input type="text" name="firstName" id="firstName" value="<%=user.first_name%>"/>       
+      </div>
+      <div>
+        <label for="lastName">Apellido</label>
+        <input type="text" name="lastName" id="lastName" value="<%=user.last_name%>"/>       
+      </div>
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" name="email" value="<%= user.email %>"/>        
+      </div>
+      <div>
+        <label for="date">Fecha de nacimiento</label>
+        <input type="date" name="bornDate" id="date" value="<%= user.born_date%>"/>
+      </div> 
+      
+      <div>
+        <label for="gender">Selecciona un género</label>
+        <select name="gender" id="gender">
+          <option value="Male">Masculino</option>
+          <option value="Female">Femenino</option>
+          <option value="Other">Otro</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="usercategory">Categoria de usuario </label>
+        <input type="usercategory" name="usercategory" id="usercategory" disabled value="<%= user.usercategory_id%>"/>
+      </div> 
+      <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value=""/>       
+      </div>
+      <div>
+        <label for="repassword">Repite tu Password</label>
+        <input type="password" name="repassword" id="repassword" value=""/>       
+      </div>
+
+      <button class="register" type="submit">CREAR</button>
+      
+    </form>   
+
+  </div> 
+
+</main>
+
+<%- include('../partials/footer') %>

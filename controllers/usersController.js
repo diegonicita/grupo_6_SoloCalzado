@@ -155,6 +155,26 @@ const controller = {
         })
 
     },
+    list: (req,res) => {        
+        res.render('users/list',{
+            users: [{id: 1, username: "juancito", email: "juancito@email.com", born_date: "2010-10-10", avatar: "user-placeholder.png", first_name: "Juan", last_name: "Perez"}]
+        })
+
+    },
+    edit: (req,res) => {   
+        userId = req.params.id;
+        res.render('users/edit',{
+            user: {id: userId, username: "juancito", email: "juancito@email.com", 
+            born_date: "2010-10-10", avatar: "user-placeholder.png", 
+            first_name: "Juan", last_name: "Perez",
+        usercategory_id: 1}
+        })
+    },
+
+    update: (req,res) => {   
+        res.send('Aca va el codigo para actualizar los datos');
+    },
+
     logout: (req,res) => {
         req.session.destroy();
         res.clearCookie('recordarUsuario')

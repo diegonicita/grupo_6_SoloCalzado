@@ -47,8 +47,14 @@ router.post('/register', upload.single('avatar'), registerValidations ,controlle
 
 router.get('/profile', guestMiddleware ,controller.profile);
 
+router.get('/list', guestMiddleware, controller.list);
+router.get('/edit/:id', guestMiddleware, controller.edit);
+router.post('/update', guestMiddleware, controller.update);
+
 router.get('/logout', controller.logout);
 
 router.get('/error', controller.error);
+
+
 
 module.exports = router;
