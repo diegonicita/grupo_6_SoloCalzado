@@ -65,6 +65,18 @@ const controller = {
         })
         .catch(error => console.log(error));        
     },
+
+    reqBodyVariarableToArray: function(variable) {        
+        let arreglo = [];
+        if (Array.isArray(variable))
+        {
+            arreglo = [...variable];
+        }
+        else {
+            arreglo.push(variable);
+        }        
+        return arreglo;
+    },
     
     store: async (req,res) => {      
         console.log(req.body)
@@ -91,32 +103,34 @@ const controller = {
 
         var newProductSizeColor = null;
 
-        let talles = [];
+        let talles = controller.reqBodyVariarableToArray(req.body.size);
+        let colores = controller.reqBodyVariarableToArray(req.body.color);      
 
-        if (Array.isArray(req.body.size))
+        console.log("colores: " + colores);
+
+        if (talles.length > 0 && colores.length > 0)
         {
-            talles = [...req.body.size];
-        }
-        else {
-            talles.push(req.body.size);
-        }
+            colores.forEach
+            ( color => {
+            talles.forEach( async talle => {
 
-        talles.forEach( async talle => {
-
-            try{ 
-                newProductSizeColor = await Product_Size_Color
-            .create(
-                {
-                    size_id: talle,
-                    product_id: newProduct.id,            
-                    color_id: req.body.color[0],
-                    stock: req.body.stock,                           
-                }
-            )}
-            catch(errores) { 
-                            console.log("errores create product-size-color: "+errores)
-                        }
-            })        
+                try{ 
+                    newProductSizeColor = await Product_Size_Color
+                .create(
+                    {
+                        size_id: talle,
+                        product_id: newProduct.id,            
+                        color_id: color,
+                        stock: req.body.stock,                           
+                    }
+                )}
+                catch(errores) { 
+                                console.log("errores create product-size-color: "+errores)
+                            }
+                }) 
+                    }        
+            ) 
+        } else { return res.send('no se puede crear un producto sin talles o colores')}
          
     return res.redirect('/products')},
                         
