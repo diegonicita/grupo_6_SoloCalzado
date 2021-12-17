@@ -44,11 +44,14 @@
             <div><input type="checkbox" id="size38" name="size" value="2" <%= existeTalle[1]?"checked":""%>> <label for="size38">38</label></div>
             <div><input type="checkbox" id="size39" name="size" value="3" <%= existeTalle[2]?"checked":""%>> <label for="size39">39</label></div>
             <h3> Color </h3>
-            <div><input type="radio" id="red" name="color" value="1" <%= existeColor[0]?"checked":""%>><label for="red">Rojo</label><br></div>
-            <div><input type="radio" id="blue" name="color" value="2" <%= existeColor[1]?"checked":""%>><label for="blue">Azul</label><br></div>
-            <div><input type="radio" id="green" name="color" value="3" <%= existeColor[2]?"checked":""%>><label for="green">Verde</label><br></div>
+            <div><input type="checkbox" id="red" name="color" value="1" <%= existeColor[0]?"checked":""%>><label for="red">Rojo</label><br></div>
+            <div><input type="checkbox" id="blue" name="color" value="2" <%= existeColor[1]?"checked":""%>><label for="blue">Azul</label><br></div>
+            <div><input type="checkbox" id="green" name="color" value="3" <%= existeColor[2]?"checked":""%>><label for="green">Verde</label><br></div>
             
             <!-- HARDCODEANDO END -->
+
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock" value="10">
 
             <label for="gender">Genero</label>
             <select name="gender" id="gender">                

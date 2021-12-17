@@ -1,6 +1,6 @@
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const db = require('../database/models');
-const { Product, Brand, ProductGender, Product_Size_Color, Color, Size } = require('../database/models');
+const { Product, Brand, ProductGender, Product_Size_Color, Color, Size} = require('../database/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
@@ -77,9 +77,40 @@ const controller = {
         }        
         return arreglo;
     },
+
+    createSizesAndColors: async (myReqBody, newProductId, myStock) => {
+        var newProductSizeColor = null;
+        let talles = controller.reqBodyVariarableToArray(myReqBody.size);
+        let colores = controller.reqBodyVariarableToArray(myReqBody.color);
+        if (talles.length > 0 && colores.length > 0)
+        {
+            colores.forEach
+            ( color => {
+            talles.forEach( async talle => {
+
+                try{ 
+                    newProductSizeColor = await Product_Size_Color
+                .create(
+                    {
+                        size_id: talle,
+                        product_id: newProductId,            
+                        color_id: color,
+                        stock: myStock,                           
+                    }
+                )}
+                catch(errores) { 
+                                console.log("errores create product-size-color: "+errores)
+                                }
+                }) 
+                    }        
+            ) 
+        } else { return res.send('no se puede crear un producto sin talles o colores')} 
+
+
+    },
     
     store: async (req,res) => {      
-        console.log(req.body)
+        // console.log(req.body)
         let newProductImage = "default-image.png";
         if (req.file != undefined) {newProductImage = req.file.filename; }
         
@@ -99,38 +130,9 @@ const controller = {
         )}
         catch(errores) { 
                         console.log("errores create product: "+errores)
-                    }
+                    }      
 
-        var newProductSizeColor = null;
-
-        let talles = controller.reqBodyVariarableToArray(req.body.size);
-        let colores = controller.reqBodyVariarableToArray(req.body.color);      
-
-        console.log("colores: " + colores);
-
-        if (talles.length > 0 && colores.length > 0)
-        {
-            colores.forEach
-            ( color => {
-            talles.forEach( async talle => {
-
-                try{ 
-                    newProductSizeColor = await Product_Size_Color
-                .create(
-                    {
-                        size_id: talle,
-                        product_id: newProduct.id,            
-                        color_id: color,
-                        stock: req.body.stock,                           
-                    }
-                )}
-                catch(errores) { 
-                                console.log("errores create product-size-color: "+errores)
-                            }
-                }) 
-                    }        
-            ) 
-        } else { return res.send('no se puede crear un producto sin talles o colores')}
+        controller.createSizesAndColors(req.body, newProduct.id, 10);        
          
     return res.redirect('/products')},
                         
@@ -178,10 +180,20 @@ const controller = {
                 where: {id: productId}
             })
         .then(()=> {
-            return res.redirect('/products')})            
+            
+            Product_Size_Color
+            .destroy({where: {product_id: productId}, force: true}) // force: true es para asegurar que se ejecute la acción
+            .then(()=>{
+                controller.createSizesAndColors(req.body, productId, 10);  
+                return res.redirect('/products')})
+            .catch(error => res.send(error)) 
+
+            // return res.redirect('/products')
+               
+        })            
         .catch(error => res.send(error))
     },
-
+    
     destroy: (req,res) => {
        
         let productId = req.params.id;
