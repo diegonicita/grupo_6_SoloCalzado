@@ -184,7 +184,30 @@ const controller = {
     },    
 
     update: (req,res) => {   
-        res.send('Aca va el codigo para actualizar los datos');
+        let user = req.session.userLogged
+        console.log(user)
+        console.log(req.body)
+        debugger
+
+        User
+        .update(
+            {
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                born_date: req.body.bornDate,
+                email: req.body.email,
+                user: req.body.username,
+                password: user.password
+                
+            },
+            {
+                where: {id: user.id}
+            })
+        .then(()=> {
+            return res.redirect('/users/list')})            
+        .catch(error => res.send(error))
+
+        //res.send('Aca va el codigo para actualizar los datos');
     },
 
     logout: (req,res) => {

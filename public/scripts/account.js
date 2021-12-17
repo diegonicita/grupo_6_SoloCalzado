@@ -1,7 +1,7 @@
-let d = document,
-$editBtn = d.getElementsById('editBtn'),
-$saveBtn = d.getElementsById('saveBtn'),
-$editInputs = d.querySelectorAll('.editInput');
+let d = document;
+let $editBtn = document.getElementById('editBtn');
+let $saveBtn = document.getElementById('saveBtn');
+let $editInputs = document.querySelectorAll('.editInput');
 
 $editBtn.addEventListener('click', enableInputs);
 
