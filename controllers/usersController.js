@@ -1,7 +1,8 @@
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
-const { User } = require('../database/models');
+const { User, UserCategory, UserGender } = require('../database/models');
+// const UserCategory = require('../database/models/UserCategory');
 
 const controller = {
 
@@ -42,7 +43,9 @@ const controller = {
                             {                                
                                     req.session.userLogged = u;
                                     // console.log(req.session.userLogged.usercategory.dataValues.name);
-                                    req.session.levelOne = true;
+                                    console.log(req.session.userLogged.usercategory.dataValues.id);
+                                    // console.log(u.usercategory.id);
+                                    // req.session.levelOne = true;
                                     if (req.body.rememberPassword == "on")
                                     {
                                         res.clearCookie('recordarUsuario');
@@ -149,38 +152,53 @@ const controller = {
             old: req.body });
         };
     },
-    profile: (req,res) => {        
+
+    profile: async (req,res) => {        
+        let usuario = null;
+        try {
+        usuario = await controller.findUserById(req.session.userLogged.id);
+        }
+        catch(errors) {console.log(errors);}
         res.render('users/account',{
-            user: req.session.userLogged
+            user: usuario
         })
 
     },
-    list: (req,res) => {         
+    adminList: (req,res) => {         
         User.findAll(
             {   
                 attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
                 include: [{association: "usercategory"}, {association: "usergender"}]
             })
             .then( (users) => {                
-                res.render('users/list',{users: users}                
+                res.render('users/adminList',{users: users}                
             )})
             .catch(errors => console.log(errors));
     },
 
-    edit: (req,res) => {   
-
+    adminEdit: async (req,res) => {
         userId = req.params.id;
-
-            User.findByPk(userId,
-                {   
+        let user = null;
+        let categories = null;
+        let genders = null
+        try {
+            user = await User.findByPk(userId,
+              {   
                     attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
                     include: [{association: "usercategory"}, {association: "usergender"}]
-                })
-                .then( (user) => {                
-                    res.render('users/edit',{user: user}                
-                )})
-                .catch(errors => console.log(errors));
+              })
+            }
+            catch(errors) {console.log(errors)};
+        try {
+            categories = await UserCategory.findAll( {attributes: ['id', 'name']});
+            }
+            catch(errors) {console.log(errors)};
+        try {
+            genders = await UserGender.findAll( {attributes: ['id', 'name']});                        
+            }
+            catch(errors) {console.log(errors)};    
 
+        res.render('users/adminEdit',{user: user, categories, genders});                                      
     },    
 
     update: (req,res) => {   
@@ -199,20 +217,19 @@ const controller = {
                 email: req.body.email,
                 username: req.body.user,
                 password: user.password,
-                avatar: newUserImage
-                
+                avatar: newUserImage                              
             },
             {
                 where: {id: user.id}
             })
         .then(()=> {
-            return res.redirect('/users/list')})            
+            return res.redirect('/users/profile')})            
         .catch(error => res.send(error))
 
         //res.send('Aca va el codigo para actualizar los datos');
     },
 
-    updateById: async (req,res) => {   
+    adminUpdateById: async (req,res) => {   
         let userId = req.params.id;        
         // console.log(req.body);
         let newUserImage = "user-placeholder.png";
@@ -226,7 +243,9 @@ const controller = {
                 born_date: req.body.bornDate,
                 email: req.body.email,
                 username: req.body.user,                
-                avatar: newUserImage                
+                avatar: newUserImage,
+                usercategory_id: req.body.usercategory,                  
+                usergender_id: req.body.usergender
             },
             {
                 where: {id: userId}

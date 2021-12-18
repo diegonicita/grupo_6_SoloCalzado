@@ -8,6 +8,7 @@ const { userInfo } = require('os');
 
 // MIDDLEWARES
 
+const userLevelAuthMiddleware = require('../middlewares/userLevelAuthMiddleware')
 const authMiddleware = require('../middlewares/authMiddleware');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 
@@ -45,13 +46,12 @@ router.post('/login',loginValidations,controller.processLogin);
 router.get('/register', authMiddleware , controller.register);
 router.post('/register', upload.single('avatar'), registerValidations ,controller.processRegister);
 
-router.get('/profile', guestMiddleware ,controller.profile);
+router.get('/profile', guestMiddleware, controller.profile);
+router.post('/update', guestMiddleware, upload.single('avatar'), controller.update);
 
-router.get('/list', guestMiddleware, controller.list);
-router.get('/edit/:id', guestMiddleware, controller.edit);
-router.patch('/edit/:id', upload.single('avatar'), guestMiddleware, controller.updateById);
-router.post('/update', upload.single('avatar'), guestMiddleware, controller.update);
-
+router.get('/list', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.adminList);
+router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.adminEdit);
+router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('avatar'), controller.adminUpdateById);
 
 router.get('/logout', controller.logout);
 

@@ -3,7 +3,9 @@
 
 <main class="userAccount">
 
-<h2 class="register-bienvenidos">Administrador, bienvenido a a la edicion de los datos de <%= user.username %></h2>
+<h2 class="register-bienvenidos">Administrador: Edicion de usuarios </h2>
+<h3 class="register-bienvenidos"> Usuario: <%= locals.user.username %> </h3>
+<h3 class="register-bienvenidos"> Categoria: <%= user.usercategory.name %> </h3>
  
 <div class="img-container">
   <img src="/images/avatars/<%= user.avatar %>">
@@ -27,21 +29,26 @@
         <label for="bornDate">Fecha de nacimiento</label>
         <input type="date" name="bornDate" id="bornDate" value="<%= user.born_date%>"/>
       </div> 
-      
+    <div>
+     <label for="usergender"><h3>Genero</h3></label>
+            <select name="usergender" id="usergender">                
+            <% genders.forEach( g => { %>
+                <option value="<%= g.id %>" <%= (g.id == user.usergender.id) ? "selected" : "" %> >
+                    <%= g.name %>
+                </option>
+            <% }) %>
+            </select>
+      </div>            
       <div>
-        <label for="gender">Selecciona un género</label>
-        <select name="gender" id="gender">
-          <option value="Male">Masculino</option>
-          <option value="Female">Femenino</option>
-          <option value="Other">Otro</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="usercategory">Categoria de usuario </label>
-        <input type="number" name="usercategory" id="usercategory" disabled value="<%= user.usercategory_id%>"/>
-      </div>       
-
+      <label for="usercategory"><h3>Categoria</h3></label>
+            <select name="usercategory" id="usercategory">                
+            <% categories.forEach( c => { %>
+                <option value="<%= c.id %>" <%= (c.id == user.usercategory.id) ? "selected" : "" %> >
+                    <%= c.name %>
+                </option>
+            <% }) %>
+            </select>
+      </div>      
       <div>
         <label for="user">Usuario</label>
         <input type="text" name="user" id="user" disabled value='<%= locals.user.username %>' class="editInput">        
