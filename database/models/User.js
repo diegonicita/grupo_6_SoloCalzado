@@ -11,7 +11,7 @@ module.exports = (sequelize, dataTypes) => {
        password: {type: dataTypes.STRING(100), allowNull: false },
        usergender_id: {type: dataTypes.INTEGER, allowNull: false },  
        usercategory_id: {type: dataTypes.INTEGER, allowNull: false },  
-       avatar: {type: dataTypes.STRING(100), allowNull: true }
+       avatar: {type: dataTypes.STRING(300), allowNull: true }
      };
      let config = {
        tableName: 'users',

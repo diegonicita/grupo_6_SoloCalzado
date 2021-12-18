@@ -65,49 +65,6 @@ const controller = {
         })
         .catch(error => console.log(error));        
     },
-
-    reqBodyVariarableToArray: function(variable) {        
-        let arreglo = [];
-        if (Array.isArray(variable))
-        {
-            arreglo = [...variable];
-        }
-        else {
-            arreglo.push(variable);
-        }        
-        return arreglo;
-    },
-
-    createSizesAndColors: async (myReqBody, newProductId, myStock) => {
-        var newProductSizeColor = null;
-        let talles = controller.reqBodyVariarableToArray(myReqBody.size);
-        let colores = controller.reqBodyVariarableToArray(myReqBody.color);
-        if (talles.length > 0 && colores.length > 0)
-        {
-            colores.forEach
-            ( color => {
-            talles.forEach( async talle => {
-
-                try{ 
-                    newProductSizeColor = await Product_Size_Color
-                .create(
-                    {
-                        size_id: talle,
-                        product_id: newProductId,            
-                        color_id: color,
-                        stock: myStock,                           
-                    }
-                )}
-                catch(errores) { 
-                                console.log("errores create product-size-color: "+errores)
-                                }
-                }) 
-                    }        
-            ) 
-        } else { return res.send('no se puede crear un producto sin talles o colores')} 
-
-
-    },
     
     store: async (req,res) => {      
         // console.log(req.body)
@@ -203,6 +160,49 @@ const controller = {
             return res.redirect('/products')})
         .catch(error => res.send(error)) 
     },
+
+    // Funciones //
+    reqBodyVariarableToArray: function(variable) {        
+        let arreglo = [];
+        if (Array.isArray(variable))
+        {
+            arreglo = [...variable];
+        }
+        else {
+            arreglo.push(variable);
+        }        
+        return arreglo;
+    },
+
+    createSizesAndColors: async (myReqBody, newProductId) => {
+        var newProductSizeColor = null;
+        let talles = controller.reqBodyVariarableToArray(myReqBody.size);
+        let colores = controller.reqBodyVariarableToArray(myReqBody.color);
+        if (talles.length > 0 && colores.length > 0)
+        {
+            colores.forEach
+            ( color => {
+            talles.forEach( async talle => {
+
+                try{ 
+                    newProductSizeColor = await Product_Size_Color
+                .create(
+                    {
+                        size_id: talle,
+                        product_id: newProductId,            
+                        color_id: color                        
+                    }
+                )}
+                catch(errores) { 
+                                console.log("errores create product-size-color: "+errores)
+                                }
+                }) 
+                    }        
+            ) 
+        } else { return res.send('no se puede crear un producto sin talles o colores')} 
+
+
+    },    
 
     // Product Carts //
 

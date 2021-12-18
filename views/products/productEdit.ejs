@@ -7,13 +7,13 @@
         </div>
 
         <form action="/products/edit/<%= selectedProduct.id %>?_method=PATCH" method="POST" class="product-form" enctype="multipart/form-data">       
-            <label for="title">Nombre</label>
+            <label for="title"><h3>Nombre</h3></label>
             <input type="text" name="title" id="title" value="<%=selectedProduct.title%>"> 
-
-            <label for="description">Descripción</label>
+            <br>
+            <label for="description"><h3>Descripción</h3></label>
             <input type="text" name="description" id="description" value="<%=selectedProduct.description%>">
-            
-            <label for="price">Precio</label>
+            <br>
+            <label for="price"><h3>Precio</h3></label>
             <input type="text" name="price" id="price" value="<%=selectedProduct.price%>">      
             
             <!-- HARDCODEANDO START-->
@@ -38,22 +38,20 @@
             }        
             
             %>
-
+            <br>
             <h3> Talle </h3>
             <div><input type="checkbox" id="size37" name="size" value="1" <%= existeTalle[0]?"checked":""%>> <label for="size37">37</label></div>
             <div><input type="checkbox" id="size38" name="size" value="2" <%= existeTalle[1]?"checked":""%>> <label for="size38">38</label></div>
             <div><input type="checkbox" id="size39" name="size" value="3" <%= existeTalle[2]?"checked":""%>> <label for="size39">39</label></div>
+            <br>
             <h3> Color </h3>
-            <div><input type="checkbox" id="red" name="color" value="1" <%= existeColor[0]?"checked":""%>><label for="red">Rojo</label><br></div>
-            <div><input type="checkbox" id="blue" name="color" value="2" <%= existeColor[1]?"checked":""%>><label for="blue">Azul</label><br></div>
-            <div><input type="checkbox" id="green" name="color" value="3" <%= existeColor[2]?"checked":""%>><label for="green">Verde</label><br></div>
+            <div><input type="checkbox" id="red" name="color" value="1" <%= existeColor[0]?"checked":""%>> <label for="red">Rojo</label><br></div>
+            <div><input type="checkbox" id="blue" name="color" value="2" <%= existeColor[1]?"checked":""%>> <label for="blue">Azul</label><br></div>
+            <div><input type="checkbox" id="green" name="color" value="3" <%= existeColor[2]?"checked":""%>> <label for="green">Verde</label><br></div>
             
-            <!-- HARDCODEANDO END -->
-
-            <label for="stock">Stock</label>
-            <input type="number" name="stock" id="stock" value="10">
-
-            <label for="gender">Genero</label>
+            <!-- HARDCODEANDO END -->            
+            <br>
+            <label for="gender"><h3>Genero</h3></label>
             <select name="gender" id="gender">                
             <% genders.forEach( p => { %>
                 <option value="<%= p.id %>" <%= (p.id == selectedProduct.productgender.id) ? "selected" : "" %> >
@@ -61,15 +59,15 @@
                 </option>
             <% }) %>
             </select>
-
-            <label for="brand">Marca</label>
+            <br>
+            <label for="brand"><h3>Marca</h3></label>
             <select name="brand" id="brand">                
             <% brands.forEach( b => { %>
                 <option value="<%= b.id %>" <%= (b.id == selectedProduct.brand.id) ? "selected" : "" %> >
                     <%= b.name %>
                 </option>
             <% }) %>          
-
+            
             <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
         

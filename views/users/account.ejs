@@ -11,7 +11,7 @@
   
 
 <div class="register-formulario">
-    <form action="/users/update" method="POST"  class="reg-form">      
+    <form action="/users/update" method="POST"  class="reg-form" enctype="multipart/form-data">      
       <div>
         <label for="firstName">Nombre</label>
         <input type="text" name="firstName" id="firstName" disabled value="<%=user.first_name%>" class="editInput"/>       
@@ -22,7 +22,7 @@
       </div>
       <div>
         <label for="email">E-mail</label>
-        <input type="email" name="email" disabled value="<%=user.email%>"/>        
+        <input type="email" name="email" disabled value="<%=user.email%>" class="editInput"/>        
       </div>
       <div>
         <label for="date">Fecha de nacimiento</label>
@@ -39,16 +39,20 @@
 
       <div>
         <label for="user">Usuario</label>
-        <input type="text" name="user" id="user" disabled value='<%= locals.user.username %>' class="editInput">        
+        <input type="text" name="user" id="user" disabled value='<%= locals.user.username %>'>        
       </div>
       <div>
         <label for="password">Contraseña</label>
         <input type="password" name="password" id="password" disabled value="Relleno" class="editInput">        
       </div>
       
-      <p> Categoria de Usuario : <%= locals.user.usercategory.name %> </p>
-      <p> Genero de Usuario : <%= locals.user.usergender.name %> </p>
+      <!-- <p> Categoria de Usuario : <%= //locals.user.usercategory.name %> </p>
+      <p> Genero de Usuario : <%= //locals.user.usergender.name %> </p> -->
           
+      <div><label for="avatar">Selecciona tu avatar</label>
+        <input type="file" name="avatar" id="avatar">
+      </div>  
+    <div></div>
       <button type="button" id="editBtn">EDITAR</button>
       <button type="submit" id="saveBtn">GUARDAR</button>
     </form>   

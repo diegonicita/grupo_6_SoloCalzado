@@ -187,7 +187,8 @@ const controller = {
         let user = req.session.userLogged
         console.log(user)
         console.log(req.body)
-        debugger
+        let newUserImage = "user-placeholder.png";
+        if (req.file != undefined) {newUserImage = req.file.filename; }
 
         User
         .update(
@@ -196,12 +197,39 @@ const controller = {
                 last_name: req.body.lastName,
                 born_date: req.body.bornDate,
                 email: req.body.email,
-                user: req.body.username,
-                password: user.password
+                username: req.body.user,
+                password: user.password,
+                avatar: newUserImage
                 
             },
             {
                 where: {id: user.id}
+            })
+        .then(()=> {
+            return res.redirect('/users/list')})            
+        .catch(error => res.send(error))
+
+        //res.send('Aca va el codigo para actualizar los datos');
+    },
+
+    updateById: async (req,res) => {   
+        let userId = req.params.id;        
+        // console.log(req.body);
+        let newUserImage = "user-placeholder.png";
+        if (req.file != undefined) {newUserImage = req.file.filename; }
+
+        User
+        .update(
+            {                
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                born_date: req.body.bornDate,
+                email: req.body.email,
+                username: req.body.user,                
+                avatar: newUserImage                
+            },
+            {
+                where: {id: userId}
             })
         .then(()=> {
             return res.redirect('/users/list')})            

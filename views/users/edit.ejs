@@ -10,7 +10,7 @@
 </div> 
 
 <div class="register-formulario">
-    <form action="/users/update" method="POST" enctype="multipart/form-data" class="reg-form">      
+    <form action="/users/edit/<%= user.id %>?_method=PATCH" method="POST" class="reg-form" enctype="multipart/form-data">      
       <div>
         <label for="firstName">Nombre</label>
         <input type="text" name="firstName" id="firstName" value="<%=user.first_name%>"/>       
@@ -40,13 +40,20 @@
       <div>
         <label for="usercategory">Categoria de usuario </label>
         <input type="number" name="usercategory" id="usercategory" disabled value="<%= user.usercategory_id%>"/>
-      </div> 
+      </div>       
+
+      <div>
+        <label for="user">Usuario</label>
+        <input type="text" name="user" id="user" disabled value='<%= locals.user.username %>' class="editInput">        
+      </div>
+
       <div><label for="avatar">Selecciona tu avatar</label>
         <input type="file" name="avatar" id="avatar">
     </div>     
-      <div></div>
-      <div><input type="checkbox" id="change_password" name="change_password">
-      <label for="change_password"> ¿ Editar Contraseña ? </label>
+      
+
+     <!-- <div><input type="checkbox" id="change_password" name="change_password">
+       <label for="change_password"> ¿ Editar Contraseña ? </label>
     </div>
       <div></div>
       <div>              
@@ -57,8 +64,8 @@
       <div>
         <label for="repassword">Repite tu Password</label>
         <input display="display: block" type="password" name="repassword" id="repassword" value=""/>       
-      </div>
-      <button class="register" type="submit">CREAR</button>
+      </div> -->
+      <button class="register" type="submit">EDITAR</button>
       
     </form>   
 

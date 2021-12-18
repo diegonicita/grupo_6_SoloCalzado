@@ -6,7 +6,7 @@ module.exports = (sequelize, dataTypes) => {
        size_id: { type: dataTypes.INTEGER, allowNull: false},        
        product_id: { type: dataTypes.INTEGER, allowNull: false}, 
        color_id:{type: dataTypes.INTEGER, allowNull: false},
-       stock: { type: dataTypes.INTEGER, allowNull: false},  
+      //  stock: { type: dataTypes.INTEGER, allowNull: false},  
      };
      let config = {
        tableName: 'product_size_color',

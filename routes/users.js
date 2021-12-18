@@ -49,7 +49,9 @@ router.get('/profile', guestMiddleware ,controller.profile);
 
 router.get('/list', guestMiddleware, controller.list);
 router.get('/edit/:id', guestMiddleware, controller.edit);
-router.post('/update', guestMiddleware, controller.update);
+router.patch('/edit/:id', upload.single('avatar'), guestMiddleware, controller.updateById);
+router.post('/update', upload.single('avatar'), guestMiddleware, controller.update);
+
 
 router.get('/logout', controller.logout);
 
