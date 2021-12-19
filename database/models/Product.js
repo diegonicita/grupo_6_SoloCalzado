@@ -44,13 +44,12 @@ module.exports = (sequelize, dataTypes) => {
         otherKey: "size_id",
         timestamps: false       
       })
-
+      
       Model.hasMany(models.Product_Size_Color, {
         as: "productsizecolors",
         foreignKey: "product_id",
         timestamps: false
       })
-
     }
     
     return Model;
