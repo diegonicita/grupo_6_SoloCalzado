@@ -44,6 +44,7 @@ module.exports = (sequelize, dataTypes) => {
         otherKey: "size_id",
         timestamps: false       
       })
+
     }
     
     return Model;

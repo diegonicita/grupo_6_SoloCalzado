@@ -39,11 +39,15 @@ const controller = {
         .findByPk(req.params.id,
             {   
                  attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
+                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}, {
+                    model: 'product_size_color', 
+                    attributes: ['stock']
+                   
+                }]
             })
         .then( p => {   
             if (p != null) {                  
-                    //console.log(p.dataValues.colors[0].dataValues);
+                    console.log(p.dataValues);
                     res.render("products/productDetail", {producto: p.dataValues, tab });
             } else {
                 res.send("El producto que quieres ver no fue encontrado!");
@@ -89,7 +93,7 @@ const controller = {
                         console.log("errores create product: "+errores)
                     }      
 
-        controller.createSizesAndColors(req.body, newProduct.id, 10);        
+        controller.createSizesAndColors(req.body, newProduct.id, 0);        
          
     return res.redirect('/products')},
                         
@@ -190,7 +194,8 @@ const controller = {
                     {
                         size_id: talle,
                         product_id: newProductId,            
-                        color_id: color                        
+                        color_id: color,
+                        //stock:                         
                     }
                 )}
                 catch(errores) { 
