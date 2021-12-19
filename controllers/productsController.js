@@ -8,7 +8,7 @@ const controller = {
     index: (req,res) => { 
         var objecto = {};
         objecto.attributes = ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'];
-        objecto.include = [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}];
+        objecto.include = [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}, {association: "productsizecolors", require: false},];
         
         if (req.query.brand)
             objecto.where = { brand_id: req.query.brand } 
