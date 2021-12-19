@@ -1,16 +1,16 @@
-//RETROSPECTIVA SPRINT 5
+//RETROSPECTIVA SPRINT 6
 
 1. Comenzar a hacer
-Creemos que para el proximo sprint podriamos dividir las tareas de diferente manera en vez de meter todos la mano en el codigo como venimos haciendo.
+Dejar de pensar que tenemos demasiado tiempo ya que pueden surgir problemas que nos detengan y nos hagan tardar mas de lo debido.
 
 2. Hacer más
-En cuanto a "hacer mas" creemos que siempre se puede hacer mas, por mas que las consignas del sprint no lo pidan pero nos gusta ver como podemos ir agregandole cosas al proyecto e ir viendo como funcionan.
+Seguimos en la postura de creer que es mejor hacer mas,agregar mas funcionalidad de la que pide un sprint, ya que son mas desafios y mas cosas por  aprender y ver como funcionan. Aunque nos hagan perder tiempo,creemos que hacen mas a la pagina en si y ayudan mucho mas a tener un proyecto bueno.
 
 3. Continuar haciendo
-En este sprint volvemos a creer que la actividad grupal que tenemos es muy buena por eso el seguir como estamos en este aspecto nos parece clave para seguir progresando.
+El dialogo grupal creemos que es bueno y es algo a seguir manteniendo.
 
 4. Hacer menos
-Al igual que en la pregunta anterior,y tambien que en el sprint anterior, no nos parece que haya que hacer algo menos. Por el contrario seguimos insistiendo que entre mas hagamos va a ser mejor
+Al igual que en el sprint anterior, no nos parece que haya que hacer algo menos. Por el contrario seguimos insistiendo que entre mas hagamos va a ser mejor
 
 5. Dejar de hacer
-No hay nada por dejar de hacer ya que sentimos que trabnajamos bien grupalmente y a nivel proyecto creemos que estamos bien
+No hay nada por dejar de hacer ya que sentimos que trabajamos bien grupalmente y a nivel proyecto creemos que estamos bien
