@@ -39,11 +39,7 @@ const controller = {
         .findByPk(req.params.id,
             {   
                  attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}, {
-                    model: 'product_size_color', 
-                    attributes: ['stock']
-                   
-                }]
+                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
             })
         .then( p => {   
             if (p != null) {                  

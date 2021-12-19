@@ -22,10 +22,10 @@ module.exports = (sequelize, dataTypes) => {
           timestamps : false
       })
 
-      Model.belongsTo(models.Product_Size_Color, {
-        as: "product_size_color",
-        foreignKey: 'id'
-    })
+    //   Model.belongsTo(models.Product_Size_Color, {
+    //     as: "product_size_color",
+    //     foreignKey: 'id'
+    // })
   }
     
     return Model;
