@@ -47,10 +47,12 @@
                         <a class="detalle-descripcion-titulo-gris" href="/products/<%= producto.id %>/1"><li>Descripción</li></a>
                         <a class="detalle-talles-titulo" href="/products/<%= producto.id %>/2"><li>Talles</li></a>    
                         <div class="detalle-descripcion-container"> 
-                            
-                            <% for (let i=0; i < producto.sizes.length; i++)
+                                                      
+                            <% for (let i=0; i < producto.productsizecolors.length ; i++)
                             { %>
-                            <div class="detalle-descripcion">Talle Nº <%= i+1 %> : <%= producto.sizes[i].num %></div>                    
+                            <div class="detalle-descripcion">Talle <%= sizes[producto.productsizecolors[i].size_id-1].num %></div>
+                            <div class="detalle-descripcion">Color <%= colors[producto.productsizecolors[i].color_id-1].name %></div>     
+                            <div class="detalle-descripcion">Stock <%= producto.productsizecolors[i].stock %></div>        
                             <% } %>
 
                         </div>               

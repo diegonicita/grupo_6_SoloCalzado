@@ -6,25 +6,25 @@ const Op = Sequelize.Op;
 
 const controller = {   
     index: (req,res) => { 
-        var objecto = {};
-        objecto.attributes = ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'];
-        objecto.include = [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}, {association: "productsizecolors", require: false},];
+        var object = {};
+        object.attributes = ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'];
+        object.include = [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}];
         
         if (req.query.brand)
-            objecto.where = { brand_id: req.query.brand } 
+            object.where = { brand_id: req.query.brand } 
         if (req.query.gender)
-            objecto.where = { productgender_id: req.query.gender }
+            object.where = { productgender_id: req.query.gender }
         
         if (req.query.search)
         {
-        objecto.where = {
+        object.where = {
                         title: {
                                 [Op.like]: '%'+ req.query.search + '%'
                              }
                         }
         }
 
-        Product.findAll( objecto )
+        Product.findAll( object )
               .then(                   
                     p => { 
                     //console.log(p[0].image);                   
@@ -35,22 +35,24 @@ const controller = {
 
     productDetail: (req, res) => { 
         if (req.params.tab) tab = req.params.tab;
-        Product
-        .findByPk(req.params.id,
-            {   
-                 attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
-                 include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
-            })
-        .then( p => {   
-            if (p != null) {                  
-                    console.log(p.dataValues);
-                    res.render("products/productDetail", {producto: p.dataValues, tab });
-            } else {
-                res.send("El producto que quieres ver no fue encontrado!");
+        let promesa1 = Color.findAll()
+        let promesa2 = Size.findAll()
+        let promesa3 = Product.findByPk(req.params.id,
+        {   
+             attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
+             include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"},{association: "productsizecolors", require: false}]
+        }) 
+        Promise.all([promesa1, promesa2, promesa3])
+        .then(([colors,sizes,p]) => {
+            if (p != null) {               
+            return res.render('products/productDetail', { producto: p.dataValues, colors, sizes });
+            } else 
+            {
+            return res.send('El producto que quiere visualizar no fue encontrado!')
             }
-                    })
-        .catch(error => res.send(error));
-    },    
+                                        })
+        .catch(error => {console.log("error:" + error)}); 
+        },    
     
     create: (req, res) => {
         Brand
@@ -89,7 +91,7 @@ const controller = {
                         console.log("errores create product: "+errores)
                     }      
 
-        controller.createSizesAndColors(req.body, newProduct.id, 0);        
+        controller.createSizesAndColors(req.body, newProduct.id, 10);        
          
     return res.redirect('/products')},
                         
@@ -174,7 +176,7 @@ const controller = {
         return arreglo;
     },
 
-    createSizesAndColors: async (myReqBody, newProductId) => {
+    createSizesAndColors: async (myReqBody, newProductId,stock) => {
         var newProductSizeColor = null;
         let talles = controller.reqBodyVariarableToArray(myReqBody.size);
         let colores = controller.reqBodyVariarableToArray(myReqBody.color);
@@ -191,7 +193,7 @@ const controller = {
                         size_id: talle,
                         product_id: newProductId,            
                         color_id: color,
-                        //stock:                         
+                        stock: stock                        
                     }
                 )}
                 catch(errores) { 
