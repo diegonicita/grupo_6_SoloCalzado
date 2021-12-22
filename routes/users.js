@@ -32,12 +32,26 @@ const loginValidations = [
 	body('password').notEmpty().withMessage('Debes completar el campo')
 ];
 const registerValidations = [
-    body('firstName').notEmpty().withMessage('Debes completar el campo'),
-    body('lastName').notEmpty().withMessage('Debes completar el campo'),
-    body('email').notEmpty().isEmail().withMessage('Debes completar el campo'),
+    body('firstName')
+        .notEmpty().withMessage('Debes completar el campo')
+        .isLength({min:2,max:undefined}).withMessage('El nombre debe contener al menos 2 letras'),
+    body('lastName').
+        notEmpty().withMessage('Debes completar el campo')
+        .isLength({min:2,max:undefined}).withMessage('El apellido debe contener al menos 2 letras'),
+    body('email')
+        .notEmpty().withMessage('Debes completar el campo')
+        .isEmail().withMessage('Debes ingresar un formato de email válido'),
     body('user').notEmpty().withMessage('Debes completar el campo'),
-    body('password').notEmpty().withMessage('Debes completar el campo')
-];
+    body('password')
+        .notEmpty().withMessage('Debes completar el campo')
+        .isLength({min:8,max:16}).withMessage('La contraseña debe contener entre 8 y 20 caracteres'),
+    body('avatar')
+        .custom(file=>{
+            let fileType = path.extname(file);
+            if (fileType != '.png' || fileType != '.jpg' || fileType != '.jpeg' || fileType != '.gif' ){
+                throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
+            }
+        })
 
 // rutas para el login y el register
 router.get('/login', authMiddleware ,controller.login);
