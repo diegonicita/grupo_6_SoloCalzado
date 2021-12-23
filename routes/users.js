@@ -52,7 +52,7 @@ const registerValidations = [
                 throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
             }
         })
-
+]
 // rutas para el login y el register
 router.get('/login', authMiddleware ,controller.login);
 router.post('/login',loginValidations,controller.processLogin);
