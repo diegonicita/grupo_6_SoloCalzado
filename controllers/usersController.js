@@ -26,8 +26,8 @@ const controller = {
         res.render('users/login');
     },
     processLogin: (req,res) => {
-        let errors = validationResult(req);	
-        let nombre = req.body.usuario.trim();        
+        let errors = validationResult(req);
+        let nombre = req.body.usuario.trim();  
         
         if (errors.isEmpty()) {
             User.findOne(
@@ -67,8 +67,10 @@ const controller = {
     
                 }
                 else { 
-                    // console.log("errores de validacion");
-                    res.redirect('/users/login');                                         
+                    
+                    res.render('users/login',{
+                        errors:errors.mapped(),
+                        old: req.body });                                         
                 }
     },
 
@@ -106,13 +108,13 @@ const controller = {
             catch(err) { console.log('error: ', err);}
 
         if (user_con_email_existente != null  || user_con_username_existente != null)
-           {
-               let errores = { email: {msg : ""}, user: {msg : ""}};               
-               if (user_con_email_existente != null) {errores.email.msg = "email existente"}
-               if (user_con_username_existente != null) {errores.user.msg = "usuario existente"}
-               return res.render('users/register', {errors: errores, old: req.body });
+        {
+            let errores = { email: {msg : ""}, user: {msg : ""}};             
+            if (user_con_email_existente != null) {errores.email.msg = "Email existente"}
+            if (user_con_username_existente != null) {errores.user.msg = "Usuario existente"}
+            return res.render('users/register', {errors: errores, old: req.body });
             }
-       
+
         req.body.password = bcrypt.hashSync(req.body.password,10);
         let newUser = {            
             ...req.body            
@@ -147,6 +149,7 @@ const controller = {
         } catch(err) { console.log('error: ', err);}        
         
     } else {
+        console.log(errors)
         res.render('users/register',{
             errors:errors.mapped(),
             old: req.body });

@@ -47,7 +47,7 @@ const registerValidations = [
         .isLength({min:8,max:16}).withMessage('La contraseña debe contener entre 8 y 20 caracteres'),
     body('avatar')
         .custom(file=>{
-            let fileType = path.extname(file);
+            let fileType = path.extname(file.originalname);
             if (fileType != '.png' || fileType != '.jpg' || fileType != '.jpeg' || fileType != '.gif' ){
                 throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
             }
