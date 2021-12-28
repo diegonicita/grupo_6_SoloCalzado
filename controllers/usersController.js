@@ -82,7 +82,6 @@ const controller = {
 
         const userEmail = req.body.email;
         const userName = req.body.user;
-        console.log(req.body);
 
         let user_con_email_existente = null;
         let user_con_username_existente = null;
@@ -149,7 +148,6 @@ const controller = {
         } catch(err) { console.log('error: ', err);}        
         
     } else {
-        console.log(errors)
         res.render('users/register',{
             errors:errors.mapped(),
             old: req.body });
@@ -206,12 +204,12 @@ const controller = {
 
     update: (req,res) => {   
         let user = req.session.userLogged
-        console.log(user)
-        console.log(req.body)
         let newUserImage = "user-placeholder.png";
         if (req.file != undefined) {newUserImage = req.file.filename; }
-
-        User
+        let errors = validationResult(req);	    
+        if (errors.isEmpty())
+        {
+            User
         .update(
             {
                 first_name: req.body.firstName,
@@ -229,6 +227,15 @@ const controller = {
             return res.redirect('/users/profile')})            
         .catch(error => res.send(error))
 
+        } 
+        else {
+            res.render('users/account',{
+                errors:errors.mapped(),
+                old: req.body,
+                user }
+                );
+        } 
+        
         //res.send('Aca va el codigo para actualizar los datos');
     },
 

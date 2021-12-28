@@ -9,15 +9,29 @@
         <form action="/products" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title">
-            
+            <% if (locals.errors && errors.title) { %>
+                
+                <p class="error-msg"><%= errors.title.msg %></p>      
+                
+            <% } %> 
             <!-- <label for="brand">Marca</label>
             <input type="text" name="brand" id="brand"> -->
 
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description">
-            
+            <% if (locals.errors && errors.description) { %>
+                
+                <p class="error-msg"><%= errors.description.msg %></p>      
+                
+            <% } %> 
+
             <label for="price">Precio</label>
             <input type="text" name="price" id="price">
+            <% if (locals.errors && errors.price) { %>
+                
+                <p class="error-msg"><%= errors.price.msg %></p>      
+                
+            <% } %> 
             
             <h3> Talle </h3>
             <div><input type="checkbox" id="size37" name="size" value="1"> <label for="size37">37</label></div>
@@ -65,6 +79,11 @@
 
             <label for="images">Imágenes</label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
+            <% if (locals.errors && errors.images) { %>
+                
+                <p class="error-msg"><%= errors.images.msg %></p>      
+                
+            <% } %> 
 
             <button type="submit">CREAR</button>
          </form>

@@ -50,6 +50,11 @@
           
       <div><label for="avatar">Selecciona tu avatar</label>
         <input type="file" name="avatar" id="avatar">
+        <% if (locals.errors && errors.avatar) { %>
+                  
+          <p class="error-msg"><%= errors.avatar.msg %></p>      
+          
+        <% } %> 
       </div>  
     <div></div>
       <button type="button" id="editBtn">EDITAR</button>

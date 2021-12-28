@@ -53,6 +53,15 @@ const registerValidations = [
             }
         })
 ]
+const updateUserValidations = [
+    body('avatar')
+        .custom(file=>{
+            let fileType = path.extname(file.originalname);
+            if (fileType != '.png' || fileType != '.jpg' || fileType != '.jpeg' || fileType != '.gif' ){
+                throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
+            }
+        })
+]
 // rutas para el login y el register
 router.get('/login', authMiddleware ,controller.login);
 router.post('/login',loginValidations,controller.processLogin);
@@ -61,7 +70,7 @@ router.get('/register', authMiddleware , controller.register);
 router.post('/register', upload.single('avatar'), registerValidations ,controller.processRegister);
 
 router.get('/profile', guestMiddleware, controller.profile);
-router.post('/update', guestMiddleware, upload.single('avatar'), controller.update);
+router.post('/update', guestMiddleware, upload.single('avatar'), updateUserValidations , controller.update);
 
 router.get('/list', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.adminList);
 router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.adminEdit);

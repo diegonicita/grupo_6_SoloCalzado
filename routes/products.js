@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const controller = require('../controllers/productsController');
+const {body} = require('express-validator');
 const fs = require('fs');
 const path = require('path');
 const guestMiddleware = require('../middlewares/guestMiddleware');
@@ -23,6 +24,27 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
+// Validaciones
+
+const productValidation = [
+    body('title')
+        .notEmpty().withMessage('Debes completar el campo')
+        .isLength({min:5,max:undefined}).withMessage('El titulo debe contener al menos 5 caracteres'),
+    body('description').
+        notEmpty().withMessage('Debes completar el campo')
+        .isLength({min:20,max:undefined}).withMessage('La descripción debe contener al menos 20 caracteres'),
+    body('price').
+        notEmpty().withMessage('Debes completar el campo')
+        .isNumeric({no_symbols: true}).withMessage('El precio debe ser numérico'),
+    body('images').
+        custom(file=>{
+            let fileType = path.extname(file.originalname);
+            if (fileType != '.png' || fileType != '.jpg' || fileType != '.jpeg' || fileType != '.gif' ){
+                throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
+            }
+    })
+];
+
 // Ruta para index de productos ( TODOS LOS PRODUCTOS )
 router.get('/', controller.index);
 
@@ -34,10 +56,10 @@ router.post('/productCartDeleteItem', controller.productCartDeleteItem)
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 
 router.get('/create', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.create);
-router.post('/', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), controller.store);
+router.post('/', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), productValidation, controller.store);
 
 router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.edit);
-router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), controller.update);
+router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), productValidation , controller.update);
 
 // Ruta para mostrar los detalles de un producto
 // Parametro ":id" puede tomar el valor 1 o 2

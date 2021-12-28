@@ -3,6 +3,7 @@ const db = require('../database/models');
 const { Product, Brand, ProductGender, Product_Size_Color, Color, Size} = require('../database/models');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const { validationResult } = require('express-validator');
 
 const controller = {   
     index: (req,res) => { 
@@ -69,8 +70,9 @@ const controller = {
     },
     
     store: async (req,res) => {      
-        // console.log(req.body)
-        let newProductImage = "default-image.png";
+        let errors = validationResult(req);
+        if (errors.isEmpty()){
+            let newProductImage = "default-image.png";
         if (req.file != undefined) {newProductImage = req.file.filename; }
         
         var newProduct = null;
@@ -93,10 +95,24 @@ const controller = {
 
         controller.createSizesAndColors(req.body, newProduct.id, 10);        
          
-    return res.redirect('/products')},
-                        
+    return res.redirect('/products')
+    } else {
+        Brand
+        .findAll()
+        .then(brands => {
+            ProductGender
+                .findAll()
+                .then(genders => {
+                    return res.render('products/productCreate', { errors:errors.mapped(),
+                        old: req.body, brands, genders });
+                })
+                .catch(error => console.log(error));
+            })
+    }
+},
 
     edit: (req, res) => {
+        
         let id = req.params.id;
         let promesa1 = Product.findByPk(id, 
             {                              
@@ -117,10 +133,12 @@ const controller = {
             }
                                         })
         .catch(error => {console.log("error:" + error)});        
+
     },
 
-    update: (req,res) => {        
-
+    update: (req,res) => {      
+        let errors = validationResult(req);  
+        if (errors.isEmpty()){
         let productId = req.params.id;
         let newProductImage = "default-image.png";
         if (req.file != undefined) {newProductImage = req.file.filename; }
@@ -151,6 +169,23 @@ const controller = {
                
         })            
         .catch(error => res.send(error))
+    } else {
+        let id = req.params.id;
+        let promesa1 = Product.findByPk(id, 
+            {                              
+                attributes: ['id', 'title', 'description', 'price', 'image', 'brand_id', 'productgender_id'],
+                include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"}]
+            });
+        let promesa2 = Brand.findAll();
+        let promesa3 = ProductGender.findAll();   
+        let promesa4 = Color.findAll();
+        let promesa5 = Size.findAll();     
+        Promise.all([promesa1, promesa2, promesa3, promesa4, promesa5])
+        .then(([p, brands, genders, colors, sizes]) => {               
+            return res.render('products/productEdit', { selectedProduct: p.dataValues, brands, genders, colors, sizes , errors:errors.mapped(),
+                old: req.body });
+        })
+    }
     },
     
     destroy: (req,res) => {

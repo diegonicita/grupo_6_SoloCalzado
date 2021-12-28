@@ -9,13 +9,27 @@
         <form action="/products/edit/<%= selectedProduct.id %>?_method=PATCH" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title"><h3>Nombre</h3></label>
             <input type="text" name="title" id="title" value="<%=selectedProduct.title%>"> 
+            <% if (locals.errors && errors.title) { %>
+                
+                <p class="error-msg"><%= errors.title.msg %></p>      
+                
+            <% } %> 
             <br>
             <label for="description"><h3>Descripción</h3></label>
             <input type="text" name="description" id="description" value="<%=selectedProduct.description%>">
+            <% if (locals.errors && errors.description) { %>
+                
+                <p class="error-msg"><%= errors.description.msg %></p>      
+                
+            <% } %> 
             <br>
             <label for="price"><h3>Precio</h3></label>
             <input type="text" name="price" id="price" value="<%=selectedProduct.price%>">      
-            
+            <% if (locals.errors && errors.price) { %>
+                
+                <p class="error-msg"><%= errors.price.msg %></p>      
+                
+            <% } %> 
             <!-- HARDCODEANDO START-->
 
             <% let talles = [37, 38, 39]; 
@@ -70,7 +84,12 @@
             
             <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
-        
+            <% if (locals.errors && errors.images) { %>
+                
+                <p class="error-msg"><%= errors.images.msg %></p>      
+                
+            <% } %>     
+
             <button type="submit">EDITAR</button>
          </form>
 
