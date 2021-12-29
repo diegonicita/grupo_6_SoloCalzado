@@ -15,6 +15,13 @@ a {
   color: black;
 }
 
+.error{
+  border: 2px solid red;
+}
+.success{
+  border: 2px solid lightgreen;
+}
+
 /* HEADER */
 
 .common-header-up {
