@@ -11,39 +11,39 @@
           
           <div>
             <label for="firstName">Nombre</label>
-            <input type="text" name="firstName" id="firstName" 
+            <input type="text" name="firstName" id="firstName" autofocus
             value="<%= !!locals.old&&!!old.firstName?(old.firstName):''%>"
             />
-            <div class="errorMsg"></div>
             <% if (locals.errors && errors.firstName) { %>
-                  
+              
               <p class="error-msg"><%= errors.firstName.msg %></p>      
               
-            <% } %> 
+              <% } %> 
+              <div class="errorMsg"></div>
           </div>
           <div>
             <label for="lastName">Apellido</label>
             <input type="text" name="lastName" id="lastName" 
             value="<%= !!locals.old&&!!old.lastName?(old.lastName):''%>"
             />
-            <div class="errorMsg"></div>
             <% if (locals.errors && errors.lastName) { %>
-                  
+              
               <p class="error-msg"><%= errors.lastName.msg %></p>      
               
-            <% } %> 
+              <% } %> 
+              <div class="errorMsg"></div>
           </div>
           <div>
             <label for="email">E-mail</label>
             <input type="email" name="email" id="regEmail"
             value="<%= !!locals.old&&!!old.email?(old.email):''%>"
             />
-            <div class="errorMsg"></div>
             <% if (locals.errors && errors.email) { %>
-                  
+              
               <p class="error-msg"><%= errors.email.msg %></p>      
               
-            <% } %> 
+              <% } %> 
+              <div class="errorMsg"></div>
           </div>
 
           <div>
@@ -68,35 +68,36 @@
             <input type="text" name="user" id="user"
             value="<%= !!locals.old&&!!old.user?(old.user):''%>"
             />
-            <div class="errorMsg"></div>
             <% if (locals.errors && errors.user) { %>
-                  
+              
               <p class="error-msg"><%= errors.user.msg %></p>      
               
-            <% } %> 
-          </div>
+              <% } %> 
+              <div class="errorMsg"></div>
+            </div>
           <div>
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password"
   
             />
-            <div class="errorMsg"></div>
             <% if (locals.errors && errors.password) { %>
-                  
+              
               <p class="error-msg"><%= errors.password.msg %></p>      
               
-            <% } %> 
+              <% } %> 
+              <div class="errorMsg"></div>
           </div>
 
           <div>
             <label for="avatar">Selecciona tu avatar</label>
             <input type="file" name="avatar" id="avatar">
-            <div class="errorMsg"></div>
+           
             <% if (locals.errors && errors.avatar) { %>
                   
               <p class="error-msg"><%= errors.avatar.msg %></p>      
               
             <% } %> 
+            <div class="errorMsg"></div>
           </div>
 
           <!-- <div>
