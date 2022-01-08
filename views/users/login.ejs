@@ -10,34 +10,36 @@
             <div class="usuario">
                 <label for="usuario">Usuario</label>
                 <input type="text" name="usuario" id="usuario" value="<%= locals.old && old.usuario ? old.usuario : '' %> ">
+                <% if (locals.errors && errors.usuario) { %>
+                    
+                    <p class="error-msg"><%= errors.usuario.msg %></p>      
+                    
+                <% } %> 
+                <div class="errorMsg"></div>
             </div>
-            <% if (locals.errors && errors.usuario) { %>
-                
-                <p class="error-msg"><%= errors.usuario.msg %></p>      
-                
-            <% } %> 
             <div class="password">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password">
+                <% if (locals.errors && errors.password) { %>
+                    
+                    <p class="error-msg"><%= errors.password.msg %></p>      
+                    
+                <% } %> 
+                <div class="errorMsg"></div>
             </div> 
-            <% if (locals.errors && errors.password) { %>
-                
-                <p class="error-msg"><%= errors.password.msg %></p>      
-                
-            <% } %> 
             <div class="rememberPassword">
                     <label for="rememberPassword">Recordar contraseña</label>
                     <input type="checkbox" name="rememberPassword" id="rememberPassword">
             </div> 
             <div class="login">
                 <button type="submit">INGRESAR</button>
-             </div>
-             <span class="separador-login">o</span>
-             <div class="login">
+            </div>
+            <span class="separador-login">o</span>
+            <div class="login">
                 <a href="/users/register">CREA TU CUENTA</a>
             </div>
 
-         </form>
+        </form>
 
     </main>
 
