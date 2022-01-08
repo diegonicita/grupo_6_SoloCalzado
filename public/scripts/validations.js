@@ -1,22 +1,57 @@
 //REGISTER VALIDATION
+
 let $regForm = d.getElementsByClassName('reg-form')[0],
-inputs = $regForm.querySelectorAll('input'),
 $firstName = d.getElementById('firstName'),
 $lastName = d.getElementById('lastName') ,
 $user = d.getElementById('user'),
-$password = d.getElementById('regEmail'),
+$password = d.getElementById('password'),
+$email = d.getElementById('regEmail'),
 $avatar = d.getElementById('avatar'),
-inputsArray = [$firstName,$lastName,$user,$password,$avatar];
+regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 
-
+// CHECK FIELD FUNCTION
 const checkField = (input) => {   
     if (input.value.trim() == ''){
         setError(input,'Debes completar el campo')
     } else {
         setSuccess(input)
     }
+    if (input == $firstName || input == $lastName){
+        if (input.value.trim().length >= 2){
+            setSuccess(input);
+        }
+        else {
+            setError(input,'Debes ingresar al menos 2 caracteres');
+        }
+    }
+    if (input == $email){
+        let emailValidator = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(emailValidator.test(input.value.trim())){
+            setSuccess(input)
+        } else {
+            setError(input,'Debes ingresar un mail válido')
+        }
+    }
+    if (input == $password){
+        let strongPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+        if (input.value.trim().length >= 8){
+            if (strongPassword.test(input.value.trim())) {
+                setSuccess(input);
+            } else {
+                setError(input,'Debes incluir una letra mayúscula, minúscula y un número');
+            };
+        }
+        else {
+            setError(input,'Debes ingresar al menos 8 caracteres');
+        };
+    } 
+    if (input == $avatar){
+        debugger
+        console.log(input)
+    }
 }
 
+// ERROR & SUCCESS
 const setError = (field, message) => {
     const inputControl = field.parentElement;
     const errorDisplay = inputControl.querySelector('.errorMsg');
@@ -35,13 +70,35 @@ const setSuccess = field => {
     field.classList.remove('error');
 };
 
-inputs.forEach(input => {
+// IMPLEMENTATION
+
+regInputs.forEach(input => {
     input.addEventListener('blur', ()=>{
     checkField(input)});  
 })
 
+//LOGIN VALIDATION
 
+// let $logForm = d.getElementsByClassName('login-form')[0],
+// logInputs = $logForm.querySelectorAll('input'),
+// $user = d.getElementById('usuario'),
+// $password = d.getElementById('password');
 
-//REGISTER VALIDATION
+// inputs.forEach(input => {
+//     input.addEventListener('blur', ()=>{
+//     checkField(input)});  
+// })
+// let $logForm = d.getElementsByClassName('login-form')[0],
+// inputs = $logForm.querySelectorAll('input'),
+// $user = d.getElementById('usuario'),
+// $password = d.getElementById('password');
+
+// const checkField = (input) => {   
+//     if (input.value.trim() == ''){
+//         setError(input,'Debes completar el campo')
+//     } else {
+//         setSuccess(input)
+//     }
+// }
 
 //CRUD VALIDATION
