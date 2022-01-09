@@ -1,10 +1,10 @@
-//RETROSPECTIVA SPRINT 6
+//RETROSPECTIVA SPRINT 7
 
 1. Comenzar a hacer
-Dejar de pensar que tenemos demasiado tiempo ya que pueden surgir problemas que nos detengan y nos hagan tardar mas de lo debido.
+Ya luego de varios sprints creemos haber encontrado la forma de trabajar grupalmente. Seguimos con algunos problemas de tiempos pero en este sprint se deberieron a que se nos juntó con las fechas de las fiestas de fin de año y demas. 
 
 2. Hacer más
-Seguimos en la postura de creer que es mejor hacer mas,agregar mas funcionalidad de la que pide un sprint, ya que son mas desafios y mas cosas por  aprender y ver como funcionan. Aunque nos hagan perder tiempo,creemos que hacen mas a la pagina en si y ayudan mucho mas a tener un proyecto bueno.
+Siempre hay que hacer mas cosas en cuanto al proyecto,tambien pensamos que meterle mano al codigo de manera grupal mediante discord y compartiendo pantalla es la mejor manera y/o la mas rapida porque cuando alguno se traba con alguna parte ahi esta el otro compañero para poder ayudarlo
 
 3. Continuar haciendo
 El dialogo grupal creemos que es bueno y es algo a seguir manteniendo.
