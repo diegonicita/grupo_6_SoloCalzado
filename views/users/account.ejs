@@ -12,20 +12,29 @@
 <div class="register-formulario">
     <form action="/users/update" method="POST"  class="reg-form" enctype="multipart/form-data">      
       <div>
-        <label for="firstName">Nombre</label>
-        <input type="text" name="firstName" id="firstName" disabled value="<%=user.first_name%>" class="editInput"/>       
+        <label for="firstName">Nombre</label>        
+        <input type="text" name="firstName" id="firstName" disabled value="<%=(locals.old && old.firstName)?old.firstName:user.first_name%>" class="editInput"/>    
+         <% if (locals.errors && errors.firstName) { %>                  
+          <p class="error-msg"><%= errors.firstName.msg %></p> 
+        <% } %>    
       </div>
       <div>
         <label for="lastName">Apellido</label>
-        <input type="text" name="lastName" id="lastName" disabled  value="<%=user.last_name%>" class="editInput"/>       
+        <input type="text" name="lastName" id="lastName" disabled  value="<%=(locals.old && old.lastName)?old.lastName:user.last_name%>" class="editInput"/>       
+        <% if (locals.errors && errors.lastName) { %>                  
+          <p class="error-msg"><%= errors.lastName.msg %></p> 
+        <% } %> 
       </div>
       <div>
         <label for="email">E-mail</label>
-        <input type="email" name="email" disabled value="<%=user.email%>" class="editInput"/>        
+        <input type="email" name="email" disabled value="<%=(locals.old && old.email)?old.email:user.email%>" class="editInput"/>        
+        <% if (locals.errors && errors.email) { %>                  
+          <p class="error-msg"><%= errors.email.msg %></p> 
+        <% } %> 
       </div>
       <div>
         <label for="date">Fecha de nacimiento</label>
-        <input type="date" name="bornDate" id="date" disabled value="<%=user.born_date%>" class="editInput"/>
+        <input type="date" name="bornDate" id="date" disabled value="<%=(locals.old && old.bornDate)?old.bornDate:user.born_date%>" class="editInput"/>
       </div>      
       <!-- <div>
         <label for="gender">Género</label>
@@ -49,7 +58,7 @@
       <p> Genero de Usuario : <%= //locals.user.usergender.name %> </p> -->
           
       <div><label for="avatar">Selecciona tu avatar</label>
-        <input type="file" name="avatar" id="avatar">
+        <input type="file" name="avatar" id="avatar" disabled>
         <% if (locals.errors && errors.avatar) { %>
                   
           <p class="error-msg"><%= errors.avatar.msg %></p>      

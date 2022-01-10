@@ -202,8 +202,13 @@ const controller = {
         res.render('users/adminEdit',{user: user, categories, genders});                                      
     },    
 
-    update: (req,res) => {   
-        let user = req.session.userLogged
+    update: async (req,res) => {
+        
+        let user = null;
+        try {
+        user = await controller.findUserById(req.session.userLogged.id);
+        }
+        catch(errors) {console.log(errors);}        
         let newUserImage = "user-placeholder.png";
         if (req.file != undefined) {newUserImage = req.file.filename; }
         let errors = validationResult(req);	    
@@ -224,6 +229,12 @@ const controller = {
                 where: {id: user.id}
             })
         .then(()=> {
+            req.session.userLogged.firstName = req.body.firstName;
+            req.session.userLogged.lastName = req.body.lastName;
+            req.session.userLogged.bornDate = req.body.bornDate;
+            req.session.userLogged.email = req.body.email;
+            req.session.userLogged.avatar = newUserImage;
+            req.session.userLogged.password = req.body.password;
             return res.redirect('/users/profile')})            
         .catch(error => res.send(error))
 

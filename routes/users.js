@@ -71,7 +71,22 @@ const registerValidations = [
   }),
 ];
 
-const updateUserValidations = [
+const updateUserValidations = [   
+    body("firstName")
+    .notEmpty()
+    .withMessage("Debes completar el campo")
+    .isLength({ min: 2, max: undefined })
+    .withMessage("El nombre debe contener al menos 2 letras"), 
+    body("lastName")
+    .notEmpty()
+    .withMessage("Debes completar el campo")
+    .isLength({ min: 2, max: undefined })
+    .withMessage("El apellido debe contener al menos 2 letras"),
+    body("email")
+    .notEmpty()
+    .withMessage("Debes completar el campo")
+    .isEmail()
+    .withMessage("Debes ingresar un formato de email válido"),
     body("avatar").custom((value, { req }) => {
         if (req.file != undefined)
         {
