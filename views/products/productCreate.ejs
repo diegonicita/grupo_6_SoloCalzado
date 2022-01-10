@@ -17,6 +17,7 @@
                 
             <% } %>
             <div class="errorMsg"></div>
+            
             <!-- <label for="brand">Marca</label>
             <input type="text" name="brand" id="brand"> -->
 
@@ -28,7 +29,8 @@
                 
                 <p class="error-msg"><%= errors.description.msg %></p>      
                 
-            <% } %> 
+            <% } %>
+            <div class="errorMsg"></div>
 
             <label for="price">Precio</label>
             <input type="text" name="price" id="price"
@@ -38,8 +40,8 @@
                 
                 <p class="error-msg"><%= errors.price.msg %></p>      
                 
-            <% } %> 
-            
+            <% } %>
+                        
             <h3> Talle </h3>            
             <% var checked = !!locals.old&&!!old.size&&!!old.size.includes("1")?("checked"):"" %>
             <div><input type="checkbox" id="size37" name="size" value="1" <%=checked%>> <label for="size37">37</label></div>
@@ -100,11 +102,12 @@
                 
                 <p class="error-msg"><%= errors.images.msg %></p>      
                 
-            <% } %> 
+            <% } %>
+            <div class="errorMsg"></div>
 
             <button type="submit">CREAR</button>
          </form>
 
     </main>
-
+    <script src="/scripts/validations.js"></script>
 <%- include('../partials/footer') %>
