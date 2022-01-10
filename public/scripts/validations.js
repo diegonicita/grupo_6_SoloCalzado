@@ -15,7 +15,7 @@ loginInputs = [$usuarioLogin,$password];
 profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
 
 // CHECK FIELD FUNCTION
-const checkField = (input) => {   
+const checkFieldRegister = (input) => {   
     if (input.value.trim() == ''){
         setError(input,'Debes completar el campo')
     } else {
@@ -56,6 +56,14 @@ const checkField = (input) => {
     }
 }
 
+const checkFieldLogin = (input) => {
+    if (input.value.trim() == ''){
+        setError(input,'Debes completar el campo')
+    } else {
+        setSuccess(input)
+    }
+}
+
 // ERROR & SUCCESS
 const setError = (field, message) => {
     const inputControl = field.parentElement;
@@ -80,19 +88,19 @@ const setSuccess = field => {
 regInputs.forEach(input => {
     if (input != null)
     input.addEventListener('blur', ()=>{
-    checkField(input)});  
+    checkFieldRegister(input)});  
 })
 
 loginInputs.forEach(input => {
     if (input != null)
     input.addEventListener('blur', ()=>{
-    checkField(input)});  
+    checkFieldLogin(input)});  
 })
 
 profileInputs.forEach(input => {
     if (input != null)
     input.addEventListener('blur', ()=>{
-    checkField(input)});  
+    checkFieldRegister(input)});  
 })
 
 //LOGIN VALIDATION

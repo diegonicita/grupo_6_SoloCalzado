@@ -50,9 +50,9 @@
                                                       
                             <% for (let i=0; i < producto.productsizecolors.length ; i++)
                             { %>
-                            <div class="detalle-descripcion">Talle <%= sizes[producto.productsizecolors[i].size_id-1].num %></div>
-                            <div class="detalle-descripcion">Color <%= colors[producto.productsizecolors[i].color_id-1].name %></div>     
-                            <div class="detalle-descripcion">Stock <%= producto.productsizecolors[i].stock %></div>        
+                            <div class="detalle-descripcion-talle">Talle <%= sizes[producto.productsizecolors[i].size_id-1].num %></div>
+                            <div class="detalle-descripcion-color">Color <%= colors[producto.productsizecolors[i].color_id-1].name %></div>     
+                            <div class="detalle-descripcion-stock">Stock <%= producto.productsizecolors[i].stock %></div>        
                             <% } %>
 
                         </div>               
