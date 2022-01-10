@@ -35,14 +35,19 @@ const productValidation = [
         .isLength({min:20,max:undefined}).withMessage('La descripción debe contener al menos 20 caracteres'),
     body('price').
         notEmpty().withMessage('Debes completar el campo')
-        .isNumeric({no_symbols: true}).withMessage('El precio debe ser numérico'),
-    body('images').
-        custom(file=>{
-            let fileType = path.extname(file.originalname);
-            if (fileType != '.png' || fileType != '.jpg' || fileType != '.jpeg' || fileType != '.gif' ){
-                throw new Error('Debes ingresar un archivo de tipo jpg, jpeg, gif o png');
-            }
-    })
+        .isNumeric({no_symbols: true}).withMessage('El precio debe ser numérico'),    
+    body('images').custom((value, { req }) => {
+        if (req.file != undefined)
+        {
+        let file = req.file;
+        let extensionsAllowed = [".jpeg", ".jpg", ".png", ".gif"];   
+        let fileExtension = path.extname(file.originalname);
+        if (!extensionsAllowed.includes(fileExtension)) {
+            throw new Error("Solo puedes usar archivos " + extensionsAllowed.join(", "));
+            }    
+        }
+        return true;
+      })
 ];
 
 // Ruta para index de productos ( TODOS LOS PRODUCTOS )

@@ -8,7 +8,9 @@
     
         <form action="/products" method="POST" class="product-form" enctype="multipart/form-data">       
             <label for="title">Nombre</label>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title"
+            value="<%= !!locals.old&&!!old.title?(old.title):''%>"
+            >
             <% if (locals.errors && errors.title) { %>
                 
                 <p class="error-msg"><%= errors.title.msg %></p>      
@@ -18,7 +20,9 @@
             <input type="text" name="brand" id="brand"> -->
 
             <label for="description">Descripción</label>
-            <input type="text" name="description" id="description">
+            <input type="text" name="description" id="description"
+            value="<%= !!locals.old&&!!old.description?(old.description):''%>"
+            >
             <% if (locals.errors && errors.description) { %>
                 
                 <p class="error-msg"><%= errors.description.msg %></p>      
@@ -26,38 +30,50 @@
             <% } %> 
 
             <label for="price">Precio</label>
-            <input type="text" name="price" id="price">
+            <input type="text" name="price" id="price"
+            value="<%= !!locals.old&&!!old.price?(old.price):''%>"
+            >
             <% if (locals.errors && errors.price) { %>
                 
                 <p class="error-msg"><%= errors.price.msg %></p>      
                 
             <% } %> 
             
-            <h3> Talle </h3>
-            <div><input type="checkbox" id="size37" name="size" value="1"> <label for="size37">37</label></div>
-            <div><input type="checkbox" id="size38" name="size" value="2"> <label for="size38">38</label></div>
-            <div><input type="checkbox" id="size39" name="size" value="3"> <label for="size39">39</label></div>
-            <h3> Color </h3>
-            <div><input type="checkbox" id="red" name="color" value="1"> <label for="red">Rojo</label><br></div>
-            <div><input type="checkbox" id="blue" name="color" value="2"> <label for="blue">Azul</label><br></div>
-            <div><input type="checkbox" id="green" name="color" value="3"> <label for="green">Verde</label><br></div>            
-            
-          
-            
+            <h3> Talle </h3>            
+            <% var checked = !!locals.old&&!!old.size&&!!old.size.includes("1")?("checked"):"" %>
+            <div><input type="checkbox" id="size37" name="size" value="1" <%=checked%>> <label for="size37">37</label></div>
+            <% var checked = !!locals.old&&!!old.size&&!!old.size.includes("2")?("checked"):"" %>
+            <div><input type="checkbox" id="size38" name="size" value="2" <%=checked%>> <label for="size38">38</label></div>
+            <% var checked = !!locals.old&&!!old.size&&!!old.size.includes("3")?("checked"):"" %>
+            <div><input type="checkbox" id="size39" name="size" value="3" <%=checked%>> <label for="size39">39</label></div>
 
+            <h3> Color </h3>
+            <% var checked = !!locals.old&&!!old.color&&!!old.color.includes("1")?("checked"):"" %>
+            <div><input type="checkbox" id="red" name="color" value="1" <%=checked%>> <label for="red">Rojo</label><br></div>
+            <% var checked = !!locals.old&&!!old.color&&!!old.color.includes("2")?("checked"):"" %>
+            <div><input type="checkbox" id="blue" name="color" value="2" <%=checked%>> <label for="blue">Azul</label><br></div>
+            <% var checked = !!locals.old&&!!old.color&&!!old.color.includes("3")?("checked"):"" %>
+            <div><input type="checkbox" id="green" name="color" value="3" <%=checked%>> <label for="green">Verde</label><br></div>            
+                    
             <label for="gender">Genero</label>
             <select name="gender" id="gender">                
-            <% genders.forEach( p => { %>
-                <option value="<%= p.id %>">
+            <% var selected = !!locals.old&&!!old.gender?(old.gender):0 %>
+            <% genders.forEach( (p, index) => { %>                
+                <option value="<%= p.id %>"
+                <%= (selected-1==index)?"selected":"" %>
+                    >
                     <%= p.name %>
                 </option>
             <% }) %>
             </select>
 
             <label for="brand">Marca</label>
-            <select name="brand" id="brand">                
-            <% brands.forEach( b => { %>
-                <option value="<%= b.id %>">
+            <select name="brand" id="brand">  
+            <% var selected = !!locals.old&&!!old.brand?(old.brand):0 %>              
+            <% brands.forEach( (b, index) => { %>
+                <option value="<%= b.id %>"
+                <%= (selected-1==index)?"selected":"" %>
+                    >
                     <%= b.name %>
                 </option>
             <% }) %>
