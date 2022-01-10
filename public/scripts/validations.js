@@ -9,10 +9,15 @@ $email = d.getElementById('regEmail'),
 $profileEmail = d.getElementById('email'),
 $avatar = d.getElementById('avatar'),
 $usuarioLogin = d.getElementById('usuario');
+$title = d.getElementById('title');
+$description = d.getElementById('description');
+$images = d.getElementById('images');
+
 
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 loginInputs = [$usuarioLogin,$password];
 profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
+productsInputs = [$title,$description,$images];
 
 // CHECK FIELD FUNCTION
 const checkFieldRegister = (input) => {   
@@ -63,6 +68,14 @@ const checkFieldLogin = (input) => {
         setSuccess(input)
     }
 }
+const checkFieldProducts = (input) => {
+    if (input.value.trim() == ''){
+        setError(input,'Debes completar el campo')
+    } else {
+        setSuccess(input)
+    }
+}
+
 
 // ERROR & SUCCESS
 const setError = (field, message) => {
@@ -102,6 +115,13 @@ profileInputs.forEach(input => {
     input.addEventListener('blur', ()=>{
     checkFieldRegister(input)});  
 })
+
+productsInputs.forEach(input => {
+    if (input != null)
+    input.addEventListener('blur', ()=>{
+    checkFieldProducts(input)});  
+})
+
 
 //LOGIN VALIDATION
 
