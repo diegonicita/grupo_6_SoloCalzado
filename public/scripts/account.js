@@ -1,19 +1,20 @@
-let d = document;
+var d = document;
 let $editBtn = document.getElementById('editBtn');
 let $saveBtn = document.getElementById('saveBtn');
 let $editInputs = document.querySelectorAll('.editInput');
-let $password = document.getElementById('password');
-let $avatar = document.getElementById('avatar');
-
-$editBtn.addEventListener('click', enableInputs);
-$saveBtn.setAttribute('disabled','')
+let $accountPassword = document.getElementById('password');
+let $accountAvatar = document.getElementById('avatar');
 
 function enableInputs(){
     $editInputs.forEach(function(input){
         input.removeAttribute('disabled');        
     });
-    $avatar.removeAttribute('disabled','');
-    $password.setAttribute('disabled','');
+    $accountAvatar.removeAttribute('disabled','');
+    $accountPassword.setAttribute('disabled','');
     $editBtn.setAttribute('disabled','');
     $saveBtn.removeAttribute('disabled','')
 }
+if ($editBtn != null)
+$editBtn.addEventListener('click', enableInputs);
+if ($saveBtn != null)
+$saveBtn.setAttribute('disabled','')

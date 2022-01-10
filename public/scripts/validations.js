@@ -1,13 +1,18 @@
 //REGISTER VALIDATION
-
+var d = document;
 let $regForm = d.getElementsByClassName('reg-form')[0],
 $firstName = d.getElementById('firstName'),
 $lastName = d.getElementById('lastName') ,
 $user = d.getElementById('user'),
 $password = d.getElementById('password'),
 $email = d.getElementById('regEmail'),
+$profileEmail = d.getElementById('email'),
 $avatar = d.getElementById('avatar'),
+$usuarioLogin = d.getElementById('usuario');
+
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
+loginInputs = [$usuarioLogin,$password];
+profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
 
 // CHECK FIELD FUNCTION
 const checkField = (input) => {   
@@ -73,6 +78,19 @@ const setSuccess = field => {
 // IMPLEMENTATION
 
 regInputs.forEach(input => {
+    if (input != null)
+    input.addEventListener('blur', ()=>{
+    checkField(input)});  
+})
+
+loginInputs.forEach(input => {
+    if (input != null)
+    input.addEventListener('blur', ()=>{
+    checkField(input)});  
+})
+
+profileInputs.forEach(input => {
+    if (input != null)
     input.addEventListener('blur', ()=>{
     checkField(input)});  
 })
