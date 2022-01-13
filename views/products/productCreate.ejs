@@ -7,6 +7,8 @@
         </div>
     
         <form action="/products" method="POST" class="product-form" enctype="multipart/form-data">       
+            
+        <div>
             <label for="title">Nombre</label>
             <input type="text" name="title" id="title"
             value="<%= !!locals.old&&!!old.title?(old.title):''%>"
@@ -17,10 +19,11 @@
                 
             <% } %>
             <div class="errorMsg"></div>
+        </div>
             
             <!-- <label for="brand">Marca</label>
             <input type="text" name="brand" id="brand"> -->
-
+        <div>
             <label for="description">Descripción</label>
             <input type="text" name="description" id="description"
             value="<%= !!locals.old&&!!old.description?(old.description):''%>"
@@ -31,7 +34,9 @@
                 
             <% } %>
             <div class="errorMsg"></div>
+        </div>
 
+        <div>
             <label for="price">Precio</label>
             <input type="text" name="price" id="price"
             value="<%= !!locals.old&&!!old.price?(old.price):''%>"
@@ -41,6 +46,8 @@
                 <p class="error-msg"><%= errors.price.msg %></p>      
                 
             <% } %>
+            <div class="errorMsg"></div>
+        </div>
                         
             <h3> Talle </h3>            
             <% var checked = !!locals.old&&!!old.size&&!!old.size.includes("1")?("checked"):"" %>
@@ -95,15 +102,16 @@
                     <input type="radio" name="gender" id="gender" value="Unisex">
                 </div>
             </div> -->
-
+        <div class="imagen-producto">
             <label for="images">Imágenes</label>
-            <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png">
+            <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png, .gif">
             <% if (locals.errors && errors.images) { %>
                 
                 <p class="error-msg"><%= errors.images.msg %></p>      
                 
             <% } %>
             <div class="errorMsg"></div>
+        </div>
 
             <button type="submit">CREAR</button>
          </form>

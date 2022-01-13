@@ -58,7 +58,7 @@ const checkFieldRegister = (input) => {
     if (input == $avatar){
         debugger
         console.log(input)
-    }
+    }    
 }
 
 const checkFieldLogin = (input) => {
@@ -73,6 +73,37 @@ const checkFieldProducts = (input) => {
         setError(input,'Debes completar el campo')
     } else {
         setSuccess(input)
+    }
+    if (input == $title){
+        if (input.value.trim().length >= 5){
+            setSuccess(input);
+        }
+        else {
+            setError(input,'Debes ingresar al menos 5 caracteres');
+        }
+    }
+    if (input == $description){
+        if (input.value.trim().length >= 20){
+            setSuccess(input);
+        }
+        else {
+            setError(input,'Debes ingresar al menos 20 caracteres');
+        }
+    }
+
+    if (input == $images)
+    {
+    var fullPath = document.getElementById('upload').value;
+    if (fullPath) {
+    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+    var filename = fullPath.substring(startIndex);
+    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+        filename = filename.substring(1);
+    }
+    alert(filename);
+}
+
+
     }
 }
 
@@ -118,7 +149,7 @@ profileInputs.forEach(input => {
 
 productsInputs.forEach(input => {
     if (input != null)
-    input.addEventListener('blur', ()=>{
+    input.addEventListener('change', ()=>{
     checkFieldProducts(input)});  
 })
 
