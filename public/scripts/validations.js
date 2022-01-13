@@ -13,7 +13,6 @@ $title = d.getElementById('title');
 $description = d.getElementById('description');
 $images = d.getElementById('images');
 
-
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 loginInputs = [$usuarioLogin,$password];
 profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
@@ -56,8 +55,8 @@ const checkFieldRegister = (input) => {
         };
     } 
     if (input == $avatar){
-        debugger
-        console.log(input)
+        // debugger
+        // console.log(input)
     }    
 }
 
@@ -102,8 +101,6 @@ const checkFieldProducts = (input) => {
     }
     alert(filename);
 }
-
-
     }
 }
 
@@ -152,6 +149,20 @@ productsInputs.forEach(input => {
     input.addEventListener('change', ()=>{
     checkFieldProducts(input)});  
 })
+
+// $regForm.addEventListener("submit", handleSubmit)
+// function handleSubmit(e) {
+//     e.preventDefault(); 
+//     regInputs.forEach(input => input.focus());
+//     $divErrors = document.getElementsByClassName("errorMsg");    
+//     let errores = [];
+//     for (let item of $divErrors) {
+//         errores.push(item.innerText);
+//     }
+//     if (errores.length == 0) e.currentTarget.submit();    
+//   }
+
+
 
 
 //LOGIN VALIDATION
