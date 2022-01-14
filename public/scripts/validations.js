@@ -15,8 +15,8 @@ $images = d.getElementById('images');
 
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 loginInputs = [$usuarioLogin,$password];
-profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
-productsInputs = [$title,$description,$images];
+profileInputs = [$firstName,$lastName,$profileEmail];
+productsInputs = [$title,$description];
 
 // CHECK FIELD FUNCTION
 const checkFieldRegister = (input) => {   
@@ -89,19 +89,6 @@ const checkFieldProducts = (input) => {
             setError(input,'Debes ingresar al menos 20 caracteres');
         }
     }
-
-    if (input == $images)
-    {
-    var fullPath = document.getElementById('upload').value;
-    if (fullPath) {
-    var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
-    var filename = fullPath.substring(startIndex);
-    if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
-        filename = filename.substring(1);
-    }
-    alert(filename);
-}
-    }
 }
 
 
@@ -133,6 +120,11 @@ regInputs.forEach(input => {
     checkFieldRegister(input)});  
 })
 
+if ($avatar != null)
+$avatar.addEventListener('change', ()=>{
+    checkFieldRegister($avatar)
+})
+
 loginInputs.forEach(input => {
     if (input != null)
     input.addEventListener('blur', ()=>{
@@ -147,6 +139,12 @@ profileInputs.forEach(input => {
 
 productsInputs.forEach(input => {
     if (input != null)
-    input.addEventListener('change', ()=>{
+    input.addEventListener('blur', ()=>{
     checkFieldProducts(input)});  
 })
+
+if ($images != null){
+$images.addEventListener('change', ()=>{
+    checkFieldProducts($images)
+})
+}

@@ -37,6 +37,7 @@ app.use(override('_method'));
 const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
+const apiUsersRouter = require('./routes/api/users')
 
 /* Motor de Templates EJS para tener paginas dinamicas */
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +47,8 @@ app.set('view engine', 'ejs');
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/api', apiUsersRouter);
+
 
 /* PÁGINA 404*/
 app.use(function(req,res,next){
