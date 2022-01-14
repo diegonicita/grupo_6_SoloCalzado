@@ -13,7 +13,7 @@ $title = d.getElementById('title');
 $description = d.getElementById('description');
 $images = d.getElementById('images');
 
-regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
+regInputs = [$firstName,$lastName,$user,$password,$email];
 loginInputs = [$usuarioLogin,$password];
 profileInputs = [$firstName,$lastName,$profileEmail];
 productsInputs = [$title,$description];
