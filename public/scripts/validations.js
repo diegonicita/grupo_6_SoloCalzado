@@ -106,6 +106,7 @@ const checkFieldProducts = (input) => {
 
 
 // ERROR & SUCCESS
+
 const setError = (field, message) => {
     const inputControl = field.parentElement;
     const errorDisplay = inputControl.querySelector('.errorMsg');
@@ -149,44 +150,3 @@ productsInputs.forEach(input => {
     input.addEventListener('change', ()=>{
     checkFieldProducts(input)});  
 })
-
-// $regForm.addEventListener("submit", handleSubmit)
-// function handleSubmit(e) {
-//     e.preventDefault(); 
-//     regInputs.forEach(input => input.focus());
-//     $divErrors = document.getElementsByClassName("errorMsg");    
-//     let errores = [];
-//     for (let item of $divErrors) {
-//         errores.push(item.innerText);
-//     }
-//     if (errores.length == 0) e.currentTarget.submit();    
-//   }
-
-
-
-
-//LOGIN VALIDATION
-
-// let $logForm = d.getElementsByClassName('login-form')[0],
-// logInputs = $logForm.querySelectorAll('input'),
-// $user = d.getElementById('usuario'),
-// $password = d.getElementById('password');
-
-// inputs.forEach(input => {
-//     input.addEventListener('blur', ()=>{
-//     checkField(input)});  
-// })
-// let $logForm = d.getElementsByClassName('login-form')[0],
-// inputs = $logForm.querySelectorAll('input'),
-// $user = d.getElementById('usuario'),
-// $password = d.getElementById('password');
-
-// const checkField = (input) => {   
-//     if (input.value.trim() == ''){
-//         setError(input,'Debes completar el campo')
-//     } else {
-//         setSuccess(input)
-//     }
-// }
-
-//CRUD VALIDATION

@@ -281,7 +281,7 @@ h2 {
   position: relative;
 }
 
-.login-form .password p {
+/* .login-form .password p {
   font-size: .7rem;
   transition: 2s;
   cursor: pointer;
@@ -290,7 +290,7 @@ h2 {
   text-decoration: underline;
   text-decoration-color:rgb(226, 126, 235);
   padding: .5rem;
-}
+} */
 
 .login-form .password p:hover {
     color: black;
