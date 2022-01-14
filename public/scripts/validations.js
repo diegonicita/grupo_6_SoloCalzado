@@ -15,7 +15,7 @@ $images = d.getElementById('images');
 
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 loginInputs = [$usuarioLogin,$password];
-profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
+profileInputs = [$firstName,$lastName,$profileEmail];
 productsInputs = [$title,$description];
 
 // CHECK FIELD FUNCTION
@@ -90,7 +90,7 @@ const checkFieldProducts = (input) => {
         }
     }
 
-    if (input == $images)
+    /* if (input == $images)
     {
     var fullPath = document.getElementById('upload').value;
     if (fullPath) {
@@ -101,7 +101,7 @@ const checkFieldProducts = (input) => {
     }
     alert(filename);
 }
-    }
+    }*/
 }
 
 
@@ -132,6 +132,11 @@ regInputs.forEach(input => {
     checkFieldRegister(input)});  
 })
 
+if ($avatar != null)
+$avatar.addEventListener('change', ()=>{
+    checkFieldRegister($avatar)
+})
+
 loginInputs.forEach(input => {
     if (input != null)
     input.addEventListener('blur', ()=>{
@@ -150,10 +155,11 @@ productsInputs.forEach(input => {
     checkFieldProducts(input)});  
 })
 
+if ($images != null){
 $images.addEventListener('change', ()=>{
     checkFieldProducts($images)
 })
-
+}
 // $regForm.addEventListener("submit", handleSubmit)
 // function handleSubmit(e) {
 //     e.preventDefault(); 
