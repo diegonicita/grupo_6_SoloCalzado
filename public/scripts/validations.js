@@ -16,7 +16,7 @@ $images = d.getElementById('images');
 regInputs = [$firstName,$lastName,$user,$password,$email,$avatar];
 loginInputs = [$usuarioLogin,$password];
 profileInputs = [$firstName,$lastName,$profileEmail,$avatar];
-productsInputs = [$title,$description,$images];
+productsInputs = [$title,$description];
 
 // CHECK FIELD FUNCTION
 const checkFieldRegister = (input) => {   
@@ -146,8 +146,12 @@ profileInputs.forEach(input => {
 
 productsInputs.forEach(input => {
     if (input != null)
-    input.addEventListener('change', ()=>{
+    input.addEventListener('blur', ()=>{
     checkFieldProducts(input)});  
+})
+
+$images.addEventListener('change', ()=>{
+    checkFieldProducts($images)
 })
 
 // $regForm.addEventListener("submit", handleSubmit)
