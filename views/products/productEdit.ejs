@@ -89,10 +89,11 @@
                 <option value="<%= b.id %>" <%= (b.id == selectedProduct.brand.id) ? "selected" : "" %> >
                     <%= b.name %>
                 </option>
-            <% }) %>          
+            <% }) %>  
+            </select>        
             
         <div class="imagen-producto">
-            <label for="images">Imágenes actuales: <%=selectedProduct.images%> </label>
+            <label for="images">Imágenes: </label>
             <input type="file" name="images" id="images" accept=".jpg, .jpeg, .png, .gif">
             <% if (locals.errors && errors.images) { %>
                 

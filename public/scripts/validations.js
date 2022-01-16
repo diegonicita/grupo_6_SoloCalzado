@@ -54,10 +54,15 @@ const checkFieldRegister = (input) => {
             setError(input,'Debes ingresar al menos 8 caracteres');
         };
     } 
-    if (input == $avatar){
-        // debugger
-        // console.log(input)
-    }    
+    if (input == $avatar){        
+            fileName = $avatar.value;
+            extension = fileName.split('.').pop();            
+            let extensionsAllowed = [".jpeg", ".jpg", ".png", ".gif"];               
+            if (!extensionsAllowed.includes("." + extension)) {            
+            $avatar.value = "";
+            setError($avatar, "Solo puedes usar archivos " + extensionsAllowed.join(", "));
+            }            
+        }     
 }
 
 const checkFieldLogin = (input) => {
@@ -89,6 +94,15 @@ const checkFieldProducts = (input) => {
             setError(input,'Debes ingresar al menos 20 caracteres');
         }
     }
+    if (input == $images){        
+        fileName = $images.value;
+        extension = fileName.split('.').pop();            
+        let extensionsAllowed = [".jpeg", ".jpg", ".png", ".gif"];               
+        if (!extensionsAllowed.includes("." + extension)) {            
+        $images.value = "";
+        setError($images, "Solo puedes usar archivos " + extensionsAllowed.join(", "));
+        }            
+    }     
 }
 
 
