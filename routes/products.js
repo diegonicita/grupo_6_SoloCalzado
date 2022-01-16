@@ -35,7 +35,7 @@ const productValidation = [
         .isLength({min:20,max:undefined}).withMessage('La descripción debe contener al menos 20 caracteres'),
     body('price').
         notEmpty().withMessage('Debes completar el campo')
-        .isNumeric({no_symbols: true}).withMessage('El precio debe ser numérico'),    
+        .isDecimal({no_symbols: true}).withMessage('El precio debe ser numérico'),    
     body('images').custom((value, { req }) => {
         if (req.file != undefined)
         {
