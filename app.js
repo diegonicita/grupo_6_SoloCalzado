@@ -38,6 +38,7 @@ const mainRouter = require('./routes/main');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const apiUsersRouter = require('./routes/api/users')
+const apiProductsRouter = require('./routes/api/products')
 
 /* Motor de Templates EJS para tener paginas dinamicas */
 app.set('views', path.join(__dirname, 'views'));
@@ -47,8 +48,8 @@ app.set('view engine', 'ejs');
 app.use('/', mainRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
-app.use('/api', apiUsersRouter);
-
+app.use('/api/users', apiUsersRouter);
+app.use('/api/products', apiProductsRouter);
 
 /* PÁGINA 404*/
 app.use(function(req,res,next){

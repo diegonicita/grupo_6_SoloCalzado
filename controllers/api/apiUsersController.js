@@ -1,16 +1,12 @@
-const { validationResult } = require('express-validator');
-const bcrypt = require('bcryptjs');
 const db = require('../../database/models');
 const { User, UserCategory, UserGender } = require('../../database/models');
-// const UserCategory = require('../database/models/UserCategory');
 
 const controller = {
     userList: (req,res) => {         
         User.findAll(
             {   
                 raw: true,
-                attributes: ['id', 'first_name', 'last_name', 'email']
-                // include: [{association: "usercategory"}, {association: "usergender"}]
+                attributes: ['id', 'first_name', 'last_name', 'email']                
             })
             .then( (users) => {                  
                 newUsers = users.map( elemento => {
@@ -65,9 +61,7 @@ const controller = {
                   
             })
             .catch(errors => console.log(errors));
-
     }
-
 
 }
 module.exports = controller;
