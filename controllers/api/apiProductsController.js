@@ -9,16 +9,22 @@ const controller = {
         promesa1 = Product.findAll(
             {   
                 raw: true,
-                attributes: ['id', 'title', 'description', 'price']                
+                attributes: ['id', 'title', 'description', 'price'],
+                include: [{association: "productgender"}]                
             })
         promesa2 = ProductGender.findAll({raw: true});          
         
         try {       
 
         [products, generos] = await Promise.all([promesa1, promesa2])                  
-                
+        
+
+        // console.log("PRINT: " + products[0]["productgender.id"])
+        
         newProducts = products.map( elemento => {
         elemento.detail = "/api/products/" + elemento.id;
+        elemento.categories = [];
+        elemento.categories.push(elemento["productgender.name"]);
         return elemento;})
 
         let cuentaGeneros = {};
@@ -33,7 +39,7 @@ const controller = {
                 [Op.eq]: generos[i].id
               }
             }
-          })} catch(errores) { console.log(errores);}
+          })} catch(errores) { "errores: " + console.log(errores);}
           cuentaGeneros["Categoria " + generos[i].name] = cuenta;
         }        
 
@@ -52,6 +58,35 @@ const controller = {
         } catch(errores) { 
                 console.log("errores create product-size-color: "+errores)
                 }
+    },
+
+    productDetail: async(req, res) =>  {
+
+    let promesa1 = Product.findByPk(req.params.id,
+            { 
+                attributes: ['id', 'title', 'description', 'price'],
+                include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"},{association: "productsizecolors", require: false}]
+            })
+    
+    try {
+    product = await Promise.all([promesa1]);    
+    console.log(product);
+    let cadena = [];
+    cadena.push({gender: product[0].dataValues.productgender.dataValues});
+    cadena.push({brand: product[0].dataValues.brand.dataValues});
+    cadena.push({colors: product[0].dataValues.colors});
+    cadena.push({sizes: product[0].dataValues.sizes});
+    // for (let i=0; i < product[0].dataValues.productsizecolors.length; i++)
+    // {
+    // precadena = {size_color: product[0].dataValues.productsizecolors[i].dataValues}
+    // delete precadena.size_color.product_id;
+    // delete precadena.size_color.id;
+    //  precadena.size_name = sizes[precadena.size_color.size_id];
+    // cadena.push(precadena);
+    // }    
+    res.json(cadena);
+    } catch(errores) { console.log(errores);}
+
     }
 }
 module.exports = controller;
