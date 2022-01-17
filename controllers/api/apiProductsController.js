@@ -65,26 +65,38 @@ const controller = {
     let promesa1 = Product.findByPk(req.params.id,
             { 
                 attributes: ['id', 'title', 'description', 'price'],
-                include: [{association: "brand"}, {association: "productgender"}, {association: "colors"}, {association: "sizes"},{association: "productsizecolors", require: false}]
+                include: [{association: "brand"}, {association: "productgender"}, {association: "productsizecolors", require: false}]
             })
     
     try {
-    product = await Promise.all([promesa1]);    
-    console.log(product);
-    let cadena = [];
-    cadena.push({gender: product[0].dataValues.productgender.dataValues});
-    cadena.push({brand: product[0].dataValues.brand.dataValues});
-    cadena.push({colors: product[0].dataValues.colors});
-    cadena.push({sizes: product[0].dataValues.sizes});
-    // for (let i=0; i < product[0].dataValues.productsizecolors.length; i++)
-    // {
-    // precadena = {size_color: product[0].dataValues.productsizecolors[i].dataValues}
-    // delete precadena.size_color.product_id;
-    // delete precadena.size_color.id;
-    //  precadena.size_name = sizes[precadena.size_color.size_id];
-    // cadena.push(precadena);
-    // }    
-    res.json(cadena);
+    product = await Promise.all([promesa1]); 
+
+    product[0].dataValues.productsizecolors.forEach
+        ( 
+        item => {delete item.dataValues.product_id}
+        )
+
+    // delete product[0].dataValues.productsizecolors[0].dataValues.product_id;
+
+    let respuesta = {
+        meta: {
+            status : 200,
+            count: product.length,
+            url: 'api/products/:id'
+        },
+        product: product
+    }
+   
+//     id: product[0].dataValues.id,
+//     title: product[0].dataValues.title,
+//     description: product[0].dataValues.description,
+//     price: product[0].dataValues.price}
+//     gender: product[0].dataValues.productgender.dataValues});
+//     brand: product[0].dataValues.brand.dataValues});
+//     colors: product[0].dataValues.colors});
+//     sizes: product[0].dataValues.sizes});
+
+    res.json(respuesta);
     } catch(errores) { console.log(errores);}
 
     }

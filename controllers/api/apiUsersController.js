@@ -8,7 +8,7 @@ const controller = {
                 raw: true,
                 attributes: ['id', 'first_name', 'last_name', 'email']                
             })
-            .then( (users) => {                  
+            .then( (users) => {                
                 newUsers = users.map( elemento => {
                     elemento.name = elemento.first_name + " " + elemento.last_name;
                     delete elemento.first_name;
