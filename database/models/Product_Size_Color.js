@@ -15,24 +15,24 @@ module.exports = (sequelize, dataTypes) => {
 
      const Model = sequelize.define(alias, cols, config); 
 
-    //  Model.associate = models => {
+      Model.associate = models => {
 
-    //   Model.belongsTo(models.Size, {
-    //       as: "size",
-    //       foreignKey: 'size_id'
-    //   })
+       Model.belongsTo(models.Size, {
+           as: "sizes",
+           foreignKey: 'size_id'
+       })
 
-    //   Model.belongsTo(models.Product, {
-    //       as: 'products',
-    //       foreignKey: 'product_id'
-    //   })
+       Model.belongsTo(models.Product, {
+           as: 'products',
+           foreignKey: 'product_id'
+       })
 
-    //   Model.belongsTo(models.Color, {
-    //     as: "colors",
-    //     foreignKey: "color_id",
-    //   })
+       Model.belongsTo(models.Color, {
+         as: "colors",
+         foreignKey: "color_id",
+       })
      
-    // }
+     }
     
    
     return Model;    

@@ -65,16 +65,22 @@ const controller = {
     let promesa1 = Product.findByPk(req.params.id,
             { 
                 attributes: ['id', 'title', 'description', 'price'],
-                include: [{association: "brand"}, {association: "productgender"}, {association: "productsizecolors", require: false}]
+                include: [{association: "brand"}, {association: "productgender"}]
             })
+    let promesa2 = Product_Size_Color.findAll(
+        { 
+            where: {product_id: req.params.id },
+            attributes: ['id', 'stock', 'colors.name', 'sizes.num'],
+            include: [{association: "colors", require: false}, {association: "sizes", require: false}],            
+        })
     
     try {
-    product = await Promise.all([promesa1]); 
+    product = await Promise.all([promesa1, promesa2]); 
 
-    product[0].dataValues.productsizecolors.forEach
-        ( 
-        item => {delete item.dataValues.product_id}
-        )
+    // product[0].dataValues.productsizecolors.forEach
+    //     ( 
+    //     item => {delete item.dataValues.product_id}
+    //     )
 
     // delete product[0].dataValues.productsizecolors[0].dataValues.product_id;
 
@@ -84,7 +90,8 @@ const controller = {
             count: product.length,
             url: 'api/products/:id'
         },
-        product: product
+        product: product[0],
+        stock: product[1]
     }
    
 //     id: product[0].dataValues.id,

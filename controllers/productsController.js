@@ -93,7 +93,7 @@ const controller = {
                         console.log("errores create product: "+errores)
                     }      
 
-        controller.createSizesAndColors(req.body, newProduct.id, 10);        
+        controller.createSizesAndColors(req.body, newProduct.id, 1);        
          
     return res.redirect('/products')
     } else {
@@ -161,7 +161,7 @@ const controller = {
             Product_Size_Color
             .destroy({where: {product_id: productId}, force: true}) // force: true es para asegurar que se ejecute la acción
             .then(()=>{
-                controller.createSizesAndColors(req.body, productId, 10);  
+                controller.createSizesAndColors(req.body, productId, 1);  
                 return res.redirect('/products')})
             .catch(error => res.send(error)) 
 
