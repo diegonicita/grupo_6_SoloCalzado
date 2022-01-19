@@ -54,10 +54,10 @@ const checkFieldRegister = (input) => {
             setError(input,'Debes ingresar al menos 8 caracteres');
         };
     } 
-    if (input == $avatar){
+    //if (input == $avatar){
         // debugger
         // console.log(input)
-    }    
+    //}    
 }
 
 const checkFieldLogin = (input) => {
