@@ -67,7 +67,7 @@ const controller = {
     
                 }
                 else { 
-                    
+                    console.log(errors.mapped);
                     res.render('users/login',{
                         errors:errors.mapped(),
                         old: req.body });                                         

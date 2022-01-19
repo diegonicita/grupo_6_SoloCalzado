@@ -64,7 +64,7 @@
             <div><input type="checkbox" id="blue" name="color" value="2" <%=checked%>> <label for="blue">Azul</label><br></div>
             <% var checked = !!locals.old&&!!old.color&&!!old.color.includes("3")?("checked"):"" %>
             <div><input type="checkbox" id="green" name="color" value="3" <%=checked%>> <label for="green">Verde</label><br></div>            
-                    
+          <div>
             <label for="gender">Genero</label>
             <select name="gender" id="gender">                
             <% var selected = !!locals.old&&!!old.gender?(old.gender):0 %>
@@ -76,7 +76,8 @@
                 </option>
             <% }) %>
             </select>
-
+        </div>          
+        <div>
             <label for="brand">Marca</label>
             <select name="brand" id="brand">  
             <% var selected = !!locals.old&&!!old.brand?(old.brand):0 %>              
@@ -87,7 +88,8 @@
                     <%= b.name %>
                 </option>
             <% }) %>
-            
+            </select>
+        </div>            
             <!-- <div class="genderOptions">
                 <div class="masculino">
                     <label for="gender">Masculino</label>
@@ -110,7 +112,7 @@
                 <p class="error-msg"><%= errors.images.msg %></p>      
                 
             <% } %>
-            <div class="errorMsg"></div>
+            <div class="errorMsg images"></div>
         </div>
 
             <button type="submit">CREAR</button>
