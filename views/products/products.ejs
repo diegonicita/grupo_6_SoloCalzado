@@ -7,7 +7,7 @@
     
     <% productos.forEach(function(producto) { %>
       
-        <a href="/products/<%=producto.id%>/1">
+        <a href="/products/<%=producto.id%>/1" class="product_anchor">
             <div class="card">
                 <div class="cardImg">
                     <img src="/images/products/<%= producto.image %> " alt="">
@@ -15,7 +15,7 @@
                     <i class="wishlist-hover fas fa-heart"></i>
                 </div>
                 <div class="cardBody">
-                    <h3><%= producto.title %> </h3>
+                    <h3 data-id='<%=producto.id%>' class="product_title"><%= producto.title %> </h3>
                     <h5>$<%= producto.price %> </h5>
                     <h5>Marca: <%= producto.brand.name %> </h5>
                     <h5>Genero: <%= producto.productgender.name %> </h5>
@@ -36,7 +36,4 @@
     
     <p style="text-align: center">Lo siento, no se encontraron los productos que buscabas. </p>
     <%  } %> 
-
-    
-
 <%- include('../partials/footer') %>

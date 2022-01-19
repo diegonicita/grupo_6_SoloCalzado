@@ -66,8 +66,9 @@
                     <li class="detalle-botones-inferiores">
                         <form action="/products/productCartAddItem" method="POST">                                
                             <div class="detalle-botones-inferiores-subcontainer">                                
-                                <button type="submit" class="detalle-btn-black"> AGREGAR AL CARRITO </button>
-                            </div>
+                                <button type="button" class="detalle-btn-black add_to_cart" data-id='<%=producto.id%>'> AGREGAR AL CARRITO </button>
+                                <input type="hidden" name="product_title" class='product_title' data-title='<%=producto.title%>'>
+                                </div>
                             <input type="hidden" name="id" id="id" value="<%=producto.id%>">
                         </form>
 
@@ -92,5 +93,7 @@
         </article>
 
     </main>
+
+    <script src='/scripts/localStorage.js'></script>
 
 <%- include('../partials/footer') %>
