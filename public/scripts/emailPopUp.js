@@ -15,8 +15,12 @@ popUp.innerHTML = `<div class='popUp-header'>
     </div>`;
 
     const showPopUp = ()=>{
-        popUp.classList.add('popUpMail')
+        popUp.classList.add('popUpMail');
         $body.appendChild(popUp);
+        let close_button = popUp.querySelector('.closePopUp');
+        close_button.addEventListener('click',()=>{
+            $body.removeChild(popUp);
+        })
 }
 
 
