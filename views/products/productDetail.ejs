@@ -75,7 +75,7 @@
                         <div class="detalle-botones-inferiores-subcontainer">
                             <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
                         </div>
-                    
+                    <% if (locals.loggedCategory > 1) { %>
                         <div class="detalle-botones-inferiores-subcontainer">
                             <a href="/products/edit/<%=producto.id%>"><button class="detalle-btn-black"> EDITAR </button></a>                        
                         </div>
@@ -84,7 +84,7 @@
                                 <button type="submit" class="detalle-btn-black">ELIMINAR</button>
                             </form>
                         </div>
-                    
+                    <% } %>
                     </li>                   
                     
                 </div><% } %>

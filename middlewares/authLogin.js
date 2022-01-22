@@ -1,6 +1,7 @@
 const db = require('../database/models');
 const { User } = require('../database/models');
 const userController = require('../controllers/usersController');
+const { response } = require('express');
 
 const authLogin = async(req,res,next) => 
 { 
@@ -40,6 +41,7 @@ const authLogin = async(req,res,next) =>
           res.locals.loggedUsername = req.session.userLogged.username;
           res.locals.loggedImage = req.session.userLogged.avatar;
           res.locals.loggedId = req.session.userLogged.id;
+          res.locals.loggedCategory = req.session.userLogged.usercategory.id
       }         
         
     next();

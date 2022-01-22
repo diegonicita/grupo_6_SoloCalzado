@@ -100,9 +100,17 @@ a {
 }
 
 .header-avatar {
-  width: 40px;
+  width: auto;
   height: 40px;
   border-radius: 10px; 
+}
+
+#listaBtn{
+  display: block;  
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
 }
 
 .common-header-down {

@@ -10,7 +10,7 @@ function userLevelAuthMiddleware(options)
       
       // console.log(req.session.userLogged.usercategory.id);
 
-        if(req.session.userLogged.usercategory.id == options.level) {
+        if(req.session.userLogged.usercategory.id >= options.level) {
           next();  
         }
         else {    

@@ -72,8 +72,17 @@
     <div></div>
       <button type="button" id="editBtn">EDITAR</button>
       <button type="submit" id="saveBtn">GUARDAR</button>
-    </form>   
+    </form>           
   </div> 
+
+  <% if (locals.loggedCategory > 2) { %>
+    <p id="listaBtn"> OPCIONES DE ADMINISTRADOR</p>
+    <button type="button" id="listaBtn">
+      <a href="/users/list">
+      LISTA DE USUARIOS
+      </a>
+   </button>      
+  <% } %>
 
 </main>
 

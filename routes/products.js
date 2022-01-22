@@ -63,8 +63,8 @@ router.post('/productCartDeleteItem', controller.productCartDeleteItem)
 router.get('/create', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.create);
 router.post('/', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), productValidation, controller.store);
 
-router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.edit);
-router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), productValidation , controller.update);
+router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 2 }), controller.edit);
+router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 2 }), upload.single('images'), productValidation , controller.update);
 
 // Ruta para mostrar los detalles de un producto
 // Parametro ":id" puede tomar el valor 1 o 2
@@ -73,6 +73,6 @@ router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 })
 router.get('/:id/:tab?', controller.productDetail);
 router.get('/error', controller.error);
 
-router.delete('/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.destroy);
+router.delete('/:id', guestMiddleware, userLevelAuthMiddleware({level : 2 }), controller.destroy);
 
 module.exports = router;
