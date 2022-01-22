@@ -23,44 +23,48 @@
                         <img src="/images/products/<%= producto.image %>" alt="<%= producto.description %>">
                     </div> 
                 </div> 
-                <div class="detalle-resto-container-2">
-                    
-                    <% if (tab == 1) { %>
-                    <a  class="detalle-descripcion-titulo" href="/products/<%= producto.id %>/1"> <li>Descripción</li></a>
-                    <a  class="detalle-talles-titulo-gris" href="/products/<%= producto.id %>/2"> <li>Talles</li></a>                   
-                    <div class="detalle-descripcion-container">
-                        <div class="detalle-descripcion"><%= producto.description %></div>
-                        <div class="detalle-descripcion">Marca: <%= producto.brand.name %></div>
-                        <div class="detalle-descripcion">Genero: <%= producto.productgender.name %></div>   
-                        <br>
-
-                        <% if (producto.colors.length > 0) { %>
-                        <div class="detalle-descripcion">Colores Disponibles</div>   
-                        <% } %>
-                        <% for (let i=0; i < producto.colors.length; i++)
-                        { %>
-                        <div class="detalle-descripcion">Color Nº <%= i+1 %> : <%= producto.colors[i].name %></div>                    
-                        <% } %>                      
-                    </div>
-                    <% } %>
-                    <% if (tab == 2) { %>
-                        <a class="detalle-descripcion-titulo-gris" href="/products/<%= producto.id %>/1"><li>Descripción</li></a>
-                        <a class="detalle-talles-titulo" href="/products/<%= producto.id %>/2"><li>Talles</li></a>    
-                        <div class="detalle-descripcion-container"> 
-                                                      
-                            <% for (let i=0; i < producto.productsizecolors.length ; i++)
-                            { %>
+               
+                 <div class="detalle-resto-container-2">                    
+    
+<div class="tabContainer">
+  <input class="radioTab" id="one" name="group" type="radio" checked>
+  <input class="radioTab" id="two" name="group" type="radio">
+  <input class="radioTab" id="three" name="group" type="radio">
+  <div class="tabs">
+    <label class="tab" id="one-tab" for="one">Descripcion</label>
+    <label class="tab" id="two-tab" for="two">Categoria</label>
+    <label class="tab" id="three-tab" for="three">Talles y Colores</label>
+  </div>
+  <div class="panels">
+  <div class="panel" id="one-panel">
+    <div class="panel-title">Descripcion</div>
+    <br>
+    <p> Marca: <%= producto.brand.name %> </p>
+    <p><%= producto.description %></p>        
+  </div>
+  <div class="panel" id="two-panel">
+    <div class="panel-title">Categoria</div>
+    <br>
+    <p>Genero: <%= producto.productgender.name %></p>
+  </div>
+  <div class="panel" id="three-panel">
+    <div class="panel-title">Talles y Colores en Stock</div>
+    <br> 
+    <% 
+    if (producto.productsizecolors.length > 0)
+    {
+    for (let i=0; i < producto.productsizecolors.length ; i++)
+    { %>
                             Talle <%= sizes[producto.productsizecolors[i].size_id-1].num %>
                             Color <%= colors[producto.productsizecolors[i].color_id-1].name %>     
                             Stock <%= producto.productsizecolors[i].stock %>       
                             <br>
-                            <% 
-                        
-                        } %>
-
-                        </div>               
-                        
-                        <% } %>                                     
+    <%   } } else { %>
+    No hay Talles en Stock, lo sentimos mucho 
+    <% } %>
+  </div>
+  </div>
+</div>
                 <% if (locals.logged) { %>
                    
                     <li class="detalle-botones-inferiores">
