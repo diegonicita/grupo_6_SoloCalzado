@@ -18,11 +18,15 @@ const controller = {
         
         if (req.query.search)
         {
-        object.where = {
-                        title: {
+        object.where = {[Op.or]:[{ 
+                        description: {
                                 [Op.like]: '%'+ req.query.search + '%'
-                             }
-                        }
+                             }},{ 
+                        title: {
+                            [Op.like]: '%'+ req.query.search + '%'
+                             }}]
+                             
+                            } 
         }
 
         Product.findAll( object )
@@ -245,7 +249,7 @@ const controller = {
     // Product Carts //
 
     productCart: (req, res) => {
-        // Los usuarios pueden tener carritos de compras en status "Compra Cancelada", "Compra Finalizada" y "Compra Pendiente"
+       /*  // Los usuarios pueden tener carritos de compras en status "Compra Cancelada", "Compra Finalizada" y "Compra Pendiente"
         // Busca un carrito con su compra en status "Compra Pendiente" del usuario logueado //        
         let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId);  
         // Busca los items del carrito //
@@ -261,10 +265,11 @@ const controller = {
             let item = listaProductos.filter( item => item.id == cartItems[i].productoId)            
             cartListaProductos.push(item[0]);
             }
-        // Renderiza la lista de productos //
-       res.render('products/productCart', {listaProductos: cartListaProductos, toThousand: toThousand});
+        // Renderiza la lista de productos // */
+       res.render('products/productCart');
+       //res.send('hola grupo')
     },
-    productCartAddItem: (req,res) => {
+/*     productCartAddItem: (req,res) => {
         // Busca un carrito con su compra pendiente del usuario actual //
         let cart = listaCarts.find( cart => cart.status == "Compra Pendiente" && cart.userId == res.locals.loggedId); 
         // Crea el nuevo Item agregandole un id nuevo
@@ -278,13 +283,13 @@ const controller = {
         listaCartsItems.push(newItem);
         fs.writeFileSync(cartsItemsFilePath, JSON.stringify(listaCartsItems, null , ' '))
         res.redirect('/products/productCart'); 
-    },
-    productCartDeleteItem: (req,res) => {        
+    }, */
+   /*  productCartDeleteItem: (req,res) => {        
         let lista = listaCartsItems.filter(producto => producto.productoId != req.body.id);        
         fs.writeFileSync(cartsItemsFilePath, JSON.stringify(lista, null , ' '))
         listaCartsItems = JSON.parse(fs.readFileSync(cartsItemsFilePath, 'utf-8'));
         res.redirect('/products/productCart'); 
-    },
+    }, */
 
     error: (req, res) => {
         res.send("error");

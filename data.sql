@@ -29,14 +29,14 @@ INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `product
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapa-kids-2.jpg",1,2);
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapa-kids-3.jpg",1,3);
 INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapa-kids-4.jpg",1,3);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapa-mujer-1.jpg",2,1);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapa-mujer-2.jpg",2,2);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapa-mujer-3.jpg",2,3);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapa-mujer-4.jpg",2,3);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 1", "Zapatilla Generica numero 1", 1529, "zapa-hombre-1.jpg",3,1);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 2", "Zapatilla Generica numero 2", 2529, "zapa-hombre-2.jpg",3,2);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 3", "Zapatilla Generica numero 3", 3529, "zapa-hombre-3.jpg",3,3);
-INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 4", "Zapatilla Generica numero 4", 4529, "zapa-hombre-4.jpg",3,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 5", "Zapatilla Generica numero 5", 1529, "zapa-mujer-1.jpg",2,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 6", "Zapatilla Generica numero 6", 2529, "zapa-mujer-2.jpg",2,2);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 7", "Zapatilla Generica numero 7", 3529, "zapa-mujer-3.jpg",2,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 8", "Zapatilla Generica numero 8", 4529, "zapa-mujer-4.jpg",2,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 9", "Zapatilla Generica numero 9", 1529, "zapa-hombre-1.jpg",3,1);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 10", "Zapatilla Generica numero 10", 2529, "zapa-hombre-2.jpg",3,2);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 11", "Zapatilla Generica numero 11", 3529, "zapa-hombre-3.jpg",3,3);
+INSERT INTO `products` (`id`, `title`, `description`, `price`, `image`, `productgender_id`, `brand_id`) VALUES (null, "Zapatilla Generica 12", "Zapatilla Generica numero 12", 4529, "zapa-hombre-4.jpg",3,3);
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "Juan", "Perez", "user1", "user1@gmail.com", "$2a$10$uf.y33mF2OPmQJuQA7LhVuPVpcAxBZ7EFHoynbReJjfFBD0QvoQ4G",1,3,"user-placeholder.png");
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `username`, `email`, `password`, `usergender_id`, `usercategory_id`, `avatar`) VALUES (null, "Juan", "Perez", "user2", "user2@gmail.com", "$2a$10$uf.y33mF2OPmQJuQA7LhVuPVpcAxBZ7EFHoynbReJjfFBD0QvoQ4G",1,1,"user-placeholder.png");
