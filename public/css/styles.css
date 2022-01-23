@@ -52,7 +52,8 @@ a {
 .common-header-left {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; 
+  justify-content: space-between;
+  
 }
 
 .common-header-left a i{
@@ -64,6 +65,7 @@ a {
   display: flex;
   justify-content:space-evenly;
   flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;  
 }
 
@@ -772,7 +774,7 @@ i.wishlist:hover ~ i.wishlist-hover{
 
 .reg-form{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .register {
@@ -807,8 +809,7 @@ i.wishlist:hover ~ i.wishlist-hover{
   background-color:#DADADA;
 }
 
-@media (min-width: 768px)
-{
+@media (min-width: 768px){
   .login-form {
       width: 60%; 
   }
@@ -828,6 +829,16 @@ i.wishlist:hover ~ i.wishlist-hover{
 
   .hamburger {
     display: none;
+  }
+  .common-header-left{
+    justify-content: flex-start; 
+  }
+
+  .common-header{
+    flex-direction: row;
+  }
+  .reg-form{
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -877,50 +888,6 @@ i.wishlist:hover ~ i.wishlist-hover{
 .error-msg{
   color: rgb(255, 75, 43);
   text-align: center;
-}
-
-
-.popUpMail{
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-  background: #815ba6;
-  padding: 3rem;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
-
-.popUp-header{
-  color: white;
-}
-
-.popUp-body{
-  margin: 2rem 0;
-}
-
-.closePopUp{
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-.popUp-form input {
-  border: none;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.popUp-form button {
-  display: block;
-  margin: auto;
-  width: 100%;
-  background: white;
-  padding: .5rem;
-  border: none;
 }
 
 .tabContainer
@@ -980,3 +947,4 @@ i.wishlist:hover ~ i.wishlist-hover{
   color:#000;
   border-top: 3px solid #000;
 }
+
