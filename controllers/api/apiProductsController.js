@@ -127,6 +127,7 @@ const controller = {
       res.json(respuesta);
     } catch (errores) {
       console.log(errores);
+      res.json("No existe el producto")
     }
   },
   

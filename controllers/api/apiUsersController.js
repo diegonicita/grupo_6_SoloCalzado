@@ -60,8 +60,43 @@ const controller = {
                     res.json(respuesta);
                   
             })
-            .catch(errors => console.log(errors));
+            .catch(errors => {console.log(errors)
+            res.json("No existe el usuario")});
+    },
+    userSession: (req,res) => {  
+
+        let userId =  req.session && req.session.userLogged && req.session.userLogged.id;
+        
+        if (userId)
+        {
+        let promesa = User.findByPk(userId,
+            {                   
+                attributes: ['id', 'first_name', 'last_name', 'born_date','username', 'email', 'password', 'avatar', 'usergender_id', 'usercategory_id'],
+                include: [{association: "usercategory"}, {association: "usergender"}]                   
+                
+            })
+            Promise.all([promesa])
+            .then( (user) => {                                                  
+                    
+                let respuesta = {
+                    meta: {
+                        status : 200,
+                        url: 'api/users/session'
+                    },
+                    user: {
+                        id: user[0].id,                                             
+                    }
+                }
+                    res.json(respuesta);
+                  
+            })
+            .catch(errors => {console.log(errors)
+            res.json("No existe el usuario")});
+    }  
+    else {
+        res.json("No existe una session")
     }
+}   
 
 }
 module.exports = controller;
