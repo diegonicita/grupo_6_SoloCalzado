@@ -1,4 +1,4 @@
-
+let suma = 0;
 let drawer = document.getElementById('drawer');
 function changeAmmount(){
     if(e.target.classList.contains('minus')){
@@ -32,13 +32,17 @@ window.addEventListener ('load',async ()=>{
                     </div>
             </div>
                 <div class="cartProductTotal">
-                    TOTAL: ${product.price * product.ammount}
+                    SUBTOTAL: ${product.price * product.ammount}
                     <button class="cartRemoveItem">Remove Item</button>
                 </div>
             </div>`
+            suma += parseInt(product.price * product.ammount);
             drawer.innerHTML += productInCart;
-        }}
+        }
+        
+    }
     );
+drawer.innerHTML += 'TOTAL $ '+ suma
 
 }
 

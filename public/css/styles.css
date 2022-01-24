@@ -558,7 +558,16 @@ h2 {
 }
 
 .carrito-total-a-pagar {
-  text-align: right;
+      border: 0px solid white;
+    background-color: black;
+    color: white;
+    padding: 5px 5px;
+    margin: 0px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 10px;
+    text-align: right;
 }
 
 .carrito-btn-trash {
