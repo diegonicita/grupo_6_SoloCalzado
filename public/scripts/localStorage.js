@@ -4,15 +4,6 @@ let productId = document.getElementById('hiddenId').value;
 
 let productsInCart;
 
-
-
-
-
-
-
-
-
-
 if (!localStorage.getItem('cart')) {
     localStorage.setItem('cart','[]')
     productsInCart = JSON.parse(localStorage.getItem('cart'));
@@ -30,7 +21,6 @@ const selectItem = async (e)=>{
     })
     .then(data => {
         ({id,title,price,image} = data.product);
-       
             selectedItem = {
                 id,
                 title,
@@ -42,16 +32,10 @@ const selectItem = async (e)=>{
     productsInCart.push(selectedItem);
     let productToAdd = JSON.stringify(productsInCart);
     localStorage.setItem('cart',productToAdd);
+    addToCartBtn.setAttribute("disabled", "");
+    addToCartBtn.innerText = "IN CART";
     window.location.replace('/products/productCart')
 }
 
-productsInCart
-console.log(productsInCart.forEach(product => {
-    if(product.id == productId){
-        console.log('mismo id')
-    } else {
-        console.log('id nuevo')
-    }
-}))
 
 addToCartBtn.addEventListener('click',selectItem);
