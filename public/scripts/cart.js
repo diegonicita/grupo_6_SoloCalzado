@@ -9,12 +9,18 @@ function changeAmmount(){
 }
 
 
-window.addEventListener('load',()=>{
+window.addEventListener ('load',async ()=>{
+    let respuesta = await fetch('/api/users/session')
+    let data = await respuesta.json()
+    let id = data.user.id
+    
+    
     if (localStorage.getItem('cart')) {
         productsInCart = JSON.parse(localStorage.getItem('cart'));
     
     productsInCart.forEach(
         product => {
+            if(product.userId == id){
             let productInCart = `<div class="cartProduct">
             <div class="cartProductContent">
                     <p>${product.title}</p>
@@ -31,9 +37,11 @@ window.addEventListener('load',()=>{
                 </div>
             </div>`
             drawer.innerHTML += productInCart;
-        }
+        }}
     );
+
 }
+
 
 let icons = productInCart.querySelectorAll('i');
 icons.addEventListener('click',changeAmmount);

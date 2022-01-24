@@ -29,6 +29,10 @@ const selectItem = async (e)=>{
                 ammount: 1
             }
     })
+    let respuesta = await fetch('/api/users/session')
+    let data = await respuesta.json()
+    selectedItem.userId = data.user.id
+    
     productsInCart.push(selectedItem);
     let productToAdd = JSON.stringify(productsInCart);
     localStorage.setItem('cart',productToAdd);
