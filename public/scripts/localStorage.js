@@ -39,6 +39,7 @@ const selectItem = async (e)=>{
     addToCartBtn.setAttribute("disabled", "");
     addToCartBtn.innerText = "IN CART";
     window.location.replace('/products/productCart')
+    
 }
 
 

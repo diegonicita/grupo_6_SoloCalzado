@@ -1,3 +1,6 @@
+
+var id = null
+
 let suma = 0;
 let drawer = document.getElementById('drawer');
 function changeAmmount(){
@@ -12,7 +15,7 @@ function changeAmmount(){
 window.addEventListener ('load',async ()=>{
     let respuesta = await fetch('/api/users/session')
     let data = await respuesta.json()
-    let id = data.user.id
+    id = data.user.id
     
     
     if (localStorage.getItem('cart')) {
@@ -47,9 +50,22 @@ drawer.innerHTML += 'TOTAL $ '+ suma
 }
 
 
-let icons = productInCart.querySelectorAll('i');
-icons.addEventListener('click',changeAmmount);
-
+/* let icons = productInCart.querySelectorAll('i');
+icons.addEventListener('click',changeAmmount); */
 })
+
+let botonPagar = document.querySelector(".botonPagar")
+
+botonPagar.addEventListener('click',()=>{
+/*   let carrito = JSON.parse(localStorage.getItem('cart'))
+    console.log(carrito)
+    var carritoVacio = carrito.filter((el)=>{ return el.id != id})
+    localStorage.setItem ('cart', JSON.stringify(carritoVacio)) */
+    localStorage.removeItem('cart')
+  window.location.replace('/products/productCart')
+}
+)
+
+//    var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; });
 
 
