@@ -81,6 +81,10 @@
                             <button class="detalle-btn-black"> AGREGAR A LA WISHLIST </button>                    
                         </div>
                     <% if (locals.loggedCategory > 1) { %>
+                        
+                        <div class="detalle-botones-inferiores-subcontainer">
+                            <a href="/products/create/"><button class="detalle-btn-black"> CREAR </button></a>                        
+                        </div>
                         <div class="detalle-botones-inferiores-subcontainer">
                             <a href="/products/edit/<%=producto.id%>"><button class="detalle-btn-black"> EDITAR </button></a>                        
                         </div>

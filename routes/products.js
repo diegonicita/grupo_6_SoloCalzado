@@ -60,8 +60,8 @@ router.get('/productCart', guestMiddleware, controller.productCart);
 
 // Rutas para la creacion y edicion de productos: alta, baja y modificacion de productos
 
-router.get('/create', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.create);
-router.post('/', guestMiddleware, userLevelAuthMiddleware({level : 3 }), upload.single('images'), productValidation, controller.store);
+router.get('/create', guestMiddleware, userLevelAuthMiddleware({level : 2 }), controller.create);
+router.post('/', guestMiddleware, userLevelAuthMiddleware({level : 2 }), upload.single('images'), productValidation, controller.store);
 
 router.get('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 2 }), controller.edit);
 router.patch('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 2 }), upload.single('images'), productValidation , controller.update);
