@@ -245,7 +245,7 @@ const controller = {
                 old: req.body,
                 user }
                 );
-        } 
+        }
         
         //res.send('Aca va el codigo para actualizar los datos');
     },
@@ -276,6 +276,21 @@ const controller = {
         .catch(error => res.send(error))
 
         //res.send('Aca va el codigo para actualizar los datos');
+    },
+    
+    destroy: (req,res) => {       
+        let userId = req.params.id;
+        if (userId != 1)
+        {
+        User
+        .destroy({where: {id: userId}, force: true}) // force: true es para asegurar que se ejecute la acción
+        .then(()=>{
+            return res.redirect('/users/list')})
+        .catch(error => res.send(error)) 
+        }
+        else {
+          res.redirect('/users/list');
+        }
     },
 
     logout: (req,res) => {

@@ -141,6 +141,8 @@ router.patch(
   controller.adminUpdateById
 );
 
+router.delete('/edit/:id', guestMiddleware, userLevelAuthMiddleware({level : 3 }), controller.destroy);
+
 router.get("/logout", controller.logout);
 
 router.get("/error", controller.error);

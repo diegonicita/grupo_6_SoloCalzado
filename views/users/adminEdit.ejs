@@ -11,7 +11,7 @@
   <img src="/images/avatars/<%= user.avatar %>">
 </div> 
 
-<div class="register-formulario">
+<div class="register-formulario"  style="padding: 5px">
     <form action="/users/edit/<%= user.id %>?_method=PATCH" method="POST" class="reg-form" enctype="multipart/form-data">      
       <div>
         <label for="firstName">Nombre</label>
@@ -71,14 +71,19 @@
       <div>
         <label for="repassword">Repite tu Password</label>
         <input display="display: block" type="password" name="repassword" id="repassword" value=""/>       
-      </div> -->
-      <button class="register" type="submit" disabled>EDITAR</button>
-      <br>
-      <button class="register" type="submit" disabled>ELIMINAR</button>
-      
+      </div> -->        
     </form>   
 
   </div> 
+<div class="register-formulario" style="padding:0">
+  <form>
+    <button class="register" style="width: 100px; margin-right: 15px;" type="submit" disabled>EDITAR</button>
+    </form>
+      <br>    
+    <form action="/users/edit/<%= user.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="register" style="width: 100px; margin-right: 15px;">ELIMINAR</button>
+    </form>   
+  </div>
 
 </main>
 
